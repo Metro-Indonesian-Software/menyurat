@@ -162,3 +162,24 @@
     border-color: rgb(83, 87, 224) !important;
 }
 
+.form-select{
+display: block;
+width: 100%;
+line-height: 25px;
+font-size: 14px;
+font-weight: 500;
+font-family: inherit;
+border-radius: 30px;
+-webkit-appearance: none;
+color:  #808797;
+border: 1px solid #CDD9ED;
+background: #fff;   
+transition: border .3s ease;
+&::placeholder {
+    color:  #b4bac5;
+}
+&:focus {
+    outline: none;
+    border-color:  #275EFE;
+}
+}

@@ -86,20 +86,15 @@
             <div class="d-flex gap-2">
                 <div class="form-group ">
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input class="form-field" type="email" placeholder="Search">
+                    <input class="form-field " type="email" placeholder="Search">
                 </div>
                 <div class="btn btn-primary text-center  my-auto px-3 "> Cari </div>
-                <div class="dropdown my-auto">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Terbaru
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Terbaru</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
+                <select class="form-select " style="width: 150px" aria-label="Default select example">
+                    <option selected>Data Terbaru</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
         </div>
         <div class="d-flex gap-4 mt-3 filter-table-dashboard">
