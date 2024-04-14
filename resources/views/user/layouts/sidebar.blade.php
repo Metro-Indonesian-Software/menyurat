@@ -1,11 +1,12 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style_sidebar.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/text_custom.css') }}">
 <aside id="sidebar" class="add-scrollbar">
-    <div class="sidebar-logo-1 d-flex align-items-center mt-4 teks-primer">
+    <div class="sidebar-logo-1 d-flex align-items-center mt-4">
         <div class="sidebar-logo-sm ">
-            <a href="#"><span class="">MT</span></a>
+            <a href="#" class=" text-primer"><span class="">MT</span></a>
         </div>
         <div class="sidebar-logo ">
-            <a href="#"><span class="">Menyurat</span></a>
+            <a href="#"><span class=" text-primer">Menyurat</span></a>
         </div>
     </div>
     <ul class="sidebar-nav ">
@@ -16,8 +17,9 @@
                     class="fa-solid fa-table-cells-large"></i> <span>Dashboard</span></a>
         </li>
         <li class="sidebar-item mb-2">
-            <a href="/dashboard" class="sidebar-link 
-            {{ Request::is('kelola_aset*') ? 'active' : '' }}"> <i
+            <a href="/kelola_surat"
+                class="sidebar-link 
+            {{ Request::is('kelola_surat*') ? 'active' : '' }}"> <i
                     class="fa-regular fa-folder"></i> <span>Kelola Surat</span></a>
         </li>
         <li class="sidebar-item mb-2">

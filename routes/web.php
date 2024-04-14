@@ -29,3 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard/buat_surat',function(){
     return view('user.buat_surat.create');
 });
+Route::get('/kelola_surat',function(){
+    return view('user.kelola_surat.index');
+});
