@@ -21,6 +21,11 @@ Route::get('/dashboard',function(){
     return view('user.dashboard.index');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard/buat_surat',function(){
+    return view('user.buat_surat.create');
+});

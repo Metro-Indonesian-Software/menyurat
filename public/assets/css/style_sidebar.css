@@ -140,18 +140,18 @@ a.sidebar-link{
 }
 
 a.sidebar-link:hover{
-    background-color: rgb(83, 87, 224);
+    background-color: rgb(133, 56, 234);
     /* border-left: 3px solid rgb(29, 34, 175); */
     color: white;
 }
 
 .active {
-    background-color: rgb(83, 87, 224);
+    background-color: rgb(133, 56, 234);
     color: white !important;
 }
 
 .active-child{
-    color:rgb(83, 87, 224) !important;
+    color:rgb(133, 56, 234) !important;
 }
 
 
@@ -178,7 +178,7 @@ a.sidebar-link:hover{
 }
 
 .sidebar-item .sidebar-dropdown a.sidebar-link:hover{
-    color:rgb(83, 87, 224) ;
+    color:rgb(133, 56, 234) ;
 }
 
 

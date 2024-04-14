@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style_sidebar.css') }}">
 <aside id="sidebar" class="add-scrollbar">
-    <div class="sidebar-logo-1 d-flex align-items-center mt-4">
+    <div class="sidebar-logo-1 d-flex align-items-center mt-4 teks-primer">
         <div class="sidebar-logo-sm ">
             <a href="#"><span class="">MT</span></a>
         </div>
@@ -13,18 +13,18 @@
         <li class="sidebar-item mb-2">
             <a href="/dashboard" class="sidebar-link 
             {{ Request::is('dashboard*') ? 'active' : '' }}"> <i
-                    class="fa-solid fa-chart-simple"></i> <span>Dashboard</span></a>
+                    class="fa-solid fa-table-cells-large"></i> <span>Dashboard</span></a>
         </li>
         <li class="sidebar-item mb-2">
             <a href="/dashboard" class="sidebar-link 
             {{ Request::is('kelola_aset*') ? 'active' : '' }}"> <i
-                    class="fa-solid fa-chart-simple"></i> <span>Kelola Surat</span></a>
+                    class="fa-regular fa-folder"></i> <span>Kelola Surat</span></a>
         </li>
         <li class="sidebar-item mb-2">
             <a href="/dashboard"
                 class="sidebar-link 
             {{ Request::is('profil_perusahaan*') ? 'active' : '' }}"> <i
-                    class="fa-solid fa-chart-simple"></i> <span>Profil Perusahaan</span></a>
+                    class="fa-regular fa-user"></i> <span>Profil Perusahaan</span></a>
         </li>
 
 

@@ -142,8 +142,8 @@
 }
 
 .border-primary{
-    border-color: rgb(83, 87, 224);
-    color: rgb(83, 87, 224);
+    border-color: rgb(133, 56, 234);
+    color: rgb(133, 56, 234);
 }
 
 .filter-table-dashboard a.border-bottom{
@@ -153,33 +153,33 @@
 
 
 .filter-table-dashboard a.border-bottom:hover{
-    color: rgb(83, 87, 224);
-    border-color: rgb(83, 87, 224) !important;
+    color: rgb(133, 56, 234);
+    border-color: rgb(133, 56, 234) !important;
 }
 
 .filter-active-table{
-    color: rgb(83, 87, 224) !important;
-    border-color: rgb(83, 87, 224) !important;
+    color: rgb(133, 56, 234) !important;
+    border-color: rgb(133, 56, 234) !important;
+}
+
+
+.form-select:focus{
+    box-shadow: none;
 }
 
 .form-select{
-display: block;
-width: 100%;
-line-height: 25px;
-font-size: 14px;
-font-weight: 500;
-font-family: inherit;
-border-radius: 30px;
--webkit-appearance: none;
-color:  #808797;
-border: 1px solid #CDD9ED;
-background: #fff;   
-transition: border .3s ease;
-&::placeholder {
-    color:  #b4bac5;
+    width: 150px ;
+
 }
-&:focus {
-    outline: none;
-    border-color:  #275EFE;
+
+/* ikon panah dropdown */
+/* .btn-secondary{
+    --bs-btn-color : black;
+
 }
-}
+
+.btn{
+
+} */
+
+/* end ikon panah dropdown */

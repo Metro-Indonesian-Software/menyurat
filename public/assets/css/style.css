@@ -101,7 +101,7 @@ body {
 }
 
 .card-border:hover{
-    border : 1px solid rgb(83, 87, 224);
+    border : 1px solid rgb(133, 56, 234);
 }
 
 
@@ -120,15 +120,6 @@ body {
 }
 
 
-/* text-custom */
-
-.text-primary-2{
-    color: rgb(83, 87, 224);
-}
-
-.text-secondary-2{
-    color: rgb(91, 91, 91);
-}
 
 
 /* logo */
@@ -146,7 +137,7 @@ body {
 
 /* Table */
 .table-primary{
-    --bs-table-bg: rgb(83, 87, 224) !important;
+    --bs-table-bg: rgb(133, 56, 234) !important;
     --bs-table-color: white;
 }
 
