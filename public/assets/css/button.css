@@ -1,0 +1,70 @@
+
+/* button */
+.btn-primary{
+    background-color: rgb(133, 56, 234) !important;
+    border: rgb(133, 56, 234) !important;
+    box-shadow: 0 2px 6px #acb5f6;
+}
+
+.btn-primary:hover{
+    background-color: rgb(111, 43, 199) !important;
+}
+
+.btn-danger{
+    box-shadow: 0 2px 6px #fd9b96;
+    background-color: #fc544b;
+    border: #fc544b;
+    color: #fff;
+}
+
+.btn-danger:hover{
+    background-color: rgb(251, 22, 10) !important;
+}
+.btn-success{
+    box-shadow: 0 2px 6px #a8f5b4;
+    background-color: rgb(42, 221, 72);
+    border: #63ed7a;
+    color: #fff;
+}
+
+.btn-success:hover{
+    background-color: rgb(25, 199, 54);
+}
+
+.btn-warning{
+    background-color: rgb(255, 168, 0) !important;
+    color: white;
+    border: rgb(255, 236, 197);
+    box-shadow: 0 2px 6px rgb(255, 236, 197);
+
+}
+
+.btn-warning:hover{
+    background-color: rgb(238, 159, 1) !important;
+    color: white !important;
+}
+
+.btn-download{
+    background-color: white;
+    border:1px solid transparent;
+    color: rgb(133, 56, 234);
+    box-shadow: 0 2px 6px rgb(255, 255, 255);
+}
+
+.btn-download:hover{
+    background-color: rgb(113, 33, 218);
+    border:1px solid white;
+    color: white;
+}
+
+.btn-primer{
+    background-color: rgb(133, 56, 234);
+    color: white;
+    border: rgb(133, 56, 234);
+    box-shadow: 0 2px 6px rgb(243, 240, 248);
+}
+
+.btn-primer:hover{
+    background-color: rgb(113, 38, 211) !important;
+    color: white !important;
+}

@@ -1,0 +1,46 @@
+.navbar{
+    background-color:rgb(133, 56, 234);
+}
+
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+
+#toggle-btn{
+    cursor: pointer;
+    border:none;
+    padding: 10px 16px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(133, 56, 234);
+    transition: .3s;
+    border-radius: 8px; 
+    border: 1px solid transparent;
+}
+   
+   #toggle-btn:hover{
+    border: 1px solid white;
+
+   }
+
+   .user{
+    cursor: pointer;
+    border:none;
+    padding: 10px 16px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(133, 56, 234);
+    transition: .3s;
+    border-radius: 8px; 
+   }
+   
+   .user:hover{
+    background-color: rgb(29, 34, 175);
+    color: rgb(255, 255, 255);
+   }
+
+   .dropdown-menu a.dropdown-item:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(133, 56, 234);
+
+   }

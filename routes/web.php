@@ -17,6 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard',function(){
+    return view('user.dashboard.index');
+});
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard/buat_surat',function(){
+    return view('user.buat_surat.create');
+});
+Route::get('/kelola_surat',function(){
+    return view('user.kelola_surat.index');
+});
