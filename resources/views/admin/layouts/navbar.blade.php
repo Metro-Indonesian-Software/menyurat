@@ -13,7 +13,7 @@
     </div>
 
     <div class="btn-group gap-3">
-        <h5 class="text-primer my-auto"><strong>Rafli Haikal</strong></h5>
+        <h5 class="text-white my-auto"><strong>Rafli Haikal</strong></h5>
         <button class="btn border rounded rounded-circle text-white " style="background-color: rgb(133, 56, 234)"><i
                 class="fa-solid fa-user"></i></button>
 

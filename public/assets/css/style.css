@@ -40,8 +40,18 @@ h1 {
     letter-spacing: 1px;
 }
 
+
+
 body {
     font-family: 'Poppins', sans-serif;
+}
+
+.w-35{
+    width: 35% !important;
+}
+
+.w-30{
+    width: 30% !important;
 }
 
 .wrapper{
@@ -62,7 +72,8 @@ body {
 }
 
 .content{
-    background-color: rgb(241, 241, 241);
+    /* background-color: rgb(241, 241, 241); */
+    background-color: white;
     min-height: 88vh;
 }
 
@@ -112,6 +123,7 @@ body {
 
 .form-control:focus{
     box-shadow: none;
+    border-color: rgb(133, 56, 234);
 }
 
 .min-tinggi-card{
@@ -137,18 +149,38 @@ body {
 
 /* Table */
 .table-primary{
-    --bs-table-bg: rgb(133, 56, 234) !important;
-    --bs-table-color: white;
+    --bs-table-bg: rgb(240, 231, 252) !important;
+    --bs-table-color: rgb(133, 56, 234) ;
 }
 
 .table-white{
     --bs-table-bg: rgb(255, 255, 255) !important;
-    border: 1px solid rgb(219, 219, 219);
+    border: none;
+    border-bottom: 1px solid rgb(219, 219, 219);
 }
 
 table tr:first-child th:first-child {
     border-top-left-radius: 0.30rem !important;
+    border-bottom-left-radius: 0.30rem !important;
   }
+
+table tr th{
+    border-bottom: 1px solid transparent;
+}
+  
 table tr:first-child th:last-child {
     border-top-right-radius: 0.30rem !important;
+    border-bottom-right-radius: 0.30rem !important;
   }
+
+
+/*dropdown-item  */
+.dropdown-item{
+    width: 90%;
+    border-bottom: 1px solid rgb(209, 209, 209);
+    margin: auto;
+}
+
+.dropdown-item:hover{
+    background-color: rgb(240, 231, 252) !important;
+}

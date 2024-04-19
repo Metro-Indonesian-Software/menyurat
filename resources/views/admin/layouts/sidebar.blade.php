@@ -32,7 +32,7 @@
 
     </ul>
     <div class="sidebar-footer mb-2 ">
-        <a href="/login" class="sidebar-link ">
+        <a href="" class="sidebar-link ">
             <i class="fa-solid fa-share-from-square"></i> <span>logout</span>
         </a>
     </div>

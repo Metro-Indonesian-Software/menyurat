@@ -2,11 +2,26 @@
     overflow-x: hidden;
     overflow-y: hidden;
     white-space: nowrap;
+
+}
+
+.pembungkus{
+    padding: 0px 10px;
+    margin: auto;
+}
+
+.text-wrap{
+    width: 8rem;
 }
 
 .card {
     display: inline-block;
-    margin-right: 30px;
+    border: 1px solid transparent;
+    border: 1px solid rgb(231, 231, 231);
+}
+
+.card:hover {
+    border: 1px solid rgb(182, 182, 182);
 }
 
 .slide-button {
@@ -76,14 +91,14 @@
     -webkit-appearance: none;
     color:  #808797;
     border: 1px solid #CDD9ED;
-    background: #fff;   
+    background:rgb(243, 243, 243);   
     transition: border .3s ease;
     &::placeholder {
         color:  #b4bac5;
     }
     &:focus {
         outline: none;
-        border-color:  #275EFE;
+        border-color:  rgb(133, 56, 234);
     }
 }
 
@@ -123,8 +138,8 @@
         padding: 6px 12px;
         font-size: 14px;
         line-height: 25px;
-        color: #CDD9ED;
-        background: white;
+        color: #9e9e9e;
+        background: rgb(243, 243, 243);
         border: 1px solid#CDD9ED;
         border-right: 0px;
         transition: background .3s ease, border .3s ease, color .3s ease;
@@ -132,9 +147,9 @@
     }
     &:focus-within {
         & > span {
-            color: #CDD9ED;
-            background: white;
-            border-color:  #275EFE;
+            color: #9e9e9e;
+            background:rgb(243, 243, 243);
+            border-color: rgb(133, 56, 234);
             border-right: 0px;
 
         }
