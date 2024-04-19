@@ -1,0 +1,13 @@
+created:
+    - database/factories/CommonLetterLogFactory.php
+    - database/factories/LetterLogFactory.php
+    - database/migrations/2024_04_19_222139_create_common_letter_logs_table.php
+    - database/migrations/2024_04_19_222140_create_letter_logs_table.php
+    - app/Models/CommonLetterLog.php
+    - app/Models/LetterLog.php
+    - database/seeders/CommonLetterLogSeeder.php
+    - database/seeders/LetterLogSeeder.php
+models:
+    User: { name: string, email: string, web_url: 'text nullable', address: text, phone_number: string, postal_code: string, logo_url: string, password: string }
+    CommonLetterLog: { date: datetime, user_id: 'id foreign:users.id onUpdate:cascade onDelete:cascade', letter_type: string }
+    LetterLog: { common_letter_log_id: 'id foreign:common_letter_logs onUpdate:cascade onDelete:cascade', field_name: string, field_value: text }

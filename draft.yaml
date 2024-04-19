@@ -1,0 +1,25 @@
+models:
+  # User:
+  #   name: string
+  #   email: string
+  #   web_url: text nullable
+  #   address: text
+  #   phone_number: string
+  #   postal_code: string
+  #   logo_url: string
+  #   password: string
+  # role: enum:user,admin #pakai library role management saja
+
+  CommonLetterLog:
+    date: datetime
+    user_id: id foreign:users.id onUpdate:cascade onDelete:cascade
+    letter_type: string
+
+  LetterLog:
+    common_letter_log_id: id foreign:common_letter_logs onUpdate:cascade onDelete:cascade
+    field_name: string
+    field_value: text
+    # number_of_letter: string nullable # masuk ke letter log saja
+    # destination: string # masuk ke letter log saja
+
+seeders: CommonLetterLog, LetterLog
