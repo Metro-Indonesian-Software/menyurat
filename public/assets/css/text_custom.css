@@ -1,0 +1,25 @@
+/* text-custom */
+
+.text-primary-2{
+    color: rgb(83, 87, 224);
+}
+
+.text-secondary-2{
+    color: rgb(91, 91, 91);
+}
+
+
+.text-primer{
+    color :rgb(133, 56, 234);
+}
+
+.text-warning{
+    color: rgb(247, 163, 9) !important;
+}
+
+.text-black{
+    color: rgb(91, 91, 91) !important;
+}
+.text-danger{
+    color: rgb(255, 30, 30) !important;
+}
