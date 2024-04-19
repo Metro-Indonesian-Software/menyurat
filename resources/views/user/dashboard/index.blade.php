@@ -17,69 +17,211 @@
 
 
         <div class="scrolling-wrapper">
-            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="pembungkus border-0 bg-transparent">
                 <div class="card" style="width: 150px; height:180px">
                     <img src="/assets/img/putih.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
                     <div class="middle">
                         <div class="text"><i class="fa-solid fa-plus"></i></div>
                     </div>
-                    <p class="text-center mt-3">Tambah Surat</p>
                 </div>
-            </a>
-            <a href="">
+                <p class=" mt-1 text-wrap m-auto">Tambah Surat</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Mutasi Karyawan</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 wrap">Promosi Karyawan</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 wrap">Demosi Karyawan</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Perjanjian PKWT</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Perjanjian PKWTT</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Pengajuan Cuti</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
+                            style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto" style="">Penawaran Layanan/Jasa</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
+                            style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Teguran/peringatan</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
+                            style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Faktur</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
+                            style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Invoice</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
+                            style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Pemberitahuan</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
+                            style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Balasan</p>
+            </button>
+            <button class="pembungkus border-0 bg-transparent">
+                <a href="/kelola_surat">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
+                            style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </div>
+                </a>
+                <p class=" mt-1 text-wrap m-auto">Penawaran Harga</p>
+            </button>
+
+            {{-- <a href="" class="pembungkus">
                 <div class="card " style="width: 150px; height:180px">
                     <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
                     <div class="middle">
                         <div class="text"><i class="fa-solid fa-plus"></i></div>
                     </div>
-                    <p class="text-center mt-3">Surat Lamaran</p>
+                    <p class=" mt-3">Promosi Karyawan</p>
                 </div>
             </a>
-            <a href="">
+            <a href="" class="pembungkus">
                 <div class="card " style="width: 150px; height:180px">
                     <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
                     <div class="middle">
                         <div class="text"><i class="fa-solid fa-plus"></i></div>
                     </div>
-                    <p class="text-center mt-3">Surat Libur</p>
+                    <p class=" mt-3">Demosi Karyawan</p>
                 </div>
             </a>
-            <a href="">
+            <a href="" class="pembungkus">
                 <div class="card " style="width: 150px; height:180px">
                     <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
                     <div class="middle">
                         <div class="text"><i class="fa-solid fa-plus"></i></div>
                     </div>
-                    <p class="text-center mt-3">Surat cuti</p>
+                    <p class=" mt-3">Perjanjian PKWT</p>
                 </div>
             </a>
-            <a href="">
+            <a href="" class="pembungkus">
                 <div class="card " style="width: 150px; height:180px">
                     <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
                     <div class="middle">
                         <div class="text"><i class="fa-solid fa-plus"></i></div>
                     </div>
-                    <p class="text-center mt-3">Surat Undangan</p>
+                    <p class=" mt-3">Pengajuan Cuti</p>
                 </div>
             </a>
-            <a href="">
+            <a href="" class="pembungkus">
                 <div class="card " style="width: 150px; height:180px">
                     <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
                     <div class="middle">
                         <div class="text"><i class="fa-solid fa-plus"></i></div>
                     </div>
-                    <p class="text-center mt-3">Tambah Surat</p>
+                    <p class=" mt-3">Penawaran Layanan</p>
                 </div>
-            </a>
-            <a href="">
-                <div class="card " style="width: 150px; height:180px">
-                    <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                    <div class="middle">
-                        <div class="text"><i class="fa-solid fa-plus"></i></div>
-                    </div>
-                    <p class="text-center mt-3">Tambah Surat</p>
-                </div>
-            </a>
+            </a> --}}
         </div>
 
         <div class="d-flex justify-content-between mt-5">
@@ -134,9 +276,14 @@
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item " href="#">Lihat</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Hapus</a></li>
+                                    <li><a class="dropdown-item text-warning" href="#"><i
+                                                class="fa-regular fa-pen-to-square"></i> Edit</a></li>
+                                    <li><a class="dropdown-item text-black" href="#"><i
+                                                class="fa-regular fa-eye"></i>
+                                            Lihat</a></li>
+                                    <li><a class="dropdown-item text-danger" href="#"><i
+                                                class="fa-solid fa-trash"></i>
+                                            Hapus</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -155,10 +302,52 @@
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item " href="#">Lihat</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Hapus</a></li>
+                                    <li><a class="dropdown-item text-black" href="#"><i
+                                                class="fa-solid fa-download"></i> Download</a></li>
+                                    <li><a class="dropdown-item text-warning" href="#"><i
+                                                class="fa-regular fa-pen-to-square"></i> Edit</a></li>
+                                    <li><a class="dropdown-item text-black" href="#"><i
+                                                class="fa-regular fa-eye"></i>
+                                            Lihat</a></li>
+                                    <li><a class="dropdown-item text-danger" href="#"><i
+                                                class="fa-solid fa-trash"></i>
+                                            Hapus</a></li>
+                                    <li><a class="dropdown-item text-primer" href="#"><i
+                                                class="fa-solid fa-file-import"></i>
+                                            Terbitkan</a></li>
                                 </ul>
+
+                            </div>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>01-01-2021</td>
+                        <td>Surat Cuti Jhon</td>
+                        <td>Surat Cuti </td>
+                        <td>0101</td>
+                        <td><small class="bg-warning-2 px-2 py-1 rounded">Belum Diterbitkan</small></td>
+                        <td>
+                            <div class="dropdown dropstart">
+                                <button type="button" class="btn border-0  " data-bs-toggle="dropdown"
+                                    aria-expanded="false" aria-haspopup="true">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item text-black" href="#"><i
+                                                class="fa-solid fa-download"></i> Download</a></li>
+                                    <li><a class="dropdown-item text-warning" href="#"><i
+                                                class="fa-regular fa-pen-to-square"></i> Edit</a></li>
+                                    <li><a class="dropdown-item text-black" href="#"><i
+                                                class="fa-regular fa-eye"></i>
+                                            Lihat</a></li>
+                                    <li><a class="dropdown-item text-danger" href="#"><i
+                                                class="fa-solid fa-trash"></i>
+                                            Hapus</a></li>
+                                    <li><a class="dropdown-item text-primer" href="#"><i
+                                                class="fa-solid fa-file-import"></i>
+                                            Terbitkan</a></li>
+                                </ul>
+
                             </div>
                     </tr>
                 </tbody>

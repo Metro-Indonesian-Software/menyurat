@@ -19,12 +19,13 @@
 </head>
 
 <body>
-    <div class="">
+    <div class="bg-white">
         {{-- nav --}}
         <div class=" text-white bg-primer w-100 py-3 d-flex justify-content-between ">
             <div class="ms-5 my-auto">
-                <a href="/dashboard">
-                    <h5 class="my-auto" style="color: white"><i class="fa-solid fa-arrow-left me-2"></i> Dashboard</h5>
+                <a href="/dashboard" class="btn dashboard ">
+                    <h5 class="my-auto " style="color: white"><i class="fa-solid fa-arrow-left me-2"></i>
+                        Dashboard</h5>
                 </a>
             </div>
             <div class="my-auto">
@@ -39,9 +40,9 @@
         {{-- end-nav --}}
 
         {{-- main --}}
-        <div class="d-flex min-vh-100">
+        <div class="d-flex min-vh-100 ">
             <div class="create w-50 p-5 ">
-                <div class="accordion " id="accordionPanelsStayOpenExample">
+                <div class="accordion bg-white" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item border-bottom">
                         <h2 class="accordion-header  ">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -121,18 +122,18 @@
                             <div class="isi_surat_1">
                                 <div class="nomor_surat">
                                     <div class="isi_nomor_surat">
-                                        <p style="width: 30px">Nomor </p>
+                                        <p style="width: 45px">Nomor </p>
                                         <p id="isi_nomor"> : 01 /SM-US/4/2024</p>
                                     </div>
                                     <div class="isi_nomor_surat">
-                                        <p style="width: 30px">Perihal </p>
+                                        <p style="width: 45px">Perihal </p>
                                         <p id="isi_perihal"></p>
                                     </div>
                                     <div class="isi_nomor_surat">
-                                        <p style="width: 30px">Lampiran </p>
-                                        <p id="isi_lampiran">
-                                        </p>
+                                        <p style="width: 45px">Lampiran </p>
+                                        <p id="isi_lampiran"></p>
                                     </div>
+
                                 </div>
                                 <div class="tanggal_surat">
                                     <p>Senin, 8 April 2024</p>

@@ -1,3 +1,10 @@
+.dashboard{
+    border :1px solid transparent; 
+}
+.dashboard:hover {
+    border: 1px solid white;
+}
+
 .form-control{
     background-color: rgb(236, 236, 236);
 }
@@ -17,6 +24,7 @@
 .accordion{
     border:none !important;
     --bs-accordion-border-color:none !important;
+    --bs-accordion-bg:white;
 }
 
 label{
