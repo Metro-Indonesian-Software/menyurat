@@ -15,9 +15,9 @@ return new class extends Migration
 
         Schema::create('common_letter_logs', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('letter_type');
+            $table->string('name');
+            $table->string('type');
             $table->timestamps();
         });
 

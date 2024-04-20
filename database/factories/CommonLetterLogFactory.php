@@ -22,9 +22,9 @@ class CommonLetterLogFactory extends Factory
     public function definition(): array
     {
         return [
-            'date' => $this->faker->dateTime(),
-            'user_id' => User::factory(),
-            'letter_type' => $this->faker->word(),
+            'user_id' => $this->faker->randomNumber(1, 10),
+            'name' => $this->faker->realText($maxNbChars = 30, $indexSize = 2),
+            'type' => $this->faker->randomKey(config("central.letter_types")),
         ];
     }
 }

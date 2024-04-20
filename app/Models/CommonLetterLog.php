@@ -16,9 +16,9 @@ class CommonLetterLog extends Model
      * @var array
      */
     protected $fillable = [
-        'date',
         'user_id',
-        'letter_type',
+        'name',
+        'type',
     ];
 
     /**
@@ -28,7 +28,6 @@ class CommonLetterLog extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'date' => 'datetime',
         'user_id' => 'integer',
     ];
 
