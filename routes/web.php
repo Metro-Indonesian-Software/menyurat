@@ -39,18 +39,11 @@ Route::middleware(["auth", "prevent_back", "completed_profile"])->group(function
 
     Route::group(["middleware" => ["permission:letters_manage"]], function() {
         Route::get("/surat", [CommonLetterLogController::class, "index"])->name("letter.common.index");
-        Route::get("/surat/{type}", [CommonLetterLogController::class, "listIndex"])->name("letter.common.show");
-
+        Route::get("/surat/{slug}", [CommonLetterLogController::class, "listIndex"])->name("letter.common.show");
         Route::post("/surat", [CommonLetterLogController::class, "store"])->name("letter.common.store");
     });
 });
 
 Route::get('/dashboard/buat_surat',function(){
     return view('user.buat_surat.create');
-});
-// Route::get('/kelola_surat',function(){
-//     return view('user.kelola_surat.index');
-// });
-Route::get('/kelola_surat/surat_lamaran',function(){
-    return view('user.kelola_surat.child_kelola_surat.index');
 });

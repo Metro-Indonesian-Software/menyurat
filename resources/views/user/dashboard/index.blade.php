@@ -26,202 +26,20 @@
                 </div>
                 <p class=" mt-1 text-wrap m-auto">Tambah Surat</p>
             </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Mutasi Karyawan</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 wrap">Promosi Karyawan</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 wrap">Demosi Karyawan</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Perjanjian PKWT</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Perjanjian PKWTT</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Pengajuan Cuti</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
-                            style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto" style="">Penawaran Layanan/Jasa</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
-                            style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Teguran/peringatan</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
-                            style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Faktur</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
-                            style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Invoice</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
-                            style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Pemberitahuan</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
-                            style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Balasan</p>
-            </button>
-            <button class="pembungkus border-0 bg-transparent">
-                <a href="/kelola_surat">
-                    <div class="card " style="width: 150px; height:180px">
-                        <img src="/assets/img/surat.jpg" alt="Avatar" class="image"
-                            style=" width: 100%; height: 100%;">
-                        <div class="middle">
-                            <div class="text"><i class="fa-solid fa-plus"></i></div>
-                        </div>
-                    </div>
-                </a>
-                <p class=" mt-1 text-wrap m-auto">Penawaran Harga</p>
-            </button>
 
-            {{-- <a href="" class="pembungkus">
-                <div class="card " style="width: 150px; height:180px">
-                    <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                    <div class="middle">
-                        <div class="text"><i class="fa-solid fa-plus"></i></div>
-                    </div>
-                    <p class=" mt-3">Promosi Karyawan</p>
-                </div>
-            </a>
-            <a href="" class="pembungkus">
-                <div class="card " style="width: 150px; height:180px">
-                    <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                    <div class="middle">
-                        <div class="text"><i class="fa-solid fa-plus"></i></div>
-                    </div>
-                    <p class=" mt-3">Demosi Karyawan</p>
-                </div>
-            </a>
-            <a href="" class="pembungkus">
-                <div class="card " style="width: 150px; height:180px">
-                    <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                    <div class="middle">
-                        <div class="text"><i class="fa-solid fa-plus"></i></div>
-                    </div>
-                    <p class=" mt-3">Perjanjian PKWT</p>
-                </div>
-            </a>
-            <a href="" class="pembungkus">
-                <div class="card " style="width: 150px; height:180px">
-                    <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                    <div class="middle">
-                        <div class="text"><i class="fa-solid fa-plus"></i></div>
-                    </div>
-                    <p class=" mt-3">Pengajuan Cuti</p>
-                </div>
-            </a>
-            <a href="" class="pembungkus">
-                <div class="card " style="width: 150px; height:180px">
-                    <img src="/assets/img/surat.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                    <div class="middle">
-                        <div class="text"><i class="fa-solid fa-plus"></i></div>
-                    </div>
-                    <p class=" mt-3">Penawaran Layanan</p>
-                </div>
-            </a> --}}
+            @foreach ($letters as $name => $value)
+                <button class="pembungkus border-0 bg-transparent">
+                    <a href="{{ route("letter.common.show", ["slug" => Str::slug($name)]) }}">
+                        <div class="card " style="width: 150px; height:180px">
+                            <img src="{{ asset($value["image"]) }}" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
+                            <div class="middle">
+                                <div class="text"><i class="fa-solid fa-plus"></i></div>
+                            </div>
+                        </div>
+                    </a>
+                    <p class=" mt-1 text-wrap m-auto">{{ $name }}</p>
+                </button>
+            @endforeach
         </div>
 
         <div class="d-flex justify-content-between mt-5">
@@ -374,88 +192,17 @@
                                     <h2>Semua Template</h2>
                                 </div>
                                 <div class="row pt-4 ">
-                                    <div class="col-lg-3 mb-4">
-                                        <a href="">
-                                            <div class="card card-border" style="width: 170px;; height:240px">
-                                                <img src="/assets/img/surat.jpg" alt="Avatar" class=""
-                                                    style=" width: 100%; height: 100%;">
-                                                <p class="text-center mt-3">Surat Lamaran</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <a href="">
-                                            <div class="card card-border" style="width: 170px;; height:240px">
-                                                <img src="/assets/img/surat.jpg" alt="Avatar" class=""
-                                                    style=" width: 100%; height: 100%;">
-                                                <p class="text-center mt-3">Surat Lamaran</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <a href="">
-                                            <div class="card card-border" style="width: 170px;; height:240px">
-                                                <img src="/assets/img/surat.jpg" alt="Avatar" class=""
-                                                    style=" width: 100%; height: 100%;">
-                                                <p class="text-center mt-3">Surat Lamaran</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <a href="">
-                                            <div class="card card-border" style="width: 170px;; height:240px">
-                                                <img src="/assets/img/surat.jpg" alt="Avatar" class=""
-                                                    style=" width: 100%; height: 100%;">
-                                                <p class="text-center mt-3">Surat Lamaran</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <a href="">
-                                            <div class="card card-border" style="width: 170px;; height:240px">
-                                                <img src="/assets/img/surat.jpg" alt="Avatar" class=""
-                                                    style=" width: 100%; height: 100%;">
-                                                <p class="text-center mt-3">Surat Lamaran</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <a href="">
-                                            <div class="card card-border" style="width: 170px;; height:240px">
-                                                <img src="/assets/img/surat.jpg" alt="Avatar" class=""
-                                                    style=" width: 100%; height: 100%;">
-                                                <p class="text-center mt-3">Surat Lamaran</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <a href="">
-                                            <div class="card card-border" style="width: 170px;; height:240px">
-                                                <img src="/assets/img/surat.jpg" alt="Avatar" class=""
-                                                    style=" width: 100%; height: 100%;">
-                                                <p class="text-center mt-3">Surat Lamaran</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <a href="">
-                                            <div class="card card-border" style="width: 170px;; height:240px">
-                                                <img src="/assets/img/surat.jpg" alt="Avatar" class=""
-                                                    style=" width: 100%; height: 100%;">
-                                                <p class="text-center mt-3">Surat Lamaran</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <a href="">
-                                            <div class="card card-border" style="width: 170px;; height:240px">
-                                                <img src="/assets/img/surat.jpg" alt="Avatar" class=""
-                                                    style=" width: 100%; height: 100%;">
-                                                <p class="text-center mt-3">Surat Lamaran</p>
-                                            </div>
-                                        </a>
-                                    </div>
-
+                                    @foreach ($letters as $name => $value)
+                                        <div class="col-lg-3 mb-4">
+                                            <a href="">
+                                                <div class="card card-border" style="width: 170px;; height:240px">
+                                                    <img src="{{ asset($value["image"]) }}" alt="Avatar" class=""
+                                                        style=" width: 100%; height: 100%;">
+                                                    <p class="text-center mt-3">{{ $name }}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-lg-4 ">

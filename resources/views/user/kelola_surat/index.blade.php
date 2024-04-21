@@ -19,7 +19,7 @@
                     <div class="col-lg-3 mb-5 pb-4">
                         <a href="{{ route("letter.common.show", ["slug" => Str::slug($name)]) }}">
                             <div class="card card-border" style="width: 200px;; height:260px">
-                                <img src="{{ $value["image"] }}" alt="Avatar" class=""
+                                <img src="{{ asset($value["image"]) }}" alt="Avatar" class=""
                                     style=" width: 100%; height: 100%;">
                                 <p class="text-center mt-3">{{ $name }}</p>
                             </div>
