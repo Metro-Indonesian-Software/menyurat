@@ -35,6 +35,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+        // TODO: password default bagaimana?
         $validated = $request->validated();
         User::create($validated);
 
