@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "key" => config("central.letter_types.Surat Undangan"),
+  "key" => config("central.letter_types.Surat Undangan")["type"],
   "values" => [
     "number_of_letter" => "string",
     "attachment" => "string",

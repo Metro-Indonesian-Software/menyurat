@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "key" => config("central.letter_types.Surat Pengunduran Diri"),
+  "key" => config("central.letter_types.Surat Pengunduran Diri")["type"],
   "values" => [
     "signed_date" => "date",
     "destination" => "string",

@@ -20,7 +20,7 @@
             <li class="sidebar-item mb-2">
                 <a href="{{ route("user.index") }}"
                     class="sidebar-link
-                {{ Route::currentRouteName() === "user.index" ? 'active' : '' }}"> <i
+                {{ Str::startsWith(Route::currentRouteName(), 'user') ? 'active' : '' }}"> <i
                         class="fa-regular fa-user"></i> <span>Pengguna</span></a>
             </li>
         @endcan
@@ -29,7 +29,7 @@
             <li class="sidebar-item mb-2">
                 <a href="{{ route("letter.common.index") }}"
                     class="sidebar-link
-                {{ Route::currentRouteName() === "letter.common.index" ? 'active' : '' }}"> <i
+                {{ Str::startsWith(Route::currentRouteName(), 'letter.common') ? 'active' : '' }}"> <i
                         class="fa-regular fa-folder"></i> <span>Kelola Surat</span></a>
             </li>
         @endcan

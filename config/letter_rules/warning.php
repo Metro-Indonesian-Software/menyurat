@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "key" => config("central.letter_types.Surat Peringatan"),
+  "key" => config("central.letter_types.Surat Peringatan")["type"],
   "values" => [
     "number_of_letter" => "string",
     "subject" => "string",

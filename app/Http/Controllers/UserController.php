@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         // TODO: password default bagaimana?
         $validated = $request->validated();
-        User::create($validated);
+        // User::create($validated);
 
         return route("user.index");
     }

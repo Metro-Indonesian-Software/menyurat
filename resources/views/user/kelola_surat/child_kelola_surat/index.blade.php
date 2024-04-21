@@ -1,4 +1,4 @@
-@extends('user.layouts.main')
+@extends('layouts.main')
 @section('content')
     <link rel="stylesheet" href="{{ asset('assets/css/style_kelola_surat.css') }}">
     <div class="content px-5 py-3 ">

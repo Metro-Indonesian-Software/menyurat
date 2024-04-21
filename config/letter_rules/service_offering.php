@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "key" => config("central.letter_types.Surat Penawaran Layanan"),
+  "key" => config("central.letter_types.Surat Penawaran Layanan")["type"],
   "values" => [
     "number_of_letter" => "string",
     "attachment" => "string",

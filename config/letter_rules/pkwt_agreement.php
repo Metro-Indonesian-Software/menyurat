@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "key" => config("central.letter_types.Surat Perjanjian PKWT"),
+  "key" => config("central.letter_types.Surat Perjanjian PKWT")["type"],
   "values" => [
     "number_of_letter" => "string",
     "first_name" => "string",

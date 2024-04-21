@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "key" => config("central.letter_types.Surat Promosi Karyawan"),
+  "key" => config("central.letter_types.Surat Promosi Karyawan")["type"],
   "values" => [
     "number_of_letter" => "string",
     "purpose" => "string",

@@ -11,14 +11,22 @@ class CommonLetterLogController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view("user.kelola_surat.index");
+        $letters = config("central.letter_types");
+
+        if($request->query("search") !== null) {
+            $letters = array_filter($letters, function($name) use($request) {
+                return str_contains(strtolower($name), strtolower($request->query("search")));
+            }, ARRAY_FILTER_USE_KEY);
+        }
+
+        return view("user.kelola_surat.index", ["letters" => $letters]);
     }
 
-    public function listIndex(Request $request, string $type) {
-        $commonLetterLogs = CommonLetterLog::where("type", $type)
-                                ->limit(500)
+    public function listIndex(Request $request, string $slug) {
+        $commonLetterLogs = CommonLetterLog::where("type", $slug)
+                                ->limit(100)
                                 // ->published($request->input("published"))
                                 ->get();
 
