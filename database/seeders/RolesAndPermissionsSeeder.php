@@ -35,6 +35,6 @@ class RolesAndPermissionsSeeder extends Seeder
         }
 
         $admin->givePermissionTo(["users_manage"]);
-        $user->givePermissionTo(["letter_manage"]);
+        $user->givePermissionTo(["letters_manage"]);
     }
 }

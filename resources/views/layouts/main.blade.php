@@ -16,9 +16,9 @@
 
 <body>
     <div class="wrapper  ">
-        @include('user.layouts.sidebar')
+        @include('layouts.sidebar')
         <div class="main ">
-            @include('user.layouts.navbar')
+            @include('layouts.navbar')
             {{-- content --}}
             <div class="content  ">
                 <div style="">
@@ -29,6 +29,8 @@
         </div>
     </div>
 
+    @include("layouts.toast")
+    @include("layouts.alert")
     <script src="{{ asset('assets/js/sidebar.js') }}" crossorigin="anonymous"></script>
 </body>
 

@@ -3,15 +3,15 @@ models:
   #   name: string
   #   email: string
   #   web_url: text nullable
-  #   address: text
-  #   phone_number: string
-  #   postal_code: string
+  #   address: text nullable
+  #   phone_number: string nullable
+  #   postal_code: string nullable
   #   logo_url: string
   #   password: string
 
   CommonLetterLog:
     user_id: id foreign:users.id onUpdate:cascade onDelete:cascade
-    name: string
+    title: string
     type: string
 
   LetterLog:

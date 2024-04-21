@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\UpdatePasswordController;
+use App\Http\Controllers\CommonLetterLogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,33 +20,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get("/", [LandingPageController::class, "index"])->name("landing-page");
+
+Auth::routes(["register" => false]);
+
+Route::middleware(["auth", "prevent_back"])->group(function() {
+    Route::get("/profile", [ProfileController::class, "edit"])->name("profile.edit");
+    Route::put("/profile", [ProfileController::class, "update"])->name("profile.update");
+    Route::put("/password/update", [UpdatePasswordController::class, "update"])->name("password.update");
 });
 
-Route::get('/dashboard',function(){
-    return view('user.dashboard.index');
+Route::middleware(["auth", "prevent_back", "completed_profile"])->group(function() {
+    Route::get("/dashboard", [HomeController::class, "dashboard"])->name("dashboard");
+
+    Route::group(["middleware" => ["permission:users_manage"]], function() {
+        Route::resource('user', UserController::class)->except("destroy");
+    });
+
+    Route::group(["middleware" => ["permission:letters_manage"]], function() {
+        Route::get("/surat", [CommonLetterLogController::class, "index"])->name("letter.common.index");
+        Route::get("/surat/{type}", [CommonLetterLogController::class, "listIndex"])->name("letter.common.show");
+
+        Route::post("/surat", [CommonLetterLogController::class, "store"])->name("letter.common.store");
+    });
 });
 
-
-
-// Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard/buat_surat',function(){
     return view('user.buat_surat.create');
 });
-Route::get('/kelola_surat',function(){
-    return view('user.kelola_surat.index');
-});
+// Route::get('/kelola_surat',function(){
+//     return view('user.kelola_surat.index');
+// });
 Route::get('/kelola_surat/surat_lamaran',function(){
     return view('user.kelola_surat.child_kelola_surat.index');
-});
-
-Route::get('/profil_perusahaan',function(){
-    return view('user.profil_perusahaan.index');
-});
-
-Route::get('/login',function(){
-    return view('authentication.login');
 });

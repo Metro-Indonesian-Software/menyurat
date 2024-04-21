@@ -43,22 +43,40 @@
                 </div>
             </div>
             <div class="col-md-12 mb-4">
-                <div class="d-flex flex-column mb-3 mt-4">
-                    <label for="email" class="mb-1"><strong>Email</strong></label>
-                    <input type="text" class="form-control" id="email" placeholder="metro@gmail.com">
-                </div>
-                <div class="d-flex flex-column  ">
-                    <label for="password" class="mb-1"><strong>Password</strong></label>
-                    <input type="password" class="form-control" id="password" placeholder="">
-                </div>
-                <div class="d-flex justify-content-end">
-                    <a href=""><small>Lupa Password</small></a>
-                </div>
-                <a href="/dashboard" class="w-100 btn btn-primer mt-3 ">Masuk</a>
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
+                    <div class="d-flex flex-column mb-3 mt-4">
+                        <label for="email" class="mb-1"><strong>Email</strong></label>
+                        <input type="text" value="{{ old("email") }}" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email...">
+
+                        @error("email")
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="d-flex flex-column  ">
+                        <label for="password" class="mb-1"><strong>Password</strong></label>
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password..." autocomplete="off">
+
+                        @error("password")
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <a href=""><small>Lupa Password</small></a>
+                    </div>
+                    <button type="submit"" class="w-100 btn btn-primer mt-3 ">Masuk</button>
+                </form>
             </div>
         </div>
     </div>
-    <script src="{{ asset('assets/js/sidebar.js') }}" crossorigin="anonymous"></script>
+
+    @include("layouts.toast")
 </body>
 
 </html>

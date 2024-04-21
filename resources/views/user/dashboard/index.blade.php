@@ -1,4 +1,4 @@
-@extends('user.layouts.main')
+@extends('layouts.main')
 @section('content')
     <link rel="stylesheet" href="{{ asset('assets/css/style_dashboard.css') }}">
     <div class="content px-5 py-3 ">
@@ -460,16 +460,15 @@
                             </div>
                             <div class="col-lg-4 ">
                                 <div class="d-flex flex-column ms-2 mt-3 " style="position: fixed;width: 400px">
-                                    <div class="mb-3 ">
-                                        <label for="judul_surat"><strong>Judul Surat</strong></label>
-                                        <input type="text" id="judul_surat" class="form-control">
-                                    </div>
-                                    <div class="pb-3 border-bottom w-100">
-                                        <label for="judul_surat"><strong>Nomor Surat</strong></label>
-                                        <input type="text" id="nomor_surat" class="form-control">
-                                    </div>
-                                    <a href="/dashboard/buat_surat" type="submit"
-                                        class="btn btn-primary mt-3 w-100">Buat Surat</a>
+                                    {{-- <form action="" method="post"> --}}
+                                        @csrf
+                                        <div class="mb-3 ">
+                                            <label for="judul_surat"><strong>Judul Surat</strong></label>
+                                            <input type="text" id="judul_surat" class="form-control">
+                                        </div>
+                                        <a href="/dashboard/buat_surat" type="submit"
+                                            class="btn btn-primary mt-3 w-100">Buat Surat</a>
+                                    {{-- </form> --}}
                                 </div>
                             </div>
                         </div>

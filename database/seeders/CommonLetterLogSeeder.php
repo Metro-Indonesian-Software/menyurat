@@ -20,7 +20,7 @@ class CommonLetterLogSeeder extends Seeder
         foreach($letters as $key => $value) {
             CommonLetterLog::create([
                 'user_id' => $faker->randomNumber(1, 10),
-                'name' => $faker->realText($maxNbChars = 30, $indexSize = 2),
+                'title' => $faker->realText($maxNbChars = 30, $indexSize = 2),
                 'type' => $key,
             ]);
         }

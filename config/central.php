@@ -8,8 +8,8 @@ return [
 
   "system_permissions" => [
     "users_manage",
-    "letter_manage",
-    "letter_access",
+    "letters_manage",
+    "letters_access",
   ],
 
   "paths" => [

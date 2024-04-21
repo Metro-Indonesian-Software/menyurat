@@ -23,7 +23,7 @@ class CommonLetterLogFactory extends Factory
     {
         return [
             'user_id' => $this->faker->randomNumber(1, 10),
-            'name' => $this->faker->realText($maxNbChars = 30, $indexSize = 2),
+            'title' => $this->faker->realText($maxNbChars = 30, $indexSize = 2),
             'type' => $this->faker->randomKey(config("central.letter_types")),
         ];
     }

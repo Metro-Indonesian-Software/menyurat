@@ -1,16 +1,17 @@
-#sidebar{
+#sidebar {
     width: 240px;
     min-width: 240px;
     z-index: 1000;
-    transition: all .25s ease-in-out;
+    transition: all 0.25s ease-in-out;
     display: flex;
     flex-direction: column;
     background-color: rgb(249, 249, 249);
     border-radius: 0px 8px 8px 0px;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+        rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 
-#sidebar{
+#sidebar {
     overflow-y: auto;
 }
 
@@ -18,16 +19,13 @@
 #sidebar::-webkit-scrollbar {
     width: 4px; /* Lebar scrollbar */
     height: 2px; /* Tinggi scrollbar */
-
 }
 
 #sidebar:active::-webkit-scrollbar-thumb,
 #sidebar:focus::-webkit-scrollbar-thumb,
 #sidebar:hover::-webkit-scrollbar-thumb {
     visibility: visible;
-    transition: .5s ease-in-out;
-
-
+    transition: 0.5s ease-in-out;
 }
 #sidebar::-webkit-scrollbar-thumb {
     background-color: rgba(156, 156, 156, 0.766); /* Warna background thumb */
@@ -37,7 +35,12 @@
 
 /* Hover effect untuk thumb scrollbar */
 #sidebar::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(91, 91, 91, 0.719); /* Warna background thumb saat dihover */
+    background-color: rgba(
+        91,
+        91,
+        91,
+        0.719
+    ); /* Warna background thumb saat dihover */
 }
 
 /* Styling untuk bagian track scrollbar */
@@ -61,20 +64,21 @@
     opacity: 0;
 }
 
-#sidebar.expand{
+#sidebar.expand {
     width: 70px;
     min-width: 70px;
     overflow-y: visible;
     height: auto;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+        rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 
-.sidebar-logo{
-    margin:auto ;
+.sidebar-logo {
+    margin: auto;
     text-wrap: nowrap;
 }
 
-.sidebar-logo a{
+.sidebar-logo a {
     color: rgb(91, 91, 91);
     font-size: 1.15rem;
     font-weight: 600;
@@ -84,7 +88,6 @@
 #sidebar.expand a.sidebar-link span {
     display: none;
     transition: opacity 1s ease-in-out; /* Terapkan transisi pada opacity */
-
 }
 
 #sidebar:not(.expand) .sidebar-logo,
@@ -92,45 +95,46 @@
     transition: opacity 0.3s ease-in-out; /* Terapkan transisi pada opacity */
 }
 
-#sidebar:not(.expand) .sidebar-logo-sm{
+#sidebar:not(.expand) .sidebar-logo-sm {
     display: none;
 }
 
-#sidebar.expand .sidebar-logo-sm{
+#sidebar.expand .sidebar-logo-sm {
     display: block;
     margin: auto;
-
 }
 
-.sidebar-logo-sm a{
+.sidebar-logo-sm a {
     font-size: 1.15rem;
     font-weight: 600;
 }
 
-.sidebar-nav{
+.sidebar-nav {
     padding: 2rem 0;
     flex: 1 1 auto;
 }
 
-
-#sidebar.expand a.sidebar-link{
+#sidebar.expand a.sidebar-link {
+    width: 80%;
+}
+#sidebar.expand p.sidebar-link {
     width: 80%;
 }
 
-#sidebar.expand .sidebar-link i{
+#sidebar.expand .sidebar-link i {
     font-size: 1rem;
     margin: auto;
 }
 
-a.sidebar-link{
-    padding: .8rem .8rem;
+a.sidebar-link {
+    padding: 0.8rem 0.8rem;
     color: rgb(138, 138, 138);
     display: flex;
     flex-direction: row;
-    font-size: .9rem;
+    font-size: 0.9rem;
     white-space: nowrap;
     /* border-left: 3px solid transparent; */
-    transition: .2s;
+    transition: 0.2s;
     width: 90%;
     border-radius: 8px;
     margin: auto;
@@ -138,7 +142,30 @@ a.sidebar-link{
     gap: 15px;
 }
 
-a.sidebar-link:hover{
+a.sidebar-link:hover {
+    background-color: rgb(133, 56, 234);
+    /* border-left: 3px solid rgb(29, 34, 175); */
+    color: white;
+}
+
+p.sidebar-link {
+    padding: 0.8rem 0.8rem;
+    color: rgb(138, 138, 138);
+    display: flex;
+    flex-direction: row;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    /* border-left: 3px solid transparent; */
+    transition: 0.2s;
+    width: 90%;
+    border-radius: 8px;
+    margin: auto;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+p.sidebar-link:hover {
     background-color: rgb(133, 56, 234);
     /* border-left: 3px solid rgb(29, 34, 175); */
     color: white;
@@ -149,44 +176,53 @@ a.sidebar-link:hover{
     color: white !important;
 }
 
-.active-child{
-    color:rgb(133, 56, 234) !important;
+.active-child {
+    color: rgb(133, 56, 234) !important;
 }
 
-
-.sidebar-item{
+.sidebar-item {
     position: relative;
 }
 
 .sidebar-item .sidebar-dropdown {
-    width: 100%;    
+    width: 100%;
     border-radius: 8px;
     margin-top: 5px;
 }
 
-.sidebar-dropdown .sidebar-item a.sidebar-link{
+.sidebar-dropdown .sidebar-item a.sidebar-link {
     margin-right: 10px;
-    font-size: .9em;
+    font-size: 0.9em;
     background-color: transparent;
     border-radius: 0px;
     text-align: left;
     padding: 12px 0px;
     width: 75%;
-
-
 }
 
-.sidebar-item .sidebar-dropdown a.sidebar-link:hover{
-    color:rgb(133, 56, 234) ;
+.sidebar-item .sidebar-dropdown a.sidebar-link:hover {
+    color: rgb(133, 56, 234);
 }
 
+.sidebar-dropdown .sidebar-item p.sidebar-link {
+    margin-right: 10px;
+    font-size: 0.9em;
+    background-color: transparent;
+    border-radius: 0px;
+    text-align: left;
+    padding: 12px 0px;
+    width: 75%;
+}
 
+.sidebar-item .sidebar-dropdown p.sidebar-link:hover {
+    color: rgb(133, 56, 234);
+}
 
-#sidebar.expand .sidebar-item .sidebar-dropdown{
+#sidebar.expand .sidebar-item .sidebar-dropdown {
     left: 65px;
     background-color: white;
     padding: 10px;
-    border-radius:0px 8px 8px 0px ;
+    border-radius: 0px 8px 8px 0px;
     width: 220px;
     margin: 0;
     z-index: 2;
@@ -194,14 +230,17 @@ a.sidebar-link:hover{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-#sidebar.expand  .sidebar-dropdown a.sidebar-link{
+#sidebar.expand .sidebar-dropdown a.sidebar-link {
     width: 100%;
     padding-left: 10px;
-} 
+}
 
+#sidebar.expand .sidebar-dropdown p.sidebar-link {
+    width: 100%;
+    padding-left: 10px;
+}
 
-
-/* 
+/*
 #sidebar.expand .sidebar-item:hover .has-dropdown+.sidebar-dropdown{
     max-height: 15rem;
     width: 100%;
@@ -213,10 +252,9 @@ a.sidebar-link:hover{
     width: 100%;
 } */
 
-
-#sidebar:not(.expand) .sidebar-link[data-bs-toggle="collapse"]::after{
+#sidebar:not(.expand) .sidebar-link[data-bs-toggle="collapse"]::after {
     border: solid;
-    border-width: 0 .075rem .075rem 0;
+    border-width: 0 0.075rem 0.075rem 0;
     content: "";
     display: inline-block;
     padding: 2px;
@@ -224,10 +262,11 @@ a.sidebar-link:hover{
     right: 1.6rem;
     top: 1.3rem;
     transform: rotate(-135deg);
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
 }
 
-#sidebar:not(.expand) .sidebar-link[data-bs-toggle="collapse"].collapsed::after{
+#sidebar:not(.expand)
+    .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
     transform: rotate(45deg);
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
 }
