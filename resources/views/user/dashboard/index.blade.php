@@ -194,27 +194,28 @@
                                 <div class="row pt-4 ">
                                     @foreach ($letters as $name => $value)
                                         <div class="col-lg-3 mb-4">
-                                            <a href="">
-                                                <div class="card card-border" style="width: 170px;; height:240px">
-                                                    <img src="{{ asset($value["image"]) }}" alt="Avatar" class=""
-                                                        style=" width: 100%; height: 100%;">
-                                                    <p class="text-center mt-3">{{ $name }}</p>
-                                                </div>
-                                            </a>
+                                            <div class="card card-border selector-image" id="{{ Str::slug($name) }}" onclick="selectLetter('{{ Str::slug($name) }}')" style="width: 170px; height:240px;">
+                                                <img src="{{ asset($value["image"]) }}" alt="Avatar" class=""
+                                                    style="width: 100%; height: 100%;">
+                                                <p class="text-center mt-3">{{ $name }}</p>
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
                             <div class="col-lg-4 ">
                                 <div class="d-flex flex-column ms-2 mt-3 " style="position: fixed;width: 400px">
-                                    <form action="{{ route('letter.common.store') }}" method="post">
+                                    <form action="{{ route('letter.common.store') }}" method="post" id="create-letter">
                                         @csrf
-                                        <div class="mb-3 ">
-                                            <label for="judul_surat"><strong>Judul Surat</strong></label>
-                                            <input type="text" id="judul_surat" class="form-control">
+                                        <div class="mb-3">
+                                            <label for="title"><strong>Judul Surat</strong></label>
+                                            <input type="text" name="title" id="title" class="form-control"
+                                                placeholder="Judul surat..." required>
                                         </div>
-                                        <button type="submit"
-                                            class="btn btn-primary mt-3 w-100">Buat Surat</button>
+                                        <div class="mb-3 d-none">
+                                            <input type="text" name="type" id="type" class="form-control d-none">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3 w-100">Buat Surat</button>
                                     </form>
                                 </div>
                             </div>
@@ -229,27 +230,13 @@
     </div>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/modal_letter.js') }}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
     <script>
         // var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         // var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
         //     return new bootstrap.Popover(popoverTriggerEl)
         // })
-        $(document).ready(function() {
-            const scrollStep = 150; // Jarak scroll per langkah (sesuaikan dengan kebutuhan Anda)
-
-            $("#scrollRightButton").click(function() {
-                $(".scrolling-wrapper").animate({
-                    scrollLeft: "+=" + scrollStep
-                }, 500); // Waktu animasi (ms)
-            });
-
-            $("#scrollLeftButton").click(function() {
-                $(".scrolling-wrapper").animate({
-                    scrollLeft: "-=" + scrollStep
-                }, 500); // Waktu animasi (ms)
-            });
-        });
     </script>
 @endsection

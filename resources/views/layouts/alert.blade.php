@@ -1,4 +1,4 @@
-<script src="{{ asset("assets/js/alert.js") }}"></script>
+<script src="{{ asset('assets/js/alert.js') }}"></script>
 
 @if (session()->has("alert-success"))
     <script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>test</title>
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('/assets/css/button.css') }}">
+        <link rel="stylesheet" href="{{ asset('/assets/css/background_color.css') }}">
+        <link rel="stylesheet" href="{{ asset('/assets/css/text_custom.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/navbar.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/buat_surat_create.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/surat.css') }}">
+
+        <script src="https://kit.fontawesome.com/82ebf8392e.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="bg-white">
+            {{-- nav --}}
+            <div class="text-white bg-primer w-100 py-3 d-flex justify-content-between ">
+                <div class="ms-5 my-auto">
+                    <a href="{{ route('dashboard') }}" class="btn dashboard ">
+                        <h5 class="my-auto " style="color: white"><i class="fa-solid fa-arrow-left me-2"></i>
+                            Dashboard</h5>
+                    </a>
+                </div>
+                <div class="my-auto me-5 pe-5">
+                    <h5 class="my-auto me-5 pe-4">{{ $title }}</h5>
+                </div>
+                <div class="me-5">
+                    {{-- <button class="btn btn-warning me-2"><i class="fa-solid fa-rotate-left"></i></button>
+                    <button class="btn btn-download"><i class="fa-solid fa-download"></i> Donwload</button> --}}
+                </div>
+
+            </div>
+            {{-- end-nav --}}
+
+            {{-- main --}}
+            <div class="d-flex min-vh-100 ">
+                @yield("letter_content")
+            </div>
+        </div>
+
+        @include("layouts.toast")
+        @include("layouts.alert")
+    </body>
+</html>

@@ -11,7 +11,7 @@
             <div class="d-flex flex-column">
                 <p class="mb-1"><Strong>Logo Perusahaan</Strong></p>
                 <div class="image-container rounded">
-                    <img src="'storage/''.$user->logo_url) }}" class="img-preview rounded"
+                    <img src="{{ asset('storage/'.$user->logo_url) }}" class="img-preview rounded"
                         style="width: 215px;height:215px;margin:0;object-fit: cover">
                     <input type="file" name="logo" id="logo" accept="image/*" value="{{ old("logo") ?? $user->logo_url }}"
                         class="form-control @error('logo') is-invalid @enderror" onchange="previewImage()">

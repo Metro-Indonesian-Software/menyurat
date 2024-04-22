@@ -24,7 +24,7 @@ class StoreCommonLetterLogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => ["required", "string", "min:5"],
+            "title" => ["required", "string"],
             "type" => ["required", "string"],
         ];
     }
@@ -33,7 +33,7 @@ class StoreCommonLetterLogRequest extends FormRequest
     {
         return [
             "title" => "Judul surat",
-            "type" => "Jenis surat",
+            "type" => "Template surat",
         ];
     }
 

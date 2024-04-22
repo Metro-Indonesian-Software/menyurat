@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="{{ asset("assets/css/sweetalert2/sweetalert2.min.css") }}">
-<script src="{{ asset("assets/js/sweetalert2/sweetalert2.all.min.js") }}"></script>
-<script src="{{ asset("assets/js/toast.js") }}"></script>
+<link rel="stylesheet" href="{{ asset('assets/css/sweetalert2/sweetalert2.min.css') }}">
+<script src="{{ asset('assets/js/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<script src="{{ asset('assets/js/toast.js') }}"></script>
 
 @if (session()->has("success"))
     <script>

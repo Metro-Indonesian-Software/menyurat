@@ -28,7 +28,6 @@ function alertInfo(message) {
 }
 
 function alertWarning(message) {
-    console.log(message);
     Swal.fire({
         position: "center",
         icon: "warning",

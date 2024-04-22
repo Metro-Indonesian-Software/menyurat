@@ -49,7 +49,20 @@ class CommonLetterLogController extends Controller
      */
     public function store(StoreCommonLetterLogRequest $request)
     {
-        return redirect()->route("letter.log.create", ["commonLetterLog" => 1])->with("success", "Surat berhasil ditambahkan");
+        $validated = $request->validated();
+
+        // check letter type
+        if(!array_key_exists($validated["type"], config("central.letter_types"))) {
+            return back()->with("error", "Surat gagal ditambahkan");
+        }
+
+        $commonLetterLog = CommonLetterLog::create([
+            "user_id" => auth()->user()->id,
+            "title" => $validated["title"],
+            "type" => $validated["type"],
+        ]);
+
+        return redirect()->route("letter.log.create", ["commonLetterLog" => $commonLetterLog->id])->with("success", "Surat berhasil ditambahkan");
     }
 
     /**
