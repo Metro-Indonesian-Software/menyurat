@@ -39,6 +39,6 @@ class StoreCommonLogSlugRequest extends FormRequest
     {
         return request()->wantsJson()
                     ? new JsonResponse([], 204)
-                    : back()->with("error", "Surat gagal ditambahkan");
+                    : back()->with("error", "Judul surat tidak boleh kosong");
     }
 }

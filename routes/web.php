@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", [LandingPageController::class, "index"])->name("landing-page");
 
-Auth::routes(["register" => false]);
+Auth::routes(["register" => false, "confirm" => false]);
 
 Route::middleware(["auth", "prevent_back"])->group(function() {
     Route::get("/profile", [ProfileController::class, "edit"])->name("profile.edit");
@@ -43,6 +43,7 @@ Route::middleware(["auth", "prevent_back", "completed_profile"])->group(function
         Route::get("/surat/{slug}", [CommonLetterLogController::class, "listIndex"])->name("letter.common.show");
         Route::post("/surat", [CommonLetterLogController::class, "store"])->name("letter.common.store");
         Route::post("/surat/{slug}", [CommonLetterLogController::class, "storeSlug"])->name("letter.common.store.slug");
+        Route::put("/surat/{commonLetterLog}", [CommonLetterLogController::class, "update"])->name("letter.common.update");
 
         Route::get("/surat/{commonLetterLog}/input", [LetterLogController::class, "create"])->name("letter.log.create");
         Route::post("/surat/{commonLetterLog}/input", [LetterLogController::class, "store"])->name("letter.log.store");

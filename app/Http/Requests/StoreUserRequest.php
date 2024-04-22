@@ -23,7 +23,6 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "logo" => ["required", "file", "image", "max:2048"],
             "name" => ["required", "string"],
             "email" => ["required", "email", "unique:users,email"],
         ];
@@ -32,7 +31,6 @@ class StoreUserRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            "logo" => "Logo",
             "name" => "Nama",
             "email" => "Email",
         ];

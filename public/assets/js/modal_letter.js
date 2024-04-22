@@ -20,7 +20,7 @@ $(document).ready(function () {
     });
 
     // on submit create letter
-    $("#create-letter").submit(function (e) {
+    $("#create-blank-letter").submit(function (e) {
         e.preventDefault();
 
         const type = $("#type").val();
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
 let selectedLetterId = null;
 
-function selectLetter(id) {
+function createBlankLetter(id) {
     const element = $(`#${id}`);
     const selectedElement = $(`#${selectedLetterId}`);
 

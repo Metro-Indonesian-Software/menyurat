@@ -20,7 +20,8 @@ class CompletedProfileMiddleware
         if(
             $user->address !== null &&
             $user->phone_number !== null &&
-            $user->postal_code !== null
+            $user->postal_code !== null &&
+            $user->logo_url !== null
         ) {
             return $next($request);
         }

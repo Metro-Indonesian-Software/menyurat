@@ -5,6 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>test</title>
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
@@ -28,8 +32,10 @@
                             Dashboard</h5>
                     </a>
                 </div>
-                <div class="my-auto me-5 pe-5">
-                    <h5 class="my-auto me-5 pe-4">{{ $title }}</h5>
+                <div class="my-auto me-5 pe-5 letter-title">
+                    <input type="text" name="title" id="title" value="{{ $title }}"
+                        class="me-5 pe-5 form-control bg-transparent text-white text-center d-none" style="width: 40rem;">
+                    <h6 class="my-auto me-5 pe-4">{{ $title }} <i class="fa-solid fa-pencil fs-6"></i></h6>
                 </div>
                 <div class="me-5">
                     {{-- <button class="btn btn-warning me-2"><i class="fa-solid fa-rotate-left"></i></button>
@@ -47,5 +53,7 @@
 
         @include("layouts.toast")
         @include("layouts.alert")
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/input_letter.js') }}"></script>
     </body>
 </html>

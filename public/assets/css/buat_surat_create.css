@@ -1,36 +1,40 @@
-.dashboard{
-    border :1px solid transparent; 
+.dashboard {
+    border: 1px solid transparent;
 }
 .dashboard:hover {
     border: 1px solid white;
 }
 
-.form-control{
+.letter-title i:hover {
+    cursor: pointer;
+}
+
+.form-control {
     background-color: rgb(236, 236, 236);
 }
-.form-control:focus{
+.form-control:focus {
     background-color: rgb(236, 236, 236);
 }
 
-.accordion-button:not(.collapsed){
+.accordion-button:not(.collapsed) {
     background-color: transparent;
     border: 0;
 }
 
-.accordion-button:focus{
+.accordion-button:focus {
     box-shadow: none;
 }
 
-.accordion{
-    border:none !important;
-    --bs-accordion-border-color:none !important;
-    --bs-accordion-bg:white;
+.accordion {
+    border: none !important;
+    --bs-accordion-border-color: none !important;
+    --bs-accordion-bg: white;
 }
 
-label{
+label {
     margin-bottom: 5px;
 }
 
-.preview{
+.preview {
     background-color: rgb(245, 245, 245);
 }

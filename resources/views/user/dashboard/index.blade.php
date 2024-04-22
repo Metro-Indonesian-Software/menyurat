@@ -17,7 +17,7 @@
 
 
         <div class="scrolling-wrapper">
-            <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="pembungkus border-0 bg-transparent">
+            <button data-bs-toggle="modal" data-bs-target="#createBlankModal" class="pembungkus border-0 bg-transparent">
                 <div class="card" style="width: 150px; height:180px">
                     <img src="/assets/img/putih.jpg" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
                     <div class="middle">
@@ -28,15 +28,15 @@
             </button>
 
             @foreach ($letters as $name => $value)
-                <button class="pembungkus border-0 bg-transparent">
-                    <a href="{{ route('letter.common.show', ['slug' => Str::slug($name)]) }}">
+                <button class="pembungkus border-0 bg-transparent" onclick="createSelectedLetter('{{ Str::slug($name) }}')" data-bs-toggle="modal" data-bs-target="#createSelectedModal">
+                    {{-- <a href="{{ route('letter.common.show', ['slug' => Str::slug($name)]) }}"> --}}
                         <div class="card " style="width: 150px; height:180px">
                             <img src="{{ asset($value["image"]) }}" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
                             <div class="middle">
                                 <div class="text"><i class="fa-solid fa-plus"></i></div>
                             </div>
                         </div>
-                    </a>
+                    {{-- </a> --}}
                     <p class=" mt-1 text-wrap m-auto">{{ $name }}</p>
                 </button>
             @endforeach
@@ -174,7 +174,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="createBlankModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen ">
             <div class="modal-content" style="background-color: white">
@@ -194,7 +194,7 @@
                                 <div class="row pt-4 ">
                                     @foreach ($letters as $name => $value)
                                         <div class="col-lg-3 mb-4">
-                                            <div class="card card-border selector-image" id="{{ Str::slug($name) }}" onclick="selectLetter('{{ Str::slug($name) }}')" style="width: 170px; height:240px;">
+                                            <div class="card card-border selector-image" id="{{ Str::slug($name) }}" onclick="createBlankLetter('{{ Str::slug($name) }}')" style="width: 170px; height:240px;">
                                                 <img src="{{ asset($value["image"]) }}" alt="Avatar" class=""
                                                     style="width: 100%; height: 100%;">
                                                 <p class="text-center mt-3">{{ $name }}</p>
@@ -205,7 +205,7 @@
                             </div>
                             <div class="col-lg-4 ">
                                 <div class="d-flex flex-column ms-2 mt-3 " style="position: fixed;width: 400px">
-                                    <form action="{{ route('letter.common.store') }}" method="post" id="create-letter">
+                                    <form action="{{ route('letter.common.store') }}" method="post" id="create-blank-letter">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="title"><strong>Judul Surat</strong></label>
@@ -229,9 +229,34 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade mt-5" id="createSelectedModal" tabindex="-1" aria-labelledby="createSelectedModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-body my-4 mx-3">
+                <form action="{{ route('letter.common.store') }}" method="post" id="create-selected-letter">
+                    @csrf
+                    <div class="text-center mb-4">
+                        <label for="name" class="mb-3">
+                            <h2 class="modal-title fs-5" id="staticBackdropLabel">Masukan Judul Surat</h2>
+                        </label>
+                        <input type="text" name="title" class="form-control" id="title"
+                            placeholder="Judul surat..." required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Buat Surat</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/modal_letter.js') }}"></script>
+    <script src="{{ asset('assets/js/user_dashboard.js') }}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
     <script>
         // var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))

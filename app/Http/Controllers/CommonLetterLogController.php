@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCommonLetterLogRequest;
 use App\Http\Requests\StoreCommonLogSlugRequest;
+use App\Http\Requests\UpdateCommonLetterLogRequest;
 use App\Models\CommonLetterLog;
 use Illuminate\Http\Request;
+use stdClass;
 
 class CommonLetterLogController extends Controller
 {
@@ -26,12 +28,27 @@ class CommonLetterLogController extends Controller
     }
 
     public function listIndex(Request $request, string $slug) {
-        $commonLetterLogs = CommonLetterLog::where("type", $slug)
+        $splitSlug = explode("-", $slug);
+        $letterType = implode(" ", $splitSlug);
+        $existLetterType = false;
+
+        // check letter type
+        foreach(array_keys(config("central.letter_types")) as $key) {
+            if(strtolower($letterType) === strtolower($key)) {
+                $letterType = $key;
+                $existLetterType = true;
+            }
+        }
+
+        if(!$existLetterType) {
+            return abort(404);
+        }
+
+        $commonLetterLogs = CommonLetterLog::where("type", $letterType)
                                 ->limit(100)
                                 // ->published($request->input("published"))
                                 ->get();
-        $splitSlug = explode("-", $slug);
-        $letterType = ucwords(implode(" ", $splitSlug));
+
 
         return view("user.kelola_surat.child_kelola_surat.index", ["title" => $letterType, "commonLetterLogs" => $commonLetterLogs]);
     }
@@ -72,10 +89,18 @@ class CommonLetterLogController extends Controller
     {
         $validated = $request->validated();
         $splitSlug = explode("-", $slug);
-        $letterType = ucwords(implode(" ", $splitSlug));
+        $letterType = implode(" ", $splitSlug);
+        $existLetterType = false;
 
         // check letter type
-        if(!array_key_exists($letterType, config("central.letter_types"))) {
+        foreach(array_keys(config("central.letter_types")) as $key) {
+            if(strtolower($letterType) === strtolower($key)) {
+                $letterType = $key;
+                $existLetterType = true;
+            }
+        }
+
+        if(!$existLetterType) {
             return back()->with("error", "Surat gagal ditambahkan");
         }
 
@@ -107,9 +132,20 @@ class CommonLetterLogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CommonLetterLog $commonLetterLog)
+    public function update(UpdateCommonLetterLogRequest $request, CommonLetterLog $commonLetterLog)
     {
-        //
+        $validated = $request->validated();
+
+        CommonLetterLog::where("id", $commonLetterLog->id)
+            ->update([
+                "title" => $validated["title"],
+            ]);
+
+        // response fetch api
+        $response = new stdClass;
+        $response->status = 'success';
+        $response->message = 'Judul berhasil diperbarui';
+        return $response;
     }
 
     /**

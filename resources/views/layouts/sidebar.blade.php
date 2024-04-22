@@ -3,10 +3,10 @@
 <aside id="sidebar" class="add-scrollbar">
     <div class="sidebar-logo-1 d-flex align-items-center mt-4">
         <div class="sidebar-logo-sm ">
-            <a href="#" class=" text-primer"><span class="">MT</span></a>
+            <a href="{{ route('dashboard') }}" class=" text-primer"><span class="">MT</span></a>
         </div>
         <div class="sidebar-logo ">
-            <a href="#"><span class=" text-primer">Menyurat</span></a>
+            <a href="{{ route('dashboard') }}"><span class=" text-primer">Menyurat</span></a>
         </div>
     </div>
     <ul class="sidebar-nav">

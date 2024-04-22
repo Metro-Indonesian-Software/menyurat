@@ -9,7 +9,7 @@
             @csrf
 
             <div class="d-flex flex-column">
-                <p class="mb-1"><Strong>Logo Perusahaan</Strong></p>
+                <p class="mb-1"><Strong>Logo Perusahaan<sup class="text-danger fs-6">*</sup></Strong></p>
                 <div class="image-container rounded">
                     <img src="{{ asset('storage/'.$user->logo_url) }}" class="img-preview rounded"
                         style="width: 215px;height:215px;margin:0;object-fit: cover">
@@ -48,7 +48,7 @@
                         class="form-control @error('address') is-invalid @enderror" id="address"
                         placeholder="Alamat Perusahaan..." required>
 
-                    @error("name")
+                    @error("address")
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
