@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 
-class StoreCommonLetterLogRequest extends FormRequest
+class StoreCommonLogSlugRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class StoreCommonLetterLogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => ["required", "string", "min:5"],
-            "type" => ["required", "string"],
+            "title" => ["required", "string"],
         ];
     }
 
@@ -33,7 +32,6 @@ class StoreCommonLetterLogRequest extends FormRequest
     {
         return [
             "title" => "Judul surat",
-            "type" => "Jenis surat",
         ];
     }
 

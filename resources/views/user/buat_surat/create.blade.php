@@ -21,22 +21,7 @@
 <body>
     <div class="bg-white">
         {{-- nav --}}
-        <div class=" text-white bg-primer w-100 py-3 d-flex justify-content-between ">
-            <div class="ms-5 my-auto">
-                <a href="/dashboard" class="btn dashboard ">
-                    <h5 class="my-auto " style="color: white"><i class="fa-solid fa-arrow-left me-2"></i>
-                        Dashboard</h5>
-                </a>
-            </div>
-            <div class="my-auto">
-                <h5 class="my-auto">Surat Undangan Perusahaan</h5>
-            </div>
-            <div class="me-5 ">
-                <button class="btn btn-warning me-2"><i class="fa-solid fa-rotate-left"></i></button>
-                <button class="btn btn-download"><i class="fa-solid fa-download"></i> Donwload</button>
-            </div>
-
-        </div>
+        @include("layouts.navbar_input_surat")
         {{-- end-nav --}}
 
         {{-- main --}}
@@ -186,6 +171,9 @@
             </div>
         </div>
     </div>
+
+    @include("layouts.toast")
+    @include("layouts.alert")
     <script>
         // perihal
         const perihal = document.getElementById("perihal");

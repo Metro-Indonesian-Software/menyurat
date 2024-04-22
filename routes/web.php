@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\UpdatePasswordController;
 use App\Http\Controllers\CommonLetterLogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\LetterLogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -41,9 +42,9 @@ Route::middleware(["auth", "prevent_back", "completed_profile"])->group(function
         Route::get("/surat", [CommonLetterLogController::class, "index"])->name("letter.common.index");
         Route::get("/surat/{slug}", [CommonLetterLogController::class, "listIndex"])->name("letter.common.show");
         Route::post("/surat", [CommonLetterLogController::class, "store"])->name("letter.common.store");
-    });
-});
+        Route::post("/surat/{slug}", [CommonLetterLogController::class, "storeSlug"])->name("letter.common.store.slug");
 
-Route::get('/dashboard/buat_surat',function(){
-    return view('user.buat_surat.create');
+        Route::get("/surat/{commonLetterLog}/input", [LetterLogController::class, "create"])->name("letter.log.create");
+        Route::post("/surat/{commonLetterLog}/input", [LetterLogController::class, "store"])->name("letter.log.store");
+    });
 });

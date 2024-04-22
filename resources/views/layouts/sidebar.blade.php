@@ -11,34 +11,34 @@
     </div>
     <ul class="sidebar-nav">
         <li class="sidebar-item mb-2">
-            <a href="/dashboard" class="sidebar-link
+            <a href="{{ route('dashboard') }}" class="sidebar-link
             {{ Route::currentRouteName() === "dashboard" ? 'active' : '' }}"> <i
                     class="fa-solid fa-table-cells-large"></i> <span>Dashboard</span></a>
         </li>
 
         @can("users_manage")
             <li class="sidebar-item mb-2">
-                <a href="{{ route("user.index") }}"
+                <a href="{{ route('user.index') }}"
                     class="sidebar-link
                 {{ Str::startsWith(Route::currentRouteName(), 'user') ? 'active' : '' }}"> <i
-                        class="fa-regular fa-user"></i> <span>Pengguna</span></a>
+                        class="fa-solid fa-users"></i> <span>Pengguna</span></a>
             </li>
         @endcan
 
         @can("letters_manage")
             <li class="sidebar-item mb-2">
-                <a href="{{ route("letter.common.index") }}"
+                <a href="{{ route('letter.common.index') }}"
                     class="sidebar-link
                 {{ Str::startsWith(Route::currentRouteName(), 'letter.common') ? 'active' : '' }}"> <i
-                        class="fa-regular fa-folder"></i> <span>Kelola Surat</span></a>
+                        class="fa-solid fa-folder"></i> <span>Kelola Surat</span></a>
             </li>
         @endcan
 
         <li class="sidebar-item mb-2">
-            <a href="{{ route("profile.edit") }}"
+            <a href="{{ route('profile.edit') }}"
                 class="sidebar-link
             {{ Route::currentRouteName() === "profile.edit" ? 'active' : '' }}"> <i
-                    class="fa-regular fa-user"></i> <span>Profil Perusahaan</span></a>
+                    class="fa-solid fa-user"></i> <span>Profil Perusahaan</span></a>
         </li>
 
     </ul>

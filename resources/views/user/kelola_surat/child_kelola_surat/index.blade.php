@@ -3,9 +3,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style_kelola_surat.css') }}">
     <div class="content px-5 py-3 ">
         <div class="d-flex justify-content-between">
-            <h2 class="fw-bold mb-4 mt-1" style="font-size: 20px;"><Strong>Surat Lamaran</Strong></h2>
+            <h2 class="fw-bold mb-4 mt-1" style="font-size: 20px;"><strong>{{ $title }}</strong></h2>
             <div class="">
-                <button class="btn btn-primary my-auto"><i class="fa-solid fa-plus"></i> Tambah</button>
+                <button class="btn btn-primary my-auto" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-plus"></i> Tambah</button>
             </div>
         </div>
         <div class="d-flex gap-2">
@@ -129,6 +129,30 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade mt-5" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-body my-4 mx-3">
+                <form action="{{ route('letter.common.store.slug', ['slug' => request()->slug]) }}" method="post">
+                    @csrf
+                    <div class="text-center mb-4">
+                        <label for="name" class="mb-3">
+                            <h2 class="modal-title fs-5" id="staticBackdropLabel">Masukan Judul Surat</h2>
+                        </label>
+                        <input type="text" name="title" class="form-control" id="title"
+                            placeholder="Judul surat..." required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Buat Surat</button>
+                    </div>
+                </form>
+            </div>
+            </div>
         </div>
     </div>
 @endsection

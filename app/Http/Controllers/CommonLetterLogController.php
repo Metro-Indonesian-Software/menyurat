@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCommonLetterLogRequest;
+use App\Http\Requests\StoreCommonLogSlugRequest;
 use App\Models\CommonLetterLog;
 use Illuminate\Http\Request;
 
@@ -29,8 +30,10 @@ class CommonLetterLogController extends Controller
                                 ->limit(100)
                                 // ->published($request->input("published"))
                                 ->get();
+        $splitSlug = explode("-", $slug);
+        $letterType = ucwords(implode(" ", $splitSlug));
 
-        return view("user.kelola_surat.child_kelola_surat.index", ["commonLetterLogs" => $commonLetterLogs]);
+        return view("user.kelola_surat.child_kelola_surat.index", ["title" => $letterType, "commonLetterLogs" => $commonLetterLogs]);
     }
 
     /**
@@ -46,7 +49,30 @@ class CommonLetterLogController extends Controller
      */
     public function store(StoreCommonLetterLogRequest $request)
     {
-        //
+        return redirect()->route("letter.log.create", ["commonLetterLog" => 1])->with("success", "Surat berhasil ditambahkan");
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeSlug(StoreCommonLogSlugRequest $request, string $slug)
+    {
+        $validated = $request->validated();
+        $splitSlug = explode("-", $slug);
+        $letterType = ucwords(implode(" ", $splitSlug));
+
+        // check letter type
+        if(!array_key_exists($letterType, config("central.letter_types"))) {
+            return back()->with("error", "Surat gagal ditambahkan");
+        }
+
+        $commonLetterLog = CommonLetterLog::create([
+            "user_id" => auth()->user()->id,
+            "title" => $validated["title"],
+            "type" => $letterType,
+        ]);
+
+        return redirect()->route("letter.log.create", ["commonLetterLog" => $commonLetterLog->id])->with("success", "Surat berhasil ditambahkan");
     }
 
     /**

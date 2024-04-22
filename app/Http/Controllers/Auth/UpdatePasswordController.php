@@ -30,7 +30,7 @@ class UpdatePasswordController extends Controller
             }
         }
         else {
-            return redirect()->back()->with("error", "Password lama tidak valid");
+            return back()->with("error", "Password lama tidak valid");
         }
     }
 }

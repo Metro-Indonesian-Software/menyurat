@@ -34,7 +34,7 @@ class UpdatePasswordRequest extends FormRequest
         return [
             "current_password" => "Password lama",
             "new_password" => "Password baru",
-            "new_password_confirmation" => "Konfirmasi password baru",
+            "new_password_confirmation" => "Konfirmasi password",
         ];
     }
 }

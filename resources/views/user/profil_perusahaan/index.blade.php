@@ -4,7 +4,7 @@
 
     <div class="content px-5 py-3 mb-3 bg-white">
         <h2 class="fw-bold mb-3 mt-1" style="font-size: 20px;"><Strong>Profil Perusahaan</Strong></h2>
-        <form action="{{ route("profile.update") }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
             @method("put")
             @csrf
 
@@ -31,7 +31,7 @@
                     </label>
                     <input type="text" name="name" value="{{ old("name") ?? $user->name }}"
                         class="form-control @error('name') is-invalid @enderror" id="name"
-                        placeholder="Nama Perusahaan...">
+                        placeholder="Nama Perusahaan..." required>
 
                     @error("name")
                         <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                     </label>
                     <input type="text" name="address" value="{{ old("address") ?? $user->address }}"
                         class="form-control @error('address') is-invalid @enderror" id="address"
-                        placeholder="Alamat Perusahaan...">
+                        placeholder="Alamat Perusahaan..." required>
 
                     @error("name")
                         <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                         <strong>Email<sup class="text-danger fs-6">*</sup></strong>
                     </label>
                     <input type="email" name="email" value="{{ old("email") ?? $user->email }}"
-                        class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email...">
+                        class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email..." required>
 
                     @error("email")
                         <span class="invalid-feedback" role="alert">
@@ -75,7 +75,7 @@
                     </label>
                     <input type="text" name="phone_number" value="{{ old("phone_number") ?? $user->phone_number }}"
                         class="form-control @error('phone_number') is-invalid @enderror" id="phone_number"
-                        placeholder="Nomor telpon (08xx)...">
+                        placeholder="Nomor telpon (08xx)..." required>
 
                     @error("phone_number")
                         <span class="invalid-feedback" role="alert">
@@ -101,7 +101,8 @@
                         <strong>Kode Pos<sup class="text-danger fs-6">*</sup></strong>
                     </label>
                     <input type="text" name="postal_code" value="{{ old("postal_code") ?? $user->postal_code }}"
-                        class="form-control @error('postal_code') is-invalid @enderror" id="postal_code" placeholder="Kode Pos">
+                        class="form-control @error('postal_code') is-invalid @enderror" id="postal_code" placeholder="Kode Pos"
+                        required>
 
                     @error("postal_code")
                         <span class="invalid-feedback" role="alert">
@@ -119,7 +120,7 @@
         <div class="row bg-primer p-3 rounded mt-5">
             <h1 class="text-white">Ubah Password</h1>
 
-            <form action="{{ route("password.update") }}" method="post">
+            <form action="{{ route('password.update') }}" method="post">
                 @method("put")
                 @csrf
                 <div class="row mt-3">
@@ -131,7 +132,7 @@
                                 id="current_password" placeholder="Password lama..." autocomplete="off">
 
                             @error('current_password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback text-dark" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
@@ -144,7 +145,7 @@
                                 id="new_password_confirmation" placeholder="Konfirmasi password baru..." autocomplete="off">
 
                             @error('new_password_confirmation')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback text-dark" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
@@ -157,7 +158,7 @@
                                 id="new_password" placeholder="Password baru..." autocomplete="off">
 
                             @error('new_password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback text-dark" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror

@@ -29,7 +29,7 @@
 
             @foreach ($letters as $name => $value)
                 <button class="pembungkus border-0 bg-transparent">
-                    <a href="{{ route("letter.common.show", ["slug" => Str::slug($name)]) }}">
+                    <a href="{{ route('letter.common.show', ['slug' => Str::slug($name)]) }}">
                         <div class="card " style="width: 150px; height:180px">
                             <img src="{{ asset($value["image"]) }}" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
                             <div class="middle">
@@ -174,7 +174,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade " id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen ">
             <div class="modal-content" style="background-color: white">
@@ -207,15 +207,15 @@
                             </div>
                             <div class="col-lg-4 ">
                                 <div class="d-flex flex-column ms-2 mt-3 " style="position: fixed;width: 400px">
-                                    {{-- <form action="" method="post"> --}}
+                                    <form action="{{ route('letter.common.store') }}" method="post">
                                         @csrf
                                         <div class="mb-3 ">
                                             <label for="judul_surat"><strong>Judul Surat</strong></label>
                                             <input type="text" id="judul_surat" class="form-control">
                                         </div>
-                                        <a href="/dashboard/buat_surat" type="submit"
-                                            class="btn btn-primary mt-3 w-100">Buat Surat</a>
-                                    {{-- </form> --}}
+                                        <button type="submit"
+                                            class="btn btn-primary mt-3 w-100">Buat Surat</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
