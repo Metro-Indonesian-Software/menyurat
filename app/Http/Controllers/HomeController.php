@@ -45,10 +45,14 @@ class HomeController extends Controller
 
     protected function adminDashboard(User $user)
     {
-        // TODO View: view blade belum diganti dengan halaman dashboard admin
+        // TODO View: view blade belum diganti dengan halaman dashboard admin:fixed
         $letters = config("central.letter_types");
-
-        return view('admin.dashboard.index', ["letters" => $letters]);
+        $users = User::latest()->paginate(10);
+        $total_user = User::Count();
+        return view('admin.dashboard.index', [
+            "users" => $users,
+            "total_user"=>$total_user
+        ]);
     }
 
     protected function userDashboard(User $user)

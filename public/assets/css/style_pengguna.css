@@ -104,3 +104,30 @@
     box-shadow: none;
     border-color: rgb(133, 56, 234);
 }
+
+.col-md-3-5 {
+    flex: 0 0 auto;
+    width: 32%;
+}
+
+.pagination {
+    --bs-pagination-active-bg: rgb(133, 56, 234) !important;
+    --bs-pagination-active-border-color: rgb(133, 56, 234) !important;
+    --bs-pagination-color: rgb(133, 56, 234) !important;
+    --bs-pagination-hover-color: rgb(133, 56, 234) !important;
+    --bs-pagination-focus-color: rgb(133, 56, 234) !important;
+}
+
+.page-item:focus {
+    box-shadow: none !important;
+}
+
+.page-link:hover {
+    background-color: rgb(154, 90, 238) !important;
+    color: white;
+    border: 1px solid rgb(133, 56, 234) !important;
+}
+
+.page-link:focus {
+    box-shadow: none !important;
+}

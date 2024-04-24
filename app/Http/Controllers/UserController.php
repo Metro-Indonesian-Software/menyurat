@@ -15,9 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::limit(500)->get();
+        $users = User::latest()->paginate(10);
 
-        // TODO View: view blade belum diganti dengan halaman kelola pengguna
+        // TODO View: view blade belum diganti dengan halaman kelola pengguna:fixed
         return view('admin.pengguna.index', ["users" => $users]);
     }
 
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        // TODO View: view blade belum diganti dengan halaman tambah pengguna
+        // TODO View: view blade belum diganti dengan halaman tambah pengguna:tidak jadi pakai view create
         return view(null);
     }
 

@@ -34,57 +34,23 @@
                     </tr>
                 </thead>
                 <tbody class="table-white">
-                    <tr>
-                        <td>1</td>
-                        <td>Rafli Haikal</td>
-                        <td><small class="bg-warning-2 px-2 py-1 rounded">Tidak Aktif</small></td>
-                        <td>haikal@gmail.com</td>
-                        <td>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                            {{-- <div class="dropdown dropstart">
-                                <button type="button" class="btn border-0  " data-bs-toggle="dropdown"
-                                    aria-expanded="false" aria-haspopup="true">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item text-warning" href="#"><i
-                                                class="fa-regular fa-pen-to-square"></i> Edit</a></li>
-                                    <li><a class="dropdown-item text-black" href="#"><i class="fa-regular fa-eye"></i>
-                                            Lihat</a></li>
-                                    <li><a class="dropdown-item text-danger" href="#"><i
-                                                class="fa-solid fa-trash"></i>
-                                            Hapus</a></li>
-                                </ul>
-                            </div> --}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Rafli Haikal</td>
-                        <td><small class="bg-success-2 px-2 py-1 rounded">Aktif</small></td>
-                        <td>haikal@gmail.com</td>
-                        <td>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                            {{-- <div class="dropdown dropstart">
-                                <button type="button" class="btn border-0  " data-bs-toggle="dropdown"
-                                    aria-expanded="false" aria-haspopup="true">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item text-warning" href="#"><i
-                                                class="fa-regular fa-pen-to-square"></i> Edit</a></li>
-                                    <li><a class="dropdown-item text-black" href="#"><i class="fa-regular fa-eye"></i>
-                                            Lihat</a></li>
-                                    <li><a class="dropdown-item text-danger" href="#"><i
-                                                class="fa-solid fa-trash"></i>
-                                            Hapus</a></li>
-                                </ul>
-                            </div>
-                        </td> --}}
-                    </tr>
+                    @foreach ($users as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td><small class="bg-warning-2 px-2 py-1 rounded">Tidak Aktif</small></td>
+                            <td>{{ $item->email }}</td>
+                            <td>
+                                <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    @endforeach
 
                 </tbody>
             </table>
+            <div class="d-flex justify-content-end">
+                {{ $users->links() }}
+            </div>
         </div>
     </div>
     <!-- Modal -->
