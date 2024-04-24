@@ -48,7 +48,7 @@ class HomeController extends Controller
         // TODO View: view blade belum diganti dengan halaman dashboard admin
         $letters = config("central.letter_types");
 
-        return view('user.dashboard.index', ["letters" => $letters]);
+        return view('admin.dashboard.index', ["letters" => $letters]);
     }
 
     protected function userDashboard(User $user)

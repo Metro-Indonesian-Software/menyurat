@@ -18,7 +18,7 @@ class UserController extends Controller
         $users = User::limit(500)->get();
 
         // TODO View: view blade belum diganti dengan halaman kelola pengguna
-        return view(null, ["users" => $users]);
+        return view('admin.pengguna.index', ["users" => $users]);
     }
 
     /**

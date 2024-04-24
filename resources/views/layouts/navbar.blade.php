@@ -14,8 +14,24 @@
 
     <div class="btn-group gap-3">
         <h5 class="text-primer my-auto"><strong>{{ auth()->user()->name }}</strong></h5>
-        <button class="btn border rounded rounded-circle text-white " style="background-color: rgb(133, 56, 234)"><i
-                class="fa-solid fa-user"></i></button>
+        {{-- <button class="btn border rounded rounded-circle text-white " style="background-color: rgb(133, 56, 234)"><i
+                class="fa-solid fa-user"></i></button> --}}
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="dropdown"
+                data-bs-display="static" aria-expanded="false">
+                <i class="fa-solid fa-user"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+                <li><button class="dropdown-item text-logout" onclick="logout()">
+                        <small><i class="fa-solid fa-share-from-square me-2"></i> Logout</small>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-none">
+                            @csrf
+                        </form>
+                    </button>
+                </li>
+            </ul>
+        </div>
 
         {{-- <div class="form-group">
             <input class="form-field" type="email" placeholder="Search">
@@ -35,3 +51,8 @@
 
 </div>
 {{-- end-navbar --}}
+<script>
+    function logout(e) {
+        document.getElementById('logout-form').submit();
+    }
+</script>

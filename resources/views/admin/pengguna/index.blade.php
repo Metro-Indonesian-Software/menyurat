@@ -1,50 +1,27 @@
 @extends('layouts.main')
 @section('content')
-    <style>
-        .col-md-3-5 {
-            flex: 0 0 auto;
-            width: 32%;
-        }
-    </style>
-    <div class="content px-5 py-3 ">
-        <div class="pt-4 row  gap-3">
-            <div class="col-md-3-5 py-2 rounded"style="background-color: rgb(240, 231, 252) !important;">
-                <div class="row ">
-                    <div class="col-md-3-5  d-flex  justify-content-center  ">
-                        <i class="fa-solid fa-users  m-auto text-primer" style="font-size: 3em"></i>
-                    </div>
-                    <div class="col-md-8 mt-3">
-                        <p class="text-primer">Jumlah Pengguna</p>
-                        <p class="text-primer" style="font-size: 3em !important"><strong>57</strong></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3-5 py-2 rounded"style="background-color: rgb(194, 252, 173) !important;">
-                <div class="row ">
-                    <div class="col-md-3-5  d-flex  justify-content-center  ">
-                        <i class="fa-solid fa-user-check m-auto text-hijau" style="font-size: 3em"></i>
-                    </div>
-                    <div class="col-md-8 mt-3">
-                        <p class="text-hijau">Jumlah Pengguna Aktif</p>
-                        <p class="text-hijau" style="font-size: 3em !important"><strong>57</strong></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3-5 py-2 rounded"style="background-color: rgb(254, 243, 222) !important;">
-                <div class="row ">
-                    <div class="col-md-3-5  d-flex  justify-content-center ">
-                        <i class="fa-solid fa-user-xmark m-auto text-kuning" style="font-size: 3em"></i>
-                    </div>
-                    <div class="col-md-8 mt-3">
-                        <p class="text-kuning">Jumlah Pengguna NonAktif</p>
-                        <p class="text-kuning" style="font-size: 3em !important"><strong>57</strong></p>
-                    </div>
-                </div>
-            </div>
+    <link rel="stylesheet" href="{{ asset('assets/css/style_pengguna.css') }}">
+    <div class="content px-5 py-4 ">
+        <div class="d-flex justify-content-between">
+            <h1>Daftar Pengguna</h1>
+            <button class="btn btn-primer" data-bs-toggle="modal" data-bs-target="#createSelectedModal"><i
+                    class="fa-solid fa-plus"></i> Tambah</button>
         </div>
-
-        <h2 class="mt-5 mb-4">Pengguna Baru Baru Ini</h2>
-        <div class="table-responsive mt-2">
+        <div class="d-flex justify-content-between mt-3">
+            <div class="form-group ">
+                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input class="form-field " type="email" placeholder="Search">
+            </div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Status</option>
+                <option value="1">Terlama</option>
+            </select>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Terbaru</option>
+                <option value="1">Terlama</option>
+            </select>
+        </div>
+        <div class="table-responsive mt-3">
             <table class="table">
                 <thead class="table-primary">
                     <tr>
@@ -63,7 +40,8 @@
                         <td><small class="bg-warning-2 px-2 py-1 rounded">Tidak Aktif</small></td>
                         <td>haikal@gmail.com</td>
                         <td>
-                            <div class="dropdown dropstart">
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                            {{-- <div class="dropdown dropstart">
                                 <button type="button" class="btn border-0  " data-bs-toggle="dropdown"
                                     aria-expanded="false" aria-haspopup="true">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -77,7 +55,7 @@
                                                 class="fa-solid fa-trash"></i>
                                             Hapus</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </td>
                     </tr>
                     <tr>
@@ -86,7 +64,8 @@
                         <td><small class="bg-success-2 px-2 py-1 rounded">Aktif</small></td>
                         <td>haikal@gmail.com</td>
                         <td>
-                            <div class="dropdown dropstart">
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                            {{-- <div class="dropdown dropstart">
                                 <button type="button" class="btn border-0  " data-bs-toggle="dropdown"
                                     aria-expanded="false" aria-haspopup="true">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -101,11 +80,39 @@
                                             Hapus</a></li>
                                 </ul>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
 
                 </tbody>
             </table>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade mt-5" id="createSelectedModal" tabindex="-1" aria-labelledby="createSelectedModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body my-4 mx-3">
+                    <form action="" method="post" id="create-selected-letter">
+                        @csrf
+                        <div class="text-center mb-5">
+                            <h2 class="modal-title fs-5" id="staticBackdropLabel">Silahkan Buat Akun user</h2>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="mb-1 text-black"><strong>Nama Perusahaan</strong></label>
+                            <input type="text" name="" class="form-control" placeholder="Ayam bakar" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="mb-1 text-black"><strong>Email</strong></label>
+                            <input type="email" name="" class="form-control" placeholder="aaym@gmail.com" required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary ">Buat</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

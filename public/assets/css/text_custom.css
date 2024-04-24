@@ -23,3 +23,19 @@
 .text-danger{
     color: rgb(255, 30, 30) !important;
 }
+
+.text-logout{
+    color: rgb(255, 30, 30) !important;
+}
+.text-logout:hover{
+    color: white !important;
+    background-color:rgb(255, 30, 30) !important ;
+}
+
+.text-hijau{
+    color: rgb(18, 169, 51);
+}
+
+.text-kuning{
+    color: rgb(255, 168, 0);
+}
