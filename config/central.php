@@ -48,11 +48,11 @@ return [
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.surat_lamaran",
     ],
-    "Surat Pengunduran Diri" => [
-        "type" => "resign",
-        "image" => "assets/img/surat.jpg",
-        "view" => "user.buat_surat.surat_lamaran",
-    ],
+    // "Surat Pengunduran Diri" => [
+    //     "type" => "resign",
+    //     "image" => "assets/img/surat.jpg",
+    //     "view" => "user.buat_surat.surat_lamaran",
+    // ],
     "Surat Peringatan" => [
         "type" => "warning",
         "image" => "assets/img/surat.jpg",
