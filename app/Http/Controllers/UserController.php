@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -13,21 +14,15 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::latest()->paginate(10);
+        $users = User::role("user")
+                    ->search($request->query("search"))
+                    ->active($request->query("active"))
+                    ->paginate(10)
+                    ->withQueryString();
 
-        // TODO View: view blade belum diganti dengan halaman kelola pengguna:fixed
         return view('admin.pengguna.index', ["users" => $users]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        // TODO View: view blade belum diganti dengan halaman tambah pengguna:tidak jadi pakai view create
-        return view(null);
     }
 
     /**
@@ -35,29 +30,12 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        // TODO: password default bagaimana?
         $validated = $request->validated();
-        // User::create($validated);
+        $validated["password"] = Hash::make("password");
+        $user = User::create($validated);
+        $user->assignRole("user");
 
-        return route("user.index");
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        // TODO View: view blade belum diganti dengan halaman lihat data pengguna
-        return view(null, ["user" => $user]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        // TODO View: view blade belum diganti dengan halaman edit data pengguna
-        return view(null, ["user" => $user]);
+        return redirect()->back()->with("success", "Pengguna berhasil ditambahkan");
     }
 
     /**
@@ -82,5 +60,12 @@ class UserController extends Controller
             ->update($validated);
 
         return redirect()->route("user.index")->with("success", "Profil pengguna berhasil diperbarui");
+    }
+
+    public function destroy(Request $request, User $user)
+    {
+        $user->delete();
+
+        return redirect()->back()->with("success", "Pengguna berhasil dihapus");
     }
 }

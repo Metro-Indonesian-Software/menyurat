@@ -5,6 +5,9 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Scopes\OrderByScope;
+use App\Models\Scopes\SearchScope;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -14,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasPermissions;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasPermissions, HasUuids;
 
     /**
      * The attributes that are mass assignable.
@@ -55,5 +58,19 @@ class User extends Authenticatable
     protected static function booted(): void
     {
         static::addGlobalScope(new OrderByScope(request()->query("orderBy")));
+    }
+
+    public function scopeSearch(Builder $builder, $keyword)
+    {
+        $builder->when($keyword !== null, function() use($keyword, $builder) {
+            $builder->where("name", "like", "%".$keyword."%");
+        });
+    }
+
+    public function scopeActive(Builder $builder, $active)
+    {
+        $builder->when($active !== null, function() use($active, $builder) {
+            $builder->where("active", intval($active));
+        });
     }
 }

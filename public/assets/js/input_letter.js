@@ -11,9 +11,9 @@ $(document).ready(function () {
             .querySelector('meta[name="csrf-token"]')
             .getAttribute("content");
         const commonId = window.location.pathname.split("/")[2];
-        const data = { _token: token, title: $(this).val() };
+        const data = { _token: token, title: $(this).val().trim() };
 
-        fetch(`${window.origin}/surat/${commonId}`, {
+        fetch(`${window.origin}/surat/${commonId}/api`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -24,14 +24,14 @@ $(document).ready(function () {
             .then((data) => {
                 if (data.status === "success") {
                     success(data.message);
+
+                    const children = $(".letter-title h6").children()[0];
+                    $(".letter-title h6").html(`${$(this).val()} `);
+                    $(".letter-title h6").append(children);
                 } else if (data.status === "error") {
                     error(data.errors.title[0]);
                 }
             });
-
-        const children = $(".letter-title h6").children()[0];
-        $(".letter-title h6").html(`${$(this).val()} `);
-        $(".letter-title h6").append(children);
     };
 
     // $(".letter-title i").click(function () {
@@ -39,6 +39,8 @@ $(document).ready(function () {
     //     $(this).parent().siblings("input").removeClass("d-none");
     //     $(this).parent().siblings("input").focusOnLastCharacter();
     // });
+
+    let prevTitle = $(".letter-title h6").html().split(" <i")[0].trim();
 
     $(".letter-title h6").click(function () {
         $(this).addClass("d-none");
@@ -50,7 +52,10 @@ $(document).ready(function () {
         $(this).siblings("h6").removeClass("d-none");
         $(this).addClass("d-none");
 
-        $(this).updateTitle();
+        if ($(this).val().trim() !== prevTitle) {
+            prevTitle = $(this).val().trim();
+            $(this).updateTitle();
+        }
     });
 
     $(".letter-title input").keyup(function (event) {

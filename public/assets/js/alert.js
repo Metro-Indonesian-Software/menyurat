@@ -35,3 +35,23 @@ function alertWarning(message) {
         text: message,
     });
 }
+
+function confirmDelete(e) {
+    Swal.fire({
+        title: "Hapus Data?",
+        text: "Apakah anda yakin ingin menghapus data ini?",
+        icon: "warning",
+        showCancelButton: true,
+        position: "center",
+        confirmButtonColor: "#8538EA",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya",
+        cancelButtonText: "Tidak",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            e.submit();
+        }
+    });
+
+    return false;
+}

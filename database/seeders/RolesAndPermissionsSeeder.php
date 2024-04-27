@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
+use App\Models\Permission;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
@@ -31,7 +31,7 @@ class RolesAndPermissionsSeeder extends Seeder
         }
 
         foreach($system_permissions as $permission) {
-            Permission::create(["name" => $permission,]);
+            Permission::create([ "name" => $permission,]);
         }
 
         $admin->givePermissionTo(["users_manage"]);

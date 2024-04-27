@@ -130,7 +130,7 @@
         <div class="row bg-primer p-3 rounded mt-5">
             <h1 class="text-white">Ubah Password</h1>
 
-            <form action="{{ route('password.update') }}" method="post">
+            <form action="{{ route('password.change') }}" method="post">
                 @method('put')
                 @csrf
                 <div class="row mt-3">
@@ -165,7 +165,7 @@
                     <div class="col-md-6 mb-2">
                         <label for="new_password" class="mb-1 text-white"><strong>Password Baru</strong></label>
                         <input type="password" name="new_password"
-                            class="form-control @error('new_password') is-invalid @enderror"" id="new_password"
+                            class="form-control @error('new_password') is-invalid @enderror" id="new_password"
                             placeholder="Password baru..." autocomplete="off">
 
                         @error('new_password')

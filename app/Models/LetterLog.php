@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class LetterLog extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +28,6 @@ class LetterLog extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
         'common_letter_log_id' => 'integer',
     ];
 

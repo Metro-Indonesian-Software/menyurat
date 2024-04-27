@@ -4,7 +4,7 @@
 
     <div class="content px-5 py-3 ">
         <h2 class="fw-bold mb-4 mt-1" style="font-size: 20px;"><Strong>Kelola Surat</Strong></h2>
-        <form action="{{ route('letter.common.index', ['search' => Request::input("search") ]) }}" method="get">
+        <form action="{{ route('letter.common.index') }}" method="get">
             <div class="d-flex gap-2">
                 <div class="form-group ">
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>

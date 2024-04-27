@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCommonLetterLogRequest;
 use App\Http\Requests\StoreCommonLogSlugRequest;
 use App\Http\Requests\UpdateCommonLetterLogRequest;
+use App\Http\Requests\UpdateNumberOfLetterRequest;
 use App\Models\CommonLetterLog;
 use Illuminate\Http\Request;
 use stdClass;
@@ -27,7 +28,8 @@ class CommonLetterLogController extends Controller
         return view("user.kelola_surat.index", ["letters" => $letters]);
     }
 
-    public function listIndex(Request $request, string $slug) {
+    public function listIndex(Request $request, string $slug)
+    {
         $splitSlug = explode("-", $slug);
         $letterType = implode(" ", $splitSlug);
         $existLetterType = false;
@@ -37,6 +39,7 @@ class CommonLetterLogController extends Controller
             if(strtolower($letterType) === strtolower($key)) {
                 $letterType = $key;
                 $existLetterType = true;
+                break;
             }
         }
 
@@ -44,21 +47,13 @@ class CommonLetterLogController extends Controller
             return abort(404);
         }
 
-        $commonLetterLogs = CommonLetterLog::where("type", $letterType)
-                                ->limit(100)
-                                // ->published($request->input("published"))
-                                ->get();
+        $commons = CommonLetterLog::where("type", $letterType)
+                                ->search($request->query("search"))
+                                ->published($request->query("published"))
+                                ->paginate(10)
+                                ->withQueryString();
 
-
-        return view("user.kelola_surat.child_kelola_surat.index", ["title" => $letterType, "commonLetterLogs" => $commonLetterLogs]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view("user.kelola_surat.child_kelola_surat.index", ["title" => $letterType, "commons" => $commons]);
     }
 
     /**
@@ -97,11 +92,12 @@ class CommonLetterLogController extends Controller
             if(strtolower($letterType) === strtolower($key)) {
                 $letterType = $key;
                 $existLetterType = true;
+                break;
             }
         }
 
         if(!$existLetterType) {
-            return back()->with("error", "Surat gagal ditambahkan");
+            return back()->with("error", "Surat tidak tersedia");
         }
 
         $commonLetterLog = CommonLetterLog::create([
@@ -121,18 +117,22 @@ class CommonLetterLogController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CommonLetterLog $commonLetterLog)
+    public function update(UpdateNumberOfLetterRequest $request, CommonLetterLog $commonLetterLog)
     {
-        //
+        $validated = $request->validated();
+
+        CommonLetterLog::where("id", $commonLetterLog->id)
+            ->update([
+                "number_of_letter" => $validated["number_of_letter"],
+            ]);
+
+        return redirect()->back()->with("success", "Surat berhasil diterbitkan");
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCommonLetterLogRequest $request, CommonLetterLog $commonLetterLog)
+    public function APIUpdate(UpdateCommonLetterLogRequest $request, CommonLetterLog $commonLetterLog)
     {
         $validated = $request->validated();
 
@@ -144,7 +144,7 @@ class CommonLetterLogController extends Controller
         // response fetch api
         $response = new stdClass;
         $response->status = 'success';
-        $response->message = 'Judul berhasil diperbarui';
+        $response->message = 'Judul surat berhasil diperbarui';
         return $response;
     }
 
@@ -153,6 +153,8 @@ class CommonLetterLogController extends Controller
      */
     public function destroy(CommonLetterLog $commonLetterLog)
     {
-        //
+        $commonLetterLog->delete();
+
+        return redirect()->back()->with("success", "Surat berhasil dihapus");
     }
 }

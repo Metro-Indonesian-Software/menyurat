@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('letter_logs', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('common_letter_log_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('common_letter_log_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('field_name');
             $table->text('field_value');
             $table->timestamps();

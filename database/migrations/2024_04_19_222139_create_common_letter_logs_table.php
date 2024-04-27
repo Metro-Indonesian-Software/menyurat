@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('common_letter_logs', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('title');
             $table->string('type');
+            $table->string('number_of_letter')->nullable();
             $table->timestamps();
         });
 

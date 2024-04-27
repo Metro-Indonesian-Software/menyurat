@@ -1,64 +1,60 @@
-.navbar{
+.navbar {
     /* background-color:rgb(133, 56, 234); */
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
-
 
 html {
     -webkit-font-smoothing: antialiased;
 }
 
-
-#toggle-btn{
+#toggle-btn {
     cursor: pointer;
-    border:none;
+    border: none;
     padding: 10px 16px;
     background-color: rgb(255, 255, 255);
     color: rgb(133, 56, 234);
-    transition: .3s;
-    border-radius: 8px; 
+    transition: 0.3s;
+    border-radius: 8px;
     border: 1px solid transparent;
 }
-   
-   #toggle-btn:hover{
+
+#toggle-btn:hover {
     border: 1px solid rgb(133, 56, 234);
     color: rgb(255, 255, 255);
     background-color: rgb(133, 56, 234);
-   }
+}
 
-   .user{
+.user {
     cursor: pointer;
-    border:none;
+    border: none;
     padding: 10px 16px;
     color: rgb(255, 255, 255);
     background-color: rgb(133, 56, 234);
-    transition: .3s;
-    border-radius: 8px; 
-   }
-   
-   .user:hover{
+    transition: 0.3s;
+    border-radius: 8px;
+}
+
+.user:hover {
     background-color: rgb(29, 34, 175);
     color: rgb(255, 255, 255);
-   }
+}
 
-   .dropdown-menu a.dropdown-item:hover{
+.dropdown-menu a.dropdown-item:hover {
     color: rgb(255, 255, 255);
     background-color: rgb(133, 56, 234);
+}
 
-   }
-
-   .dropdown-item{
+.dropdown-item {
     width: 100%;
     padding: 5px;
     border-bottom: none !important;
     border-radius: 5px;
-    text-align: center !important;
-    
-   }
+    text-align: left !important;
+}
 
-   .dropdown-menu{
-    padding: 8px;
+.dropdown-menu {
+    padding: 10px;
     background-color: white !important;
-
-   }
+}

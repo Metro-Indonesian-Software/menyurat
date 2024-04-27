@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = \App\Models\User::factory(10)->create();
+        $users = \App\Models\User::factory(50)->create();
 
         foreach($users as $user) {
             $user->assignRole("user");
@@ -35,5 +35,17 @@ class UserSeeder extends Seeder
         ]);
 
         $user->assignRole("admin");
+
+        $user = User::create([
+            'name' => "Metro User",
+            'email' => "metro.user@gmail.com",
+            'address' => fake()->address(),
+            'phone_number' => fake()->phoneNumber(),
+            'postal_code' => fake()->postcode(),
+            'logo_url' => fake()->imageUrl(),
+            'password' => static::$password ??= Hash::make('password'),
+        ]);
+
+        $user->assignRole("user");
     }
 }

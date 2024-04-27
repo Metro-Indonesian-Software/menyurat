@@ -29,7 +29,6 @@ class ProfileController extends Controller
 
         // delete previous logo
         if($user->logo_url !== null) {
-            // dd($user->logo_url);
             Storage::disk("public")->delete($user->logo_url);
         }
 

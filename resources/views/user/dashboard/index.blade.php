@@ -24,47 +24,56 @@
                         <div class="text"><i class="fa-solid fa-plus"></i></div>
                     </div>
                 </div>
-                <p class=" mt-1 text-wrap m-auto">Tambah Surat</p>
+                <p class="mt-1 text-wrap m-auto">Tambah Surat</p>
             </button>
 
             @foreach ($letters as $name => $value)
-                <button class="pembungkus border-0 bg-transparent" onclick="createSelectedLetter('{{ Str::slug($name) }}')" data-bs-toggle="modal" data-bs-target="#createSelectedModal">
-                    {{-- <a href="{{ route('letter.common.show', ['slug' => Str::slug($name)]) }}"> --}}
-                        <div class="card " style="width: 150px; height:180px">
-                            <img src="{{ asset($value["image"]) }}" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
-                            <div class="middle">
-                                <div class="text"><i class="fa-solid fa-plus"></i></div>
-                            </div>
+                <button type="button" class="pembungkus border-0 bg-transparent" onclick="createSelectedLetter('{{ Str::slug($name) }}')" data-bs-toggle="modal" data-bs-target="#createSelectedModal">
+                    <div class="card " style="width: 150px; height:180px">
+                        <img src="{{ asset($value["image"]) }}" alt="Avatar" class="image" style=" width: 100%; height: 100%;">
+                        <div class="middle">
+                            <div class="text"><i class="fa-solid fa-plus"></i></div>
                         </div>
-                    {{-- </a> --}}
-                    <p class=" mt-1 text-wrap m-auto">{{ $name }}</p>
+                    </div>
+                    <p class="mt-1 text-wrap m-auto">{{ $name }}</p>
                 </button>
             @endforeach
         </div>
 
         <div class="d-flex justify-content-between mt-5">
             <h2 class="my-auto">Recently</h2>
-            <div class="d-flex gap-2">
-                <div class="form-group ">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input class="form-field " type="email" placeholder="Search">
+            <form action="{{ route('dashboard') }}" method="get" class="d-inline-block">
+                <div class="d-flex gap-2">
+                    <div class="form-group">
+                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input class="form-field" name="search" value="{{ Request::input("search") }}" type="text"
+                            placeholder="Cari">
+                    </div>
+
+                    @if (Request::input('published') !== null)
+                        <input type="text" name="published" id="hidden-published" class="d-none" value="{{ Request::input('published') }}">
+                    @endif
+
+                    <button type="submit" class="btn btn-primary text-center my-auto px-3">Cari</button>
                 </div>
-                <div class="btn btn-primary text-center  my-auto px-3 "> Cari </div>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Terbaru</option>
-                    <option value="1">Terlama</option>
-                </select>
-            </div>
+            </form>
         </div>
+
         <div class="d-flex gap-4 mt-3 filter-table-dashboard">
-            <a href="" class="border-bottom p-1 border-2 filter-active-table"><small><i
-                        class="fa-solid fa-file"></i>
-                    Semua
-                    Surat</small></a>
-            <a href="" class="border-bottom p-1 border-2 "><small><i class="fa-regular fa-clock"></i> Belum
-                    Diterbitkan</small></a>
-            <a href="" class="border-bottom p-1 border-2 "><small><i class="fa-solid fa-check"></i>
-                    Sudah Diterbitkan</small></a>
+            <a href="{{ route('dashboard', ['search' => Request::input("search")]) }}"
+                class="border-bottom p-1 border-2 @if (Request::input("published") === null) filter-active-table @endif">
+                    <small><i class="fa-solid fa-file me-1"></i>Semua Surat</small>
+            </a>
+
+            <a href="{{ route('dashboard', ['published' => 0, 'search' => Request::input("search")]) }}"
+                class="border-bottom p-1 border-2 @if (Request::input("published") !== null && Request::input("published") == 0) filter-active-table @endif">
+                    <small><i class="fa-regular fa-clock me-1"></i>Belum Diterbitkan</small>
+            </a>
+
+            <a href="{{ route('dashboard', ['published' => 1, 'search' => Request::input("search")]) }}"
+                class="border-bottom p-1 border-2 @if (Request::input("published") !== null && Request::input("published") == 1) filter-active-table @endif">
+                    <small><i class="fa-solid fa-check me-1"></i>Sudah Diterbitkan</small
+            ></a>
         </div>
         <div class="table-responsive mt-2">
             <table class="table">
@@ -80,100 +89,79 @@
                     </tr>
                 </thead>
                 <tbody class="table-white">
-                    <tr>
-                        <td>1</td>
-                        <td>01-01-2021</td>
-                        <td>Surat Cuti Jhon</td>
-                        <td>Surat Cuti </td>
-                        <td>0101</td>
-                        <td><small class="bg-success-2 px-2 py-1 rounded">Sudah Diterbitkan</small></td>
-                        <td>
-                            <div class="dropdown dropstart">
-                                <button type="button" class="btn border-0  " data-bs-toggle="dropdown"
-                                    aria-expanded="false" aria-haspopup="true">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item text-warning" href="#"><i
-                                                class="fa-regular fa-pen-to-square"></i> Edit</a></li>
-                                    <li><a class="dropdown-item text-black" href="#"><i
-                                                class="fa-regular fa-eye"></i>
-                                            Lihat</a></li>
-                                    <li><a class="dropdown-item text-danger" href="#"><i
-                                                class="fa-solid fa-trash"></i>
-                                            Hapus</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>01-01-2021</td>
-                        <td>Surat Cuti Jhon</td>
-                        <td>Surat Cuti </td>
-                        <td>0101</td>
-                        <td><small class="bg-warning-2 px-2 py-1 rounded">Belum Diterbitkan</small></td>
-                        <td>
-                            <div class="dropdown dropstart">
-                                <button type="button" class="btn border-0  " data-bs-toggle="dropdown"
-                                    aria-expanded="false" aria-haspopup="true">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item text-black" href="#"><i
-                                                class="fa-solid fa-download"></i> Download</a></li>
-                                    <li><a class="dropdown-item text-warning" href="#"><i
-                                                class="fa-regular fa-pen-to-square"></i> Edit</a></li>
-                                    <li><a class="dropdown-item text-black" href="#"><i
-                                                class="fa-regular fa-eye"></i>
-                                            Lihat</a></li>
-                                    <li><a class="dropdown-item text-danger" href="#"><i
-                                                class="fa-solid fa-trash"></i>
-                                            Hapus</a></li>
-                                    <li><a class="dropdown-item text-primer" href="#"><i
-                                                class="fa-solid fa-file-import"></i>
-                                            Terbitkan</a></li>
-                                </ul>
+                    @foreach ($commons as $common)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ date_format($common->updated_at, "d-m-Y H:m") }}</td>
+                            <td>{{ $common->title }}</td>
+                            <td>{{ $common->type }}</td>
+                            <td>{{ $common->number_of_letter ?? "-" }}</td>
+                            <td>
+                                @if ($common->number_of_letter)
+                                    <small class="bg-success-2 px-2 py-1 rounded">Sudah Diterbitkan</small>
+                                @else
+                                    <small class="bg-warning-2 px-2 py-1 rounded">Belum Diterbitkan</small>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="dropdown dropstart">
+                                    <button type="button" class="btn border-0 " data-bs-toggle="dropdown"
+                                        aria-expanded="false" aria-haspopup="true">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @if ($common->number_of_letter)
+                                            <li>
+                                                <a class="dropdown-item text-black" href="#">
+                                                    <i class="fa-solid fa-download me-2"></i>Download
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item text-black" href="#">
+                                                    <i class="fa-regular fa-eye me-2"></i>Lihat
+                                                </a>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <a class="dropdown-item text-warning"
+                                                    href="{{ route('letter.log.create', ['commonLetterLog' => $common->id]) }}">
+                                                    <i class="fa-regular fa-pen-to-square me-2"></i>Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <form action="{{ route('letter.common.destroy', ['commonLetterLog' => $common->id]) }}" method="post" onsubmit="return confirmDelete(this)">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit" class="dropdown-item text-danger btn">
+                                                        <i class="fa-solid fa-trash me-2"></i>Hapus
+                                                    </button>
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="dropdown-item text-primer" data-bs-toggle="modal" data-bs-target="#updateNumberOfLetter" onclick="updateNumberOfLetter('{{ $common->id }}')">
+                                                    <i class="fa-solid fa-file-import me-2"></i>Terbitkan
+                                                </button>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
 
-                            </div>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>01-01-2021</td>
-                        <td>Surat Cuti Jhon</td>
-                        <td>Surat Cuti </td>
-                        <td>0101</td>
-                        <td><small class="bg-warning-2 px-2 py-1 rounded">Belum Diterbitkan</small></td>
-                        <td>
-                            <div class="dropdown dropstart">
-                                <button type="button" class="btn border-0  " data-bs-toggle="dropdown"
-                                    aria-expanded="false" aria-haspopup="true">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item text-black" href="#"><i
-                                                class="fa-solid fa-download"></i> Download</a></li>
-                                    <li><a class="dropdown-item text-warning" href="#"><i
-                                                class="fa-regular fa-pen-to-square"></i> Edit</a></li>
-                                    <li><a class="dropdown-item text-black" href="#"><i
-                                                class="fa-regular fa-eye"></i>
-                                            Lihat</a></li>
-                                    <li><a class="dropdown-item text-danger" href="#"><i
-                                                class="fa-solid fa-trash"></i>
-                                            Hapus</a></li>
-                                    <li><a class="dropdown-item text-primer" href="#"><i
-                                                class="fa-solid fa-file-import"></i>
-                                            Terbitkan</a></li>
-                                </ul>
-
-                            </div>
-                    </tr>
+                    @if (count($commons) === 0)
+                        <tr>
+                            <td colspan="7" class="text-center fw-bold">
+                                Data tidak ditemukan
+                            </td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Create Blank Surat -->
     <div class="modal fade" id="createBlankModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen ">
@@ -229,7 +217,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Create Selected Surat -->
     <div class="modal fade mt-5" id="createSelectedModal" tabindex="-1" aria-labelledby="createSelectedModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -246,6 +234,32 @@
 
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Buat Surat</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update Nomor Surat -->
+    <div class="modal fade mt-5" id="updateNumberOfLetter" tabindex="-1" aria-labelledby="updateNumberOfLetterLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-body my-4 mx-3">
+                <form action="{{ route('letter.common.update', ['commonLetterLog' => 0]) }}" method="post"
+                    id="update-number-of-letter">
+                    @csrf
+                    @method("PUT")
+                    <div class="text-center mb-4">
+                        <label for="name" class="mb-3">
+                            <h2 class="modal-title fs-5" id="staticBackdropLabel">Silahkan Masukan Nomor Surat</h2>
+                        </label>
+                        <input type="text" name="number_of_letter" class="form-control" id="number_of_letter"
+                            placeholder="Nomor surat..." required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Terbitkan Surat</button>
                     </div>
                 </form>
             </div>

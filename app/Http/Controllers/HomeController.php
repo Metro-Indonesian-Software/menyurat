@@ -2,63 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CommonLetterLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function dashboard()
+    public function dashboard(Request $request)
     {
         $user = auth()->user();
 
         if($user->hasRole("admin")) {
-            return $this->adminDashboard($user);
+            return $this->adminDashboard();
         }
         else {
-            return $this->userDashboard($user);
+            return $this->userDashboard($request);
         }
     }
 
-    protected function adminDashboard(User $user)
+    protected function adminDashboard()
     {
-        // TODO View: view blade belum diganti dengan halaman dashboard admin:fixed
-        $letters = config("central.letter_types");
-        $users = User::latest()->paginate(10);
-        $total_user = User::Count();
+        $users = User::role("user")->limit(10)->get();
+        $totalUser = User::role("user")->count();
+        $activeUser = User::role("user")->where("active", 1)->count();
+        $inActiveUser = User::role("user")->where("active", 0)->count();
+
         return view('admin.dashboard.index', [
             "users" => $users,
-            "total_user"=>$total_user
+            "totalUser"=>$totalUser,
+            "activeUser"=>$activeUser,
+            "inActiveUser"=>$inActiveUser,
         ]);
     }
 
-    protected function userDashboard(User $user)
+    protected function userDashboard(Request $request)
     {
         $letters = config("central.letter_types");
+        $commonsLog = CommonLetterLog::search($request->query("search"))
+                        ->published($request->query("published"))
+                        ->limit(10)
+                        ->get();
 
-        return view('user.dashboard.index', ["letters" => $letters]);
+        return view('user.dashboard.index', [
+            "letters" => $letters,
+            "commons" => $commonsLog,
+        ]);
     }
 }
