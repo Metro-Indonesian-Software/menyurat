@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", [LandingPageController::class, "index"])->name("landing-page");
 
-Auth::routes(["register" => false, "confirm" => false]);
+Auth::routes(["register" => false, "confirm" => false, "reset" => false]);
 
 Route::middleware(["auth", "prevent_back"])->group(function() {
     /**
