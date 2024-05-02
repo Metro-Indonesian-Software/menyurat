@@ -43,14 +43,14 @@ class HomeController extends Controller
     protected function userDashboard(Request $request)
     {
         $letters = config("central.letter_types");
-        $commonsLog = CommonLetterLog::search($request->query("search"))
+        $commonLetterLogs = CommonLetterLog::search($request->query("search"))
                         ->published($request->query("published"))
                         ->limit(10)
                         ->get();
 
         return view('user.dashboard.index', [
             "letters" => $letters,
-            "commons" => $commonsLog,
+            "commonLogs" => $commonLetterLogs,
         ]);
     }
 }

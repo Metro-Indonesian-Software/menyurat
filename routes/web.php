@@ -64,6 +64,12 @@ Route::middleware(["auth", "prevent_back"])->group(function() {
              */
             Route::get("/surat/{commonLetterLog}/input", [LetterLogController::class, "create"])->name("letter.log.create");
             Route::post("/surat/{commonLetterLog}/input", [LetterLogController::class, "store"])->name("letter.log.store");
+
+            /**
+             * Download/Lihat Surat
+             */
+            Route::post("/surat/{commonLetterLog}/download", [CommonLetterLogController::class, "download"])->name("letter.common.download");
+            Route::post("/surat/{commonLetterLog}/preview", [CommonLetterLogController::class, "preview"])->name("letter.common.preview");
         });
     });
 });

@@ -67,15 +67,15 @@
                     </tr>
                 </thead>
                 <tbody class="table-white">
-                    @foreach ($commons as $common)
+                    @foreach ($commonLogs as $commonLog)
                         <tr>
-                            <td>{{ $commons->firstItem() + $loop->iteration -1 }}</td>
-                            <td>{{ date_format($common->updated_at, "d-m-Y H:m") }}</td>
-                            <td>{{ $common->title }}</td>
-                            <td>{{ $common->type }}</td>
-                            <td>{{ $common->number_of_letter ?? "-" }}</td>
+                            <td>{{ $commonLogs->firstItem() + $loop->iteration -1 }}</td>
+                            <td>{{ date_format($commonLog->updated_at, "d-m-Y H:m") }}</td>
+                            <td>{{ $commonLog->title }}</td>
+                            <td>{{ $commonLog->type }}</td>
+                            <td>{{ $commonLog->number_of_letter ?? "-" }}</td>
                             <td>
-                                @if ($common->number_of_letter)
+                                @if ($commonLog->number_of_letter)
                                     <small class="bg-success-2 px-2 py-1 rounded">Sudah Diterbitkan</small>
                                 @else
                                     <small class="bg-warning-2 px-2 py-1 rounded">Belum Diterbitkan</small>
@@ -88,26 +88,32 @@
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        @if ($common->number_of_letter)
+                                        @if ($commonLog->number_of_letter)
                                             <li>
-                                                <a class="dropdown-item text-black" href="#">
-                                                    <i class="fa-solid fa-download me-2"></i>Download
-                                                </a>
+                                                <form action="{{ route('letter.common.download', ['commonLetterLog' => $commonLog->id]) }}" method="post">
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item text-black btn">
+                                                        <i class="fa-solid fa-download me-2"></i>Download
+                                                    </button>
+                                                </form>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item text-black" href="#">
-                                                    <i class="fa-regular fa-eye me-2"></i>Lihat
-                                                </a>
+                                                <form action="{{ route('letter.common.preview', ['commonLetterLog' => $commonLog->id]) }}" method="post">
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item text-black btn">
+                                                        <i class="fa-regular fa-eye me-2"></i>Lihat
+                                                    </button>
+                                                </form>
                                             </li>
                                         @else
                                             <li>
                                                 <a class="dropdown-item text-warning"
-                                                    href="{{ route('letter.log.create', ['commonLetterLog' => $common->id]) }}">
+                                                    href="{{ route('letter.log.create', ['commonLetterLog' => $commonLog->id]) }}">
                                                     <i class="fa-regular fa-pen-to-square me-2"></i>Edit
                                                 </a>
                                             </li>
                                             <li>
-                                                <form action="{{ route('letter.common.destroy', ['commonLetterLog' => $common->id]) }}" method="post" onsubmit="return confirmDelete(this)">
+                                                <form action="{{ route('letter.common.destroy', ['commonLetterLog' => $commonLog->id]) }}" method="post" onsubmit="return confirmDelete(this)">
                                                     @csrf
                                                     @method("DELETE")
                                                     <button type="submit" class="dropdown-item text-danger btn">
@@ -116,7 +122,7 @@
                                                 </form>
                                             </li>
                                             <li>
-                                                <button type="button" class="dropdown-item text-primer" data-bs-toggle="modal" data-bs-target="#updateNumberOfLetter" onclick="updateNumberOfLetter('{{ $common->id }}')">
+                                                <button type="button" class="dropdown-item text-primer" data-bs-toggle="modal" data-bs-target="#updateNumberOfLetter" onclick="updateNumberOfLetter('{{ $commonLog->id }}')">
                                                     <i class="fa-solid fa-file-import me-2"></i>Terbitkan
                                                 </button>
                                             </li>
@@ -127,7 +133,7 @@
                         </tr>
                     @endforeach
 
-                    @if (count($commons) === 0)
+                    @if (count($commonLogs) === 0)
                         <tr>
                             <td colspan="7" class="text-center fw-bold">
                                 Data tidak ditemukan
@@ -138,7 +144,7 @@
             </table>
 
             <div class="d-flex justify-content-end">
-                {{ $commons->links() }}
+                {{ $commonLogs->links() }}
             </div>
         </div>
     </div>

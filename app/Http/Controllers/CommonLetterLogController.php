@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ConverterLetterLog;
 use App\Http\Requests\StoreCommonLetterLogRequest;
 use App\Http\Requests\StoreCommonLogSlugRequest;
 use App\Http\Requests\UpdateCommonLetterLogRequest;
 use App\Http\Requests\UpdateNumberOfLetterRequest;
 use App\Models\CommonLetterLog;
+use App\Models\LetterLog;
 use Illuminate\Http\Request;
 use stdClass;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CommonLetterLogController extends Controller
 {
@@ -47,13 +50,13 @@ class CommonLetterLogController extends Controller
             return abort(404);
         }
 
-        $commons = CommonLetterLog::where("type", $letterType)
+        $commonLetterLogs = CommonLetterLog::where("type", $letterType)
                                 ->search($request->query("search"))
                                 ->published($request->query("published"))
                                 ->paginate(10)
                                 ->withQueryString();
 
-        return view("user.kelola_surat.child_kelola_surat.index", ["title" => $letterType, "commons" => $commons]);
+        return view("user.kelola_surat.child_kelola_surat.index", ["title" => $letterType, "commonLogs" => $commonLetterLogs]);
     }
 
     /**
@@ -109,14 +112,6 @@ class CommonLetterLogController extends Controller
         return redirect()->route("letter.log.create", ["commonLetterLog" => $commonLetterLog->id])->with("success", "Surat berhasil ditambahkan");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(CommonLetterLog $commonLetterLog)
-    {
-        //
-    }
-
     public function update(UpdateNumberOfLetterRequest $request, CommonLetterLog $commonLetterLog)
     {
         $validated = $request->validated();
@@ -156,5 +151,37 @@ class CommonLetterLogController extends Controller
         $commonLetterLog->delete();
 
         return redirect()->back()->with("success", "Surat berhasil dihapus");
+    }
+
+    protected function getLetterLog(CommonLetterLog $commonLetterLog)
+    {
+        $letterLogs = LetterLog::where("common_letter_log_id", $commonLetterLog->id)->get();
+        $logs = ConverterLetterLog::getLetterLog($commonLetterLog, $letterLogs->toArray());
+        /**
+         * TODO View: kode dibawah ini untuk lihat bentuk datanya
+         * kalau mau lihat halamannya, comment saja kode baris 21
+         */
+        dd($logs);
+        return $logs;
+    }
+
+    public function download(CommonLetterLog $commonLetterLog)
+    {
+        $logs = $this->getLetterLog($commonLetterLog);
+
+        $view = config(sprintf("central.letter_types.%s.pdf", $commonLetterLog->type));
+        $pdf = Pdf::loadView($view, ["commonLog" => $commonLetterLog, "logs" => $logs]);
+        $pdf->setPaper("A4", "portrait");
+        return $pdf->download(sprintf("%s - %s.pdf", $commonLetterLog->title, $commonLetterLog->type));
+    }
+
+    public function preview(CommonLetterLog $commonLetterLog)
+    {
+        $logs = $this->getLetterLog($commonLetterLog);
+
+        $view = config(sprintf("central.letter_types.%s.pdf", $commonLetterLog->type));
+        $pdf = Pdf::loadView($view, ["commonLog" => $commonLetterLog, "logs" => $logs]);
+        $pdf->setPaper("A4", "portrait");
+        return $pdf->stream(sprintf("%s - %s.pdf", $commonLetterLog->title, $commonLetterLog->type));
     }
 }
