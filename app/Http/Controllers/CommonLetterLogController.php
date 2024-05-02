@@ -170,7 +170,11 @@ class CommonLetterLogController extends Controller
         $logs = $this->getLetterLog($commonLetterLog);
 
         $view = config(sprintf("central.letter_types.%s.pdf", $commonLetterLog->type));
-        $pdf = Pdf::loadView($view, ["commonLog" => $commonLetterLog, "logs" => $logs]);
+        $pdf = Pdf::loadView($view, [
+            "user" => auth()->user(),
+            "commonLog" => $commonLetterLog,
+            "logs" => $logs
+        ]);
         $pdf->setPaper("A4", "portrait");
         return $pdf->download(sprintf("%s - %s.pdf", $commonLetterLog->title, $commonLetterLog->type));
     }
@@ -180,7 +184,11 @@ class CommonLetterLogController extends Controller
         $logs = $this->getLetterLog($commonLetterLog);
 
         $view = config(sprintf("central.letter_types.%s.pdf", $commonLetterLog->type));
-        $pdf = Pdf::loadView($view, ["commonLog" => $commonLetterLog, "logs" => $logs]);
+        $pdf = Pdf::loadView($view, [
+            "user" => auth()->user(),
+            "commonLog" => $commonLetterLog,
+            "logs" => $logs
+        ]);
         $pdf->setPaper("A4", "portrait");
         return $pdf->stream(sprintf("%s - %s.pdf", $commonLetterLog->title, $commonLetterLog->type));
     }
