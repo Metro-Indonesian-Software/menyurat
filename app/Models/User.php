@@ -5,7 +5,6 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Scopes\OrderByScope;
-use App\Models\Scopes\SearchScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,6 +32,7 @@ class User extends Authenticatable
         'postal_code',
         'logo_url',
         'password',
+        'active',
     ];
 
     /**
@@ -51,6 +51,14 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        'name' => 'string',
+        'email' => 'string',
+        'web_url' => 'string',
+        'address' => 'string',
+        'phone_number' => 'string',
+        'postal_code' => 'integer',
+        'logo_url' => 'string',
+        'active' => 'boolean',
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];

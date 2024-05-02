@@ -33,9 +33,9 @@
                     </a>
                 </div>
                 <div class="my-auto me-5 pe-5 letter-title">
-                    <input type="text" name="title" id="title" value="{{ $title }}"
+                    <input type="text" name="title" id="title" value="{{ $commons->title }}"
                         class="me-5 pe-5 form-control bg-transparent text-white text-center d-none" style="width: 40rem;">
-                    <h6 class="my-auto me-5 pe-4">{{ $title }} <i class="fa-solid fa-pencil fs-6"></i></h6>
+                    <h6 class="my-auto me-5 pe-4">{{ $commons->title }} <i class="fa-solid fa-pencil fs-6"></i></h6>
                 </div>
                 <div class="me-5">
                     {{-- <button class="btn btn-warning me-2"><i class="fa-solid fa-rotate-left"></i></button>

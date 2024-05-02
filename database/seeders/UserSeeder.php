@@ -18,11 +18,11 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = \App\Models\User::factory(50)->create();
+        // $users = \App\Models\User::factory(50)->create();
 
-        foreach($users as $user) {
-            $user->assignRole("user");
-        }
+        // foreach($users as $user) {
+        //     $user->assignRole("user");
+        // }
 
         $user = User::create([
             'name' => "Metro Indonesian Software",

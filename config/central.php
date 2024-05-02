@@ -19,65 +19,86 @@ return [
   // letter type and letter rules name of each type
   "letter_types" => [
     "Surat Mutasi Karyawan" => [
-        "type" => "employee_mutation",
+        // ? clear
+        "rule" => "employee_mutation",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.mutasi.index",
     ],
     "Surat Promosi Karyawan" => [
-        "type" => "employee_promotion",
+        // ? clear
+        "rule" => "employee_promotion",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.promosi_karyawan.index",
     ],
     "Surat Demosi Karyawan" => [
-        "type" => "employee_demotion",
+        // ? clear
+        "rule" => "employee_demotion",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.demosi.index",
     ],
     "Surat Perjanjian PKWT" => [
-        "type" => "pkwt_agreement",
+        // ? clear
+        "rule" => "pkwt_agreement",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.surat_lamaran",
     ],
     "Surat Perjanjian PKWTT" => [
-        "type" => "pkwtt_agreement",
+        // ? clear
+        "rule" => "pkwtt_agreement",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.surat_lamaran",
     ],
     "Surat Penawaran Layanan" => [
-        "type" => "service_offering",
+        // ? clear
+        "rule" => "service_offering",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.penawaran_layanan.index",
     ],
-    // "Surat Pengunduran Diri" => [
-    //     "type" => "resign",
-    //     "image" => "assets/img/surat.jpg",
-    //     "view" => "user.buat_surat.surat_lamaran",
-    // ],
     "Surat Peringatan" => [
-        "type" => "warning",
+        // ? clear
+        "rule" => "warning",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.peringatan.index",
     ],
-    // "Surat Invoice" => "invoice", // TODO: kira-kira apa aja ya datanya?
+    "Surat Invoice" => [
+        // ? clear
+        "rule" => "invoice",
+        "image" => "assets/img/surat.jpg",
+        "view" => "user.buat_surat.surat_lamaran",
+    ],
     "Surat Pemberitahuan" => [
-        "type" => "announcement",
+        // ? clear
+        "rule" => "announcement",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.pemberitahuan.index",
     ],
     "Surat Balasan"=> [
-        "type" => "response",
+        // ?clear
+        "rule" => "response",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.balasan.index",
     ],
-    // "Surat Penawaran Harga" => "quotation", // TODO: tunggu invoice dulu deh
-    // "Surat Konfirmasi Pesanan" => "order_confirmation", // TODO: tunggu invoice dulu
+    "Surat Penawaran Harga" => [
+        // ? clear
+        "rule" => "quotation",
+        "image" => "assets/img/surat.jpg",
+        "view" => "user.buat_surat.surat_lamaran",
+    ],
+    "Surat Konfirmasi Pesanan" => [
+        // ? clear
+        "rule" => "order_confirmation",
+        "image" => "assets/img/surat.jpg",
+        "view" => "user.buat_surat.surat_lamaran",
+    ],
     "Surat Undangan" => [
-        "type" => "invitation",
+        // ? clear
+        "rule" => "invitation",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.undangan.index",
     ],
     "Surat Permohonan" => [
-        "type" => "application",
+        // ? clear
+        "rule" => "application",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.permohonan.index",
     ],

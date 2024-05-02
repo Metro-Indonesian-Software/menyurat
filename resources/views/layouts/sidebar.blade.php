@@ -35,14 +35,12 @@
             </li>
         @endcan
 
-        @can('letters_manage')
-            <li class="sidebar-item mb-2">
-                <a href="{{ route('profile.edit') }}"
-                    class="sidebar-link
-            {{ Route::currentRouteName() === 'profile.edit' ? 'active' : '' }}"> <i
-                        class="fa-solid fa-user"></i> <span>Profil Perusahaan</span></a>
-            </li>
-        @endcan
+        <li class="sidebar-item mb-2">
+            <a href="{{ route('profile.edit') }}"
+                class="sidebar-link
+        {{ Route::currentRouteName() === 'profile.edit' ? 'active' : '' }}"> <i
+                    class="fa-solid fa-user"></i> <span>Profil Perusahaan</span></a>
+        </li>
 
     </ul>
     {{-- <div class="sidebar-footer mb-2">

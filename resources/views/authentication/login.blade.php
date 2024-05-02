@@ -47,7 +47,7 @@
                     @csrf
                     <div class="d-flex flex-column mb-3 mt-4">
                         <label for="email" class="mb-1"><strong>Email</strong></label>
-                        <input type="text" value="{{ old("email") }}" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email...">
+                        <input type="text" value="{{ old("email") }}" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email..." required>
 
                         @error("email")
                             <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
 
                     <div class="d-flex flex-column  ">
                         <label for="password" class="mb-1"><strong>Password</strong></label>
-                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password..." autocomplete="off">
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password..." autocomplete="off" required>
 
                         @error("password")
                             <span class="invalid-feedback" role="alert">

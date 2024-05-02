@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\Scopes\CommonLogByUserScope;
 use App\Models\Scopes\OrderByScope;
-use App\Models\Scopes\SearchScope;
+use App\Observers\CommonLetterLogObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,10 +27,23 @@ class CommonLetterLog extends Model
         'number_of_letter',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'user_id' => 'string',
+        'title' => 'string',
+        'type' => 'string',
+        'number_of_letter' => 'string',
+    ];
+
     protected static function booted(): void
     {
         static::addGlobalScope(new OrderByScope(request()->query("orderBy")));
-        static::addGlobalScope(new CommonLogByUserScope);
+        static::addGlobalScope(new CommonLogByUserScope); // TODO TEST: kalau mau test di comment dulu
+        CommonLetterLog::observe(CommonLetterLogObserver::class);
     }
 
     public function scopeSearch(Builder $builder, $keyword)

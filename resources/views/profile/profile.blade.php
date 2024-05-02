@@ -83,7 +83,7 @@
                     <label for="phone_number" class="mb-1">
                         <strong>Nomor Telepon<sup class="text-danger fs-6">*</sup></strong>
                     </label>
-                    <input type="text" name="phone_number" value="{{ old('phone_number') ?? $user->phone_number }}"
+                    <input type="tel" name="phone_number" value="{{ old('phone_number') ?? $user->phone_number }}"
                         class="form-control @error('phone_number') is-invalid @enderror" id="phone_number"
                         placeholder="Nomor telpon (08xx)..." required>
 

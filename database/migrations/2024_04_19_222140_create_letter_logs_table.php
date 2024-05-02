@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('common_letter_log_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('field_name');
-            $table->text('field_value');
+            $table->text('field_value')->nullable();
             $table->timestamps();
         });
 

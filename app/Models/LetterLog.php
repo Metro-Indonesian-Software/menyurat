@@ -23,12 +23,13 @@ class LetterLog extends Model
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
-        'common_letter_log_id' => 'integer',
+        'common_letter_log_id' => 'string',
+        'field_name' => 'string',
     ];
 
     public function commonLetterLog(): BelongsTo

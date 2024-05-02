@@ -14,7 +14,7 @@ class UpdateCommonLetterLogRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->hasPermissionTo("letters_manage");
+        return true;
     }
 
     /**
