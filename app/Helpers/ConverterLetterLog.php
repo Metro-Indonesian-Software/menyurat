@@ -3,10 +3,15 @@
 namespace App\Helpers;
 
 use App\Models\CommonLetterLog;
-use Illuminate\Http\Response;
+use DateTime;
 use stdClass;
 
 class ConverterLetterLog {
+    protected static function validateDate($date, $format) {
+        $result = DateTime::createFromFormat($format, $date);
+        return $result && $result->format($format) === $date ? $date : null;
+    }
+
     protected static function castType($data, $type) {
         switch ($type) {
             case 'string':
@@ -28,13 +33,13 @@ class ConverterLetterLog {
                 return number_format(floatval($data), 2);
 
             case 'date':
-                return date("Y-m-d", strtotime($data));
+                return self::validateDate($data, "Y-m-d");
 
             case 'time':
-                return date("H:i:s", strtotime($data));
+                return self::validateDate($data, "H:i:s");
 
             case 'datetime':
-                return date("Y-m-d H:i:s", strtotime($data));
+                return self::validateDate($data, "Y-m-d H:i:s");
 
             default:
                 return $data;
@@ -44,16 +49,10 @@ class ConverterLetterLog {
     protected static function castGetArray($data, $type) {
         switch ($type) {
             case 'array':
-                if($data === null) {
-                    return [];
-                }
-                return json_decode($data);
+                return $data !== null ? json_decode($data) : [];
 
             case 'object':
-                if($data === null) {
-                    return [];
-                }
-                return json_decode($data, true);
+                return $data !== null ? json_decode($data, true) : [];
 
             default:
                 return $data;
@@ -76,10 +75,7 @@ class ConverterLetterLog {
 
     public static function setCheckType($data, $type) {
         if($type === "array" || $type === "object") {
-            if($data === null) {
-                return json_encode([]);
-            }
-            return json_encode($data);
+            return $data !== null ? json_encode($data) : json_encode([]);
         }
         else if(gettype($data) !== $type && $data !== null) {
             return self::castType($data, $type);

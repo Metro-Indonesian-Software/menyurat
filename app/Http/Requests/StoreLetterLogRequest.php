@@ -3,9 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\CommonLetterLog;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 
 class StoreLetterLogRequest extends FormRequest
