@@ -75,7 +75,7 @@ return [
          * atribut name di html : event_time
          */
         "event_time" => [
-            "validate" => "nullable|date_format:H:m:s",
+            "validate" => "nullable|date_format:H:i:s",
             "cast" => "time",
         ],
 

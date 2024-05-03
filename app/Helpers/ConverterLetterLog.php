@@ -31,10 +31,10 @@ class ConverterLetterLog {
                 return date("Y-m-d", strtotime($data));
 
             case 'time':
-                return date("H:m:s", strtotime($data));
+                return date("H:i:s", strtotime($data));
 
             case 'datetime':
-                return date("Y-m-d H:m:s", strtotime($data));
+                return date("Y-m-d H:i:s", strtotime($data));
 
             default:
                 return $data;
