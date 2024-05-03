@@ -2,57 +2,133 @@
 
 return [
     "data" => [
+        /**
+         * @param string
+         * ? Nama pihak pertama
+         * cara akses data : $variable["first_name"]
+         * atribut name di html : first_name
+         */
         "first_name" => [
             "validate" => "nullable|string|min:3",
             "cast" => "string",
         ],
+
+        /**
+         * @param string
+         * ? Jabatan pihak pertama
+         * cara akses data : $variable["first_position"]
+         * atribut name di html : first_position
+         */
         "first_position" => [
             "validate" => "nullable|string",
             "cast" => "string",
         ],
+
+        /**
+         * @param string
+         * ? Alamat pihak pertama
+         * cara akses data : $variable["first_address"]
+         * atribut name di html : first_address
+         */
         "first_address" => [
             "validate" => "nullable|string|min:5",
             "cast" => "string",
         ],
+
+        /**
+         * @param string
+         * ? Nama pihak kedua
+         * cara akses data : $variable["second_name"]
+         * atribut name di html : second_name
+         */
         "second_name" => [
             "validate" => "nullable|string|min:3",
             "cast" => "string",
         ],
+
+        /**
+         * @param string
+         * ? Tempat lahir pihak kedua
+         * cara akses data : $variable["second_place_of_birth"]
+         * atribut name di html : second_place_of_birth
+         */
         "second_place_of_birth" => [
             "validate" => "nullable|string|min:5",
             "cast" => "string",
         ],
+
+        /**
+         * @param date
+         * ? Tanggal lahir pihak kedua
+         * cara akses data : $variable["second_date_of_birth"]
+         * atribut name di html : second_date_of_birth
+         */
         "second_date_of_birth" => [
             "validate" => "nullable|date",
             "cast" => "date",
         ],
+
+        /**
+         * @param string
+         * ? Alamat pihak kedua
+         * cara akses data : $variable["second_address"]
+         * atribut name di html : second_address
+         */
         "second_address" => [
             "validate" => "nullable|string|min:5",
             "cast" => "string",
         ],
+
+        /**
+         * @param array
+         * ? Pasal-pasal
+         * cara akses data : lakukan foreach dari data $variable["sections"]
+         */
         "sections" => [
-            /**
-             * array biasa berisikan array assosiative
-             * cara akses data : sections[$index]["key"]
-             * atribut name di html : sections[]["title"] atau sections[$index]["title"]
-             */
             "validate" => "nullable|array",
             "cast" => "array",
             "items" => [
+                /**
+                 * @param string
+                 * ? Judul pasal
+                 * cara akses data : $item["title"]
+                 * atribut name di html : sections[$index]["title"]
+                 */
                 "title" => [
                     "validate" => "required_with:sections.*.contents|string|min:3",
                     "cast" => "string"
                 ],
+
+                /**
+                 * @param string
+                 * ? Isi pasal
+                 * cara akses data : $item["contents"]
+                 * atribut name di html : sections[$index]["contents"]
+                 */
                 "contents" => [
                     "validate" => "required_with:sections.*.title|string",
                     "cast" => "string",
                 ],
             ]
         ],
+
+        /**
+         * @param string
+         * ? Tempat tanda tangan surat
+         * cara akses data : $variable["signed_place"]
+         * atribut name di html : signed_place
+         */
         "signed_place" => [
             "validate" => "nullable|string|min:5",
             "cast" => "string",
         ],
+
+        /**
+         * @param date
+         * ? Tanggal tanda tangan surat
+         * cara akses data : $variable["signed_date"]
+         * atribut name di html : signed_date
+         */
         "signed_date" => [
             "validate" => "nullable|date",
             "cast" => "date",
