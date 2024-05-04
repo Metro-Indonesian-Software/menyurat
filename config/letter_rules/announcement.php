@@ -118,7 +118,7 @@ return [
          * atribut name di html : signed_position
          */
         "signed_position" => [
-            "validate" => "string",
+            "validate" => "nullable|string",
             "cast" => "string",
         ],
     ],

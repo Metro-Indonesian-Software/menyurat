@@ -13,13 +13,13 @@
                 <div class="image-container rounded">
                     @if ($user->logo_url)
                         <img src="{{ asset('storage/' . $user->logo_url) }}" class="img-preview rounded"
-                            style="width: 215px;height:215px;margin:0;object-fit: cover">
+                            style="width: 215px;height:215px;margin:0;object-fit: cover" alt="Logo perusahaan">
                         <input type="file" name="logo" id="logo" accept="image/*"
                             value="{{ old('logo') ?? $user->logo_url }}"
                             class="form-control @error('logo') is-invalid @enderror" onchange="previewImage()">
                     @else
                         <img src="{{ asset('assets/img/profil2.png') }}" class="img-preview rounded"
-                            style="width: 215px;height:215px;margin:0;object-fit: cover">
+                            style="width: 215px;height:215px;margin:0;object-fit: cover" alt="Logo perusahaan">
                         <input type="file" name="logo" id="logo" accept="image/*"
                             value="{{ old('logo') ?? $user->logo_url }}"
                             class="form-control @error('logo') is-invalid @enderror" onchange="previewImage()">
