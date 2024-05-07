@@ -49,7 +49,7 @@ class ConverterLetterLog {
     protected static function castGetArray($data, $type) {
         switch ($type) {
             case 'array':
-                return $data !== null ? json_decode($data) : [];
+                return $data !== null ? array_values(json_decode($data)) : [];
 
             case 'object':
                 return $data !== null ? json_decode($data, true) : [];
@@ -74,8 +74,11 @@ class ConverterLetterLog {
     }
 
     public static function setCheckType($data, $type) {
-        if($type === "array" || $type === "object") {
-            return $data !== null ? json_encode($data) : json_encode([]);
+        if($type === "array") {
+            return $data !== null ? json_encode(array_values($data)) : null;
+        }
+        else if($type === "object") {
+            return $data !== null ? json_encode($data) : null;
         }
         else if(gettype($data) !== $type && $data !== null) {
             return self::castType($data, $type);

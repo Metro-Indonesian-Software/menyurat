@@ -1,155 +1,406 @@
 @extends('layouts.letter_main')
 @section('letter_content')
     <div class="create w-50 p-5 ">
-        <div class="accordion  accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header  ">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tempat_tanggal"
-                        aria-expanded="true" aria-controls="tempat_tanggal"><strong>
-                            Tempat dan Tanggal Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="tempat_tanggal" class="accordion-collapse collapse show">
-                    <div class="accordion-body row ">
-                        <div class="col-md-6">
-                            <label for="tempat">Tempat</label>
-                            <input name="tempat" id="tempat" class="form-control mb-3 w-100" type="text">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="tanggal">Tanggal</label>
-                            <input name="tanggal" id="tanggal" class="form-control w-100" type="date">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#informasi_surat" aria-expanded="false" aria-controls="informasi_surat">
-                        <strong>
-                            Informasi Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="informasi_surat" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <label for="">Nama Karyawan</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Jabatan (semula)</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Gaji Pokok (semula)</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Lokasi kantor yang baru</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <div id="tambah_informasi_surat_1"></div>
-                        <div class="d-flex">
-                            <button class="btn btn-white-2 w-100 mb-2" id="button_tambah_informasi_surat_1">Tambah</button>
-                        </div>
-                        <label for="">jabatan Baru (Menjadi)</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Gaji Pokok Baru (Menjadi)</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <div id="tambah_informasi_surat_2"></div>
-                        <div class="d-flex">
-                            <button class="btn btn-white-2 w-100" id="button_tambah_informasi_surat_2">Tambah</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#isi_surat" aria-expanded="false" aria-controls="isi_surat">
-                        <strong>
-                            isi Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="isi_surat" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <label><strong>Menimbang</strong></label>
-                            </div>
-                            <div class="col-md-9">
-                                <label for="">Poin 1</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Poin 2</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Poin 3</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <div id="tambah_menimbang"></div>
-                                <div class="d-flex">
-                                    <button class="btn btn-white-2 w-100 mb-2"
-                                        id="button_tambah_menimbang">Tambah</button>
-                                    <div class="">
-                                        <button class="btn btn-danger ms-2" id="hapus_menimbang"
-                                            style="display: none; border: 1px solid #fc544b"
-                                            onclick="hapusMenimbang()">Hapus</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <label><strong>Mengingatkan</strong></label>
-                            </div>
-                            <div class="col-md-9">
-                                <label for="">Poin 1</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Poin 2</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Poin 3</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <div id="tambah_mengingatkan"></div>
-                                <div class="d-flex">
-                                    <button class="btn btn-white-2 w-100 mb-2"
-                                        id="button_tambah_mengingatkan">Tambah</button>
-                                    <div class="">
-                                        <button class="btn btn-danger ms-2" id="hapus_mengingatkan"
-                                            style="display: none; border: 1px solid #fc544b"
-                                            onclick="hapusMengingatkan()">Hapus</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <label><strong>Memutuskan</strong></label>
-                            </div>
-                            <div class="col-md-9">
-                                <label for="">Pertama</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Kedua</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#informasi_surat_2" aria-expanded="false" aria-controls="informasi_surat_2">
-                        <strong>
-                            Informasi Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="informasi_surat_2" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <label for="">Nama Penanda Tangan</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Jabatan Penanda Tangan</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="" class="btn btn-primer mt-4">Simpan</a>
+        <form action="{{ route('letter.log.store', ['commonLetterLog' => $commonLog->id]) }}" method="post"
+            id="input-letter-form">
+            @csrf
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border-bottom">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tempat_tanggal"
+                            aria-expanded="true" aria-controls="tempat_tanggal"><strong>
+                                Tempat dan Tanggal Surat
+                            </strong>
+                        </button>
+                    </h2>
 
+                    <div id="tempat_tanggal" class="accordion-collapse collapse show">
+                        <div class="accordion-body row mb-3">
+                            <div class="col-md-6">
+                                <label for="signed_place">Tempat</label>
+                                <input type="text" name="signed_place" value="{{ old('signed_place') ?? $logs['signed_place'] }}"
+                                    class="form-control @error('signed_place') is-invalid @enderror" id="signed_place">
+
+                                @error('signed_place')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="signed_date">Tanggal</label>
+                                <input type="date" name="signed_date" value="{{ old('signed_date') ?? $logs['signed_date'] }}"
+                                    class="form-control @error('signed_date') is-invalid @enderror" id="signed_date">
+
+                                @error('signed_date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border-bottom">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#informasi_surat" aria-expanded="false" aria-controls="informasi_surat">
+                            <strong>
+                                Informasi Surat
+                            </strong>
+                        </button>
+                    </h2>
+
+                    <div id="informasi_surat" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <div class="mb-3">
+                                <label for="employee_name">Nama Karyawan</label>
+                                <input type="text" name="employee_name"
+                                    value="{{ old('employee_name') ?? $logs['employee_name'] }}"
+                                    class="form-control @error('employee_name') is-invalid @enderror" id="employee_name">
+
+                                @error('employee_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="position">Jabatan (semula)</label>
+                                <input type="text" name="position" value="{{ old('position') ?? $logs['position'] }}"
+                                    class="form-control @error('position') is-invalid @enderror" id="position">
+
+                                @error('position')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="salary">Gaji Pokok (semula)</label>
+                                <input type="number" name="salary" value="{{ old('salary') ?? $logs['salary'] }}"
+                                    class="form-control @error('salary') is-invalid @enderror" id="salary">
+
+                                @error('salary')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div id="optional_data">
+                                @if(old("optionals"))
+                                    @foreach (old("optionals") as $index => $item)
+                                        <div class="mb-3">
+                                            <div class="d-flex gap-2">
+                                                <div class="w-100">
+                                                    <input type="text" name="{{ sprintf('optionals[%s][key]', $index) }}"
+                                                        value="{{ old(sprintf('optionals.%s.key', $index)) }}"
+                                                        class="form-control fw-bold
+                                                            @error(sprintf("optionals.%s.key", $index)) is-invalid @enderror"
+                                                        id="{{ sprintf('optionals-%s-key', $index) }}"
+                                                        placeholder="Masukkan judul..." required>
+
+                                                    @error(sprintf("optionals.%s.key", $index))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div>
+                                                    <button type="button" class="btn btn-danger"
+                                                        onclick="removeOldOptionalData(this)">Hapus</button>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" name="{{ sprintf('optionals[%s][value]', $index) }}"
+                                                value="{{ old(sprintf('optionals.%s.value', $index)) }}"
+                                                class="form-control mt-3
+                                                    @error(sprintf("optionals.%s.value", $index)) is-invalid @enderror"
+                                                id="{{ sprintf('optionals-%s-value', $index) }}"
+                                                placeholder="Masukkan Isi..." required>
+
+                                            @error(sprintf("optionals.%s.value", $index))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    @endforeach
+
+                                @else
+                                    @foreach ($logs["optionals"] as $index => $item)
+                                        <div class="mb-3">
+                                            <div class="d-flex gap-2 mb-3">
+                                                <input type="text" name="{{ sprintf('optionals[%s][key]', $index) }}"
+                                                    value="{{ $item["key"] }}" class="form-control fw-bold"
+                                                    id="{{ sprintf('optionals-%s-key', $index) }}"
+                                                    placeholder="Masukkan judul..." required>
+
+                                                <button type="button" class="btn btn-danger"
+                                                    onclick="removeOptionalData(this)">Hapus</button>
+                                            </div>
+
+                                            <input type="text" name="{{ sprintf('optionals[%s][value]', $index) }}"
+                                                value="{{ $item["value"] }}" class="form-control"
+                                                id="{{ sprintf('optionals-%s-value', $index) }}"
+                                                placeholder="Masukkan Isi..." required>
+                                        </div>
+                                    @endforeach
+
+                                @endif
+                            </div>
+
+                            <div class="d-flex mb-3">
+                                <button type="button" class="btn btn-white-2 w-100" id="button_add_optional_data"
+                                    onclick="addOptionalData()">Tambah</button>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="new_position">Jabatan Baru (Menjadi)</label>
+                                <input type="text" name="new_position" value="{{ old('new_position') ?? $logs['new_position'] }}"
+                                    class="form-control @error('new_position') is-invalid @enderror" id="new_position">
+
+                                @error('new_position')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="new_salary">Gaji Pokok Baru (Menjadi)</label>
+                                <input type="number" name="new_salary" value="{{ old('new_salary') ?? $logs['new_salary'] }}"
+                                    class="form-control @error('new_salary') is-invalid @enderror" id="new_salary">
+
+                                @error('new_salary')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div id="new_optional_data">
+                                @if(old("new_optionals"))
+                                    @foreach (old("new_optionals") as $index => $item)
+                                        <div class="mb-3">
+                                            <div class="d-flex gap-2">
+                                                <div class="w-100">
+                                                    <input type="text" name="{{ sprintf('new_optionals[%s][key]', $index) }}"
+                                                        value="{{ old(sprintf('new_optionals.%s.key', $index)) }}"
+                                                        class="form-control fw-bold
+                                                            @error(sprintf("new_optionals.%s.key", $index)) is-invalid @enderror"
+                                                        id="{{ sprintf('new_optionals-%s-key', $index) }}"
+                                                        placeholder="Masukkan judul..." required>
+
+                                                    @error(sprintf("new_optionals.%s.key", $index))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div>
+                                                    <button type="button" class="btn btn-danger"
+                                                        onclick="removeOldNewOptionalData(this)">Hapus</button>
+                                                </div>
+                                            </div>
+
+                                            <input type="text" name="{{ sprintf('new_optionals[%s][value]', $index) }}"
+                                                value="{{ old(sprintf('new_optionals.%s.value', $index)) }}"
+                                                class="form-control mt-3
+                                                    @error(sprintf("new_optionals.%s.value", $index)) is-invalid @enderror"
+                                                id="{{ sprintf('new_optionals-%s-value', $index) }}"
+                                                placeholder="Masukkan Isi..." required>
+
+                                            @error(sprintf("new_optionals.%s.value", $index))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    @endforeach
+
+                                @else
+                                    @foreach ($logs["new_optionals"] as $index => $item)
+                                        <div class="mb-3">
+                                            <div class="d-flex gap-2 mb-3">
+                                                <input type="text" name="{{ sprintf('new_optionals[%s][key]', $index) }}"
+                                                    value="{{ $item["key"] }}" class="form-control fw-bold"
+                                                    id="{{ sprintf('new_optionals-%s-key', $index) }}"
+                                                    placeholder="Masukkan judul..." required>
+
+                                                <button type="button" class="btn btn-danger"
+                                                    onclick="removeNewOptionalData(this)">Hapus</button>
+                                            </div>
+
+                                            <input type="text" name="{{ sprintf('new_optionals[%s][value]', $index) }}"
+                                                value="{{ $item["value"] }}" class="form-control"
+                                                id="{{ sprintf('new_optionals-%s-value', $index) }}"
+                                                placeholder="Masukkan Isi..." required>
+                                        </div>
+                                    @endforeach
+
+                                @endif
+                            </div>
+
+                            <div class="d-flex mb-3">
+                                <button type="button" class="btn btn-white-2 w-100" id="button_add_new_optional_data"
+                                    onclick="addNewOptionalData()">Tambah</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border-bottom">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#isi_surat" aria-expanded="false" aria-controls="isi_surat">
+                            <strong>
+                                isi Surat
+                            </strong>
+                        </button>
+                    </h2>
+
+                    <div id="isi_surat" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label><strong>Menimbang</strong></label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div id="considerings_data">
+                                        @foreach ($logs["considerings"] as $index => $item)
+                                            <div class="mb-3">
+                                                <label for="{{ sprintf('considerings-%s', $index) }}">Poin {{ $loop->iteration }}</label>
+                                                <textarea name="considerings[]" class="form-control"
+                                                    id="{{ sprintf('considerings-%s', $index) }}" rows="3" required>{{ $item }}</textarea>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+                                    <div class="d-flex">
+                                        <button type="button" class="btn btn-white-2 w-100"
+                                            id="button_add_considerings_data" onclick="addConsiderings()">Tambah</button>
+                                        <button type="button"
+                                            class="btn btn-danger ms-2 @if(count($logs['considerings']) <= 1) d-none @endif"
+                                            id="button_remove_considerings_data"
+                                            onclick="removeConsiderings()">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label><strong>Mengingatkan</strong></label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div id="rememberings_data">
+                                        @foreach ($logs["rememberings"] as $index => $item)
+                                            <div class="mb-3">
+                                                <label for="{{ sprintf('rememberings-%s', $index) }}">Poin {{ $loop->iteration }}</label>
+                                                <textarea name="rememberings[]" class="form-control"
+                                                    id="{{ sprintf('rememberings-%s', $index) }}" rows="3">{{ $item }}</textarea>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+                                    <div class="d-flex">
+                                        <button type="button" class="btn btn-white-2 w-100"
+                                            id="button_add_rememberings_data" onclick="addRememberings()">Tambah</button>
+                                        <button type="button"
+                                            class="btn btn-danger ms-2 @if(count($logs['rememberings']) <= 1) d-none @endif"
+                                            id="button_remove_rememberings_data"
+                                            onclick="removeRememberings()">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label><strong>Memutuskan</strong></label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-3">
+                                        <label for="decidings_first">Pertama</label>
+                                        <textarea name="decidings[first]"
+                                            class="form-control @error('decidings.first') is-invalid @enderror"
+                                            id="decidings_first" rows="3">{{ old('decidings.first') ?? $logs["decidings"]["first"] }}</textarea>
+
+                                        @error('decidings.first')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="decidings_second">Kedua</label>
+                                        <textarea name="decidings[second]"
+                                            class="form-control @error('decidings.second') is-invalid @enderror"
+                                            id="decidings_second" rows="3">{{ old('decidings.second') ?? $logs["decidings"]["second"] }}</textarea>
+
+                                        @error('decidings.second')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border-bottom">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#informasi_surat_2" aria-expanded="false" aria-controls="informasi_surat_2">
+                            <strong>
+                                Informasi Surat
+                            </strong>
+                        </button>
+                    </h2>
+
+                    <div id="informasi_surat_2" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <div class="mb-3">
+                                <label for="signed_name">Nama Penanda Tangan</label>
+                                <input type="text" name="signed_name" value="{{ old('signed_name') ?? $logs['signed_name'] }}"
+                                    class="form-control @error('signed_name') is-invalid @enderror" id="signed_name">
+
+                                @error('signed_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="signed_position">Jabatan Penanda Tangan</label>
+                                <input type="text" name="signed_position"
+                                    value="{{ old('signed_position') ?? $logs['signed_position'] }}"
+                                    class="form-control @error('signed_position') is-invalid @enderror" id="signed_position">
+
+                                @error('signed_position')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primer mt-4">Simpan</button>
+        </form>
     </div>
+
     <div class="preview w-50 ">
         <div class="m-5">
             <div class="surat">
@@ -240,120 +491,5 @@
     </div>
 
 
-
-    <script>
-        // tambah informasi surat 1
-        document.getElementById('button_tambah_informasi_surat_1').addEventListener('click', function() {
-            var tambah_informasi_surat_1 = document.getElementById('tambah_informasi_surat_1');
-            var divInputan1 = document.createElement('div');
-            divInputan1.classList.add('mb-3');
-            divInputan1.setAttribute('id', 'tambah_inputan_baru');
-            divInputan1.innerHTML = `
-                <div class="d-flex gap-2">
-                    <input name="judul" class="form-control mb-3 fw-bold" type="text" placeholder="Masukkan judul">
-                    <div>
-                        <button class="btn btn-danger" onclick="hapus_informasi_surat_1(this)">Hapus</button>
-                    </div>
-                </div>
-                <input name="isi" class="form-control mb-3" type="text" placeholder="Masukkan Isi">
-            `;
-            tambah_informasi_surat_1.appendChild(divInputan1);
-        });
-
-        function hapus_informasi_surat_1(button) {
-            var divInputan1 = button.parentNode.parentNode.parentNode;
-            divInputan1.parentNode.removeChild(divInputan1);
-        }
-
-        // tambah informasi surat 2
-        document.getElementById('button_tambah_informasi_surat_2').addEventListener('click', function() {
-            var tambah_informasi_surat_2 = document.getElementById('tambah_informasi_surat_2');
-            var divInputan2 = document.createElement('div');
-            divInputan2.classList.add('mb-3');
-            divInputan2.setAttribute('id', 'tambah_inputan_baru');
-            divInputan2.innerHTML = `
-                <div class="d-flex gap-2">
-                    <input name="judul" class="form-control mb-3 fw-bold" type="text" placeholder="Masukkan judul">
-                    <div>
-                        <button class="btn btn-danger" onclick="hapus_informasi_surat_2(this)">Hapus</button>
-                    </div>
-                </div>
-                <input name="isi" class="form-control mb-3" type="text" placeholder="Masukkan Isi">
-            `;
-            tambah_informasi_surat_2.appendChild(divInputan2);
-        });
-
-        function hapus_informasi_surat_2(button) {
-            var divInputan2 = button.parentNode.parentNode.parentNode;
-            divInputan2.parentNode.removeChild(divInputan2);
-        }
-
-        // tambah menimbang
-        var nextNumber_menimbang = 4;
-        document.getElementById('button_tambah_menimbang').addEventListener('click', function() {
-            var tambah_menimbang = document.getElementById('tambah_menimbang');
-            var divtambah_menimbang = document.createElement('div');
-            divtambah_menimbang.classList.add('mb-3');
-            var currentNumber =
-                nextNumber_menimbang++;
-            divtambah_menimbang.innerHTML = `
-        <div class="d-flex justify-content-between test">
-            <label for="">Poin ${currentNumber}</label>
-        </div>
-        <input name="" id="" class="form-control mb-3" type="text">
-    `;
-            tambah_menimbang.appendChild(divtambah_menimbang);
-            document.getElementById('hapus_menimbang').style.display = 'block';
-        });
-
-        function hapusMenimbang() {
-            var tambah_menimbang = document.getElementById('tambah_menimbang');
-            var inputs = tambah_menimbang.querySelectorAll('.mb-3');
-            var test = tambah_menimbang.querySelectorAll('.test');
-            // Hapus elemen input dan label terakhir jika ada
-            if (inputs.length > 0) {
-                var lastInputContainer = inputs[inputs.length - 1].parentNode;
-                tambah_menimbang.removeChild(lastInputContainer);
-                nextNumber_menimbang--; // Kurangi nomor urut
-            }
-            // Jika tidak ada input lagi, sembunyikan tombol hapus
-            if (test.length === 1) {
-                document.getElementById('hapus_menimbang').style.display = 'none';
-            }
-        }
-
-        // tambah mengingatkan
-        var nextNumber_mengingatkan = 4;
-        document.getElementById('button_tambah_mengingatkan').addEventListener('click', function() {
-            var tambah_mengingatkan = document.getElementById('tambah_mengingatkan');
-            var divtambah_mengingatkan = document.createElement('div');
-            divtambah_mengingatkan.classList.add('mb-3');
-            var currentNumber =
-                nextNumber_mengingatkan++;
-            divtambah_mengingatkan.innerHTML = `
-        <div class="d-flex justify-content-between test">
-            <label for="">Poin ${currentNumber}</label>
-        </div>
-        <input name="" id="" class="form-control mb-3" type="text">
-    `;
-            tambah_mengingatkan.appendChild(divtambah_mengingatkan);
-            document.getElementById('hapus_mengingatkan').style.display = 'block';
-        });
-
-        function hapusMengingatkan() {
-            var tambah_mengingatkan = document.getElementById('tambah_mengingatkan');
-            var inputs = tambah_mengingatkan.querySelectorAll('.mb-3');
-            var test = tambah_mengingatkan.querySelectorAll('.test');
-            // Hapus elemen input dan label terakhir jika ada
-            if (inputs.length > 0) {
-                var lastInputContainer = inputs[inputs.length - 1].parentNode;
-                tambah_mengingatkan.removeChild(lastInputContainer);
-                nextNumber_mengingatkan--; // Kurangi nomor urut
-            }
-            // Jika tidak ada input lagi, sembunyikan tombol hapus
-            if (test.length === 1) {
-                document.getElementById('hapus_mengingatkan').style.display = 'none';
-            }
-        }
-    </script>
+    <script src="{{ asset('assets/js/buat_surat/promosi.js') }}"></script>
 @endsection

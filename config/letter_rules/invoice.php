@@ -81,10 +81,11 @@ return [
                  * @param string
                  * ? Nama barang
                  * cara akses data : $item["name"]
-                 * atribut name di html : invoice_details[$index]["name"]
+                 * atribut name di html : invoice_details[$index][name]
+                 * cara akses old dan error : invoice_details.$index.name
                  */
                 "name" => [
-                    "validate" => "required_with:invoice_details.*.quantity,invoice_details.*.price|string|min:3",
+                    "validate" => "required|string|min:3",
                     "cast" => "string",
                 ],
 
@@ -92,10 +93,11 @@ return [
                  * @param integer
                  * ? Jumlah barang
                  * cara akses data : $item["quantity"]
-                 * atribut name di html : invoice_details[$index]["quantity"]
+                 * atribut name di html : invoice_details[$index][quantity]
+                 * cara akses old dan error : invoice_details.$index.quantity
                  */
                 "quantity" => [
-                    "validate" => "required_with:invoice_details.*.name,invoice_details.*.price|integer|min:0",
+                    "validate" => "required|integer|min:0",
                     "cast" => "integer",
                 ],
 
@@ -103,10 +105,11 @@ return [
                  * @param integer
                  * ? Harga satuan barang
                  * cara akses data : $item["price"]
-                 * atribut name di html : invoice_details[$index]["price"]
+                 * atribut name di html : invoice_details[$index][price]
+                 * cara akses old dan error : invoice_details.$index.price
                  */
                 "price" => [
-                    "validate" => "required_with:invoice_details.*.name,invoice_details.*.quantity|integer|min:0",
+                    "validate" => "required|integer|min:0",
                     "cast" => "integer",
                 ],
             ],
@@ -124,10 +127,11 @@ return [
                  * @param integer
                  * ? Nomor akun
                  * cara akses data : $variable["payment_method"]["account_number"]
-                 * atribut name di html : payment_method["account_number"]
+                 * atribut name di html : payment_method[account_number]
+                 * cara akses old dan error : payment_method.account_number
                  */
                 "account_number" => [
-                    "validate" => "required_with:payment_method.account_name,payment_method.payment_name|integer|min:5",
+                    "validate" => "required|integer|min:5",
                     "cast" => "integer",
                 ],
 
@@ -135,10 +139,11 @@ return [
                  * @param string
                  * ? Nama pemilik akun
                  * cara akses data : $variable["payment_method"]["account_name"]
-                 * atribut name di html : payment_method["account_name"]
+                 * atribut name di html : payment_method[account_name]
+                 * cara akses old dan error : payment_method.account_name
                  */
                 "account_name" => [
-                    "validate" => "required_with:payment_method.account_number,payment_method.payment_name|string|min:3",
+                    "validate" => "required|string|min:3",
                     "cast" => "string",
                 ],
 
@@ -146,10 +151,11 @@ return [
                  * @param string
                  * ? Nama metode pembayaran, misal bank Jago dll
                  * cara akses data : $variable["payment_method"]["payment_name"]
-                 * atribut name di html : payment_method["payment_name"]
+                 * atribut name di html : payment_method[payment_name]
+                 * cara akses old dan error : payment_method.payment_name
                  */
                 "payment_name" => [
-                    "validate" => "required_with:payment_method.account_number,payment_method.account_name|string|min:3",
+                    "validate" => "required|string|min:3",
                     "cast" => "string",
                 ],
             ],
@@ -167,7 +173,8 @@ return [
                  * @param double
                  * ? Diskon dalam bentuk persentase
                  * cara akses data : $variable["discount"]["percentage"]
-                 * atribut name di html : discount["percentage"]
+                 * atribut name di html : discount[percentage]
+                 * cara akses old dan error : discount.percentage
                  */
                 "percentage" => [
                     "validate" => "required_without_all:discount.nominal|prohibits:discount.nominal|decimal:0,2|min:0|max:100",
@@ -178,7 +185,8 @@ return [
                  * @param integer
                  * ? Diskon dalam bentuk nominal
                  * cara akses data : $variable["discount"]["nominal"]
-                 * atribut name di html : discount["nominal"]
+                 * atribut name di html : discount[nominal]
+                 * cara akses old dan error : discount.nominal
                  */
                 "nominal" => [
                     "validate" => "required_without_all:discount.percentage|prohibits:discount.percentage|integer|min:0",
@@ -199,7 +207,8 @@ return [
                  * @param double
                  * ? Pajak dalam bentuk persentase
                  * cara akses data : $variable["tax"]["percentage"]
-                 * atribut name di html : tax["percentage"]
+                 * atribut name di html : tax[percentage]
+                 * cara akses old dan error : tax.percentage
                  */
                 "percentage" => [
                     "validate" => "required_without_all:tax.nominal|prohibits:tax.nominal|decimal:0,2|min:0|max:100",
@@ -210,7 +219,8 @@ return [
                  * @param integer
                  * ? Pajak dalam bentuk nominal
                  * cara akses data : $variable["tax"]["nominal"]
-                 * atribut name di html : tax["nominal"]
+                 * atribut name di html : tax[nominal]
+                 * cara akses old dan error : tax.nominal
                  */
                 "nominal" => [
                     "validate" => "required_without_all:tax.percentage|prohibits:tax.percentage|integer|min:0",

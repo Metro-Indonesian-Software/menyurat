@@ -69,7 +69,8 @@ return [
                  * @param string
                  * ? Isi surat paragraf pertama
                  * cara akses data : $variable["contents"]["first"]
-                 * atribut name di html : contents["first"]
+                 * atribut name di html : contents[first]
+                 * cara akses old dan error : contents.first
                  */
                 "first" => [
                     "validate" => "nullable|string|min:10",
@@ -80,7 +81,8 @@ return [
                  * @param array
                  * ? Isi surat paragraf kedua
                  * cara akses data : lakukan foreach dari data $variable["contents"]["second"]
-                 * atribut name di html : contents["second"][]
+                 * atribut name di html : contents[second][]
+                 * cara akses old dan error : contents.second
                  */
                 "second" => [
                     "validate" => "nullable|array",
@@ -91,7 +93,8 @@ return [
                  * @param string
                  * ? Isi surat paragraf ketiga
                  * cara akses data : $variable["contents"]["third"]
-                 * atribut name di html : contents["third"]
+                 * atribut name di html : contents[third]
+                 * cara akses old dan error : contents.third
                  */
                 "third" => [
                     "validate" => "nullable|string|min:10",
@@ -102,7 +105,8 @@ return [
                  * @param string
                  * ? Isi surat paragraf keempat
                  * cara akses data : $variable["contents"]["fourth"]
-                 * atribut name di html : contents["fourth"]
+                 * atribut name di html : contents[fourth]
+                 * cara akses old dan error : contents.fourth
                  */
                 "fourth" => [
                     "validate" => "nullable|string|min:10",

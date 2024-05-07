@@ -7,6 +7,7 @@ return [
          * ? Menimbang
          * cara akses data : lakukan foreach dari data $variable["considerings"]
          * atribut name di html : considerings[]
+         * cara akses old dan error : considerings
          */
         "considerings" => [
             "validate" => "nullable|array",
@@ -18,6 +19,7 @@ return [
          * ? Mengingat
          * cara akses data : lakukan foreach dari data $variable["rememberings"]
          * atribut name di html : rememberings[]
+         * cara akses old dan error : rememberings
          */
         "rememberings" => [
             "validate" => "nullable|array",
@@ -36,7 +38,8 @@ return [
                  * @param string
                  * ? Memutuskan paragraf pertama
                  * cara akses data : $variable["decidings"]["first"]
-                 * atribut name di html : decidings["first"]
+                 * atribut name di html : decidings[first]
+                 * cara akses old dan error : decidings.first
                  */
                 "first" => [
                     "validate" => "nullable|string|min:10",
@@ -47,7 +50,8 @@ return [
                  * @param string
                  * ? Memutuskan paragraf kedua
                  * cara akses data : $variable["decidings"]["second"]
-                 * atribut name di html : decidings["second"]
+                 * atribut name di html : decidings[second]
+                 * cara akses old dan error : decidings.second
                  */
                 "second" => [
                     "validate" => "nullable|string|min:10",
@@ -102,10 +106,11 @@ return [
                  * @param string
                  * ? Kata kunci dari data tambahan
                  * cara akses data : $item["key"]
-                 * atribut name di html : optionals[$index]["key"]
+                 * atribut name di html : optionals[$index][key]
+                 * cara akses old dan error : optionals.$index.key
                  */
                 "key" => [
-                    "validate" => "required_with:optionals.*.value|string|min:3",
+                    "validate" => "required|string|min:3",
                     "cast" => "string",
                 ],
 
@@ -113,10 +118,11 @@ return [
                  * @param string
                  * ? Nilai dari data tambahan
                  * cara akses data : $item["value"]
-                 * atribut name di html : optionals[$index]["value"]
+                 * atribut name di html : optionals[$index][value]
+                 * cara akses old dan error : optionals.$index.value
                  */
                 "value" => [
-                    "validate" => "required_with:optionals.*.key|string|min:3",
+                    "validate" => "required|string|min:3",
                     "cast" => "string",
                 ],
             ],
@@ -157,10 +163,11 @@ return [
                  * @param string
                  * ? Kata kunci dari data tambahan
                  * cara akses data : $item["key"]
-                 * atribut name di html : new_optionals[$index]["key"]
+                 * atribut name di html : new_optionals[$index][key]
+                 * cara akses old dan error : new_optionals.$index.key
                  */
                 "key" => [
-                    "validate" => "required_with:new_optionals.*.value|string|min:3",
+                    "validate" => "required|string|min:3",
                     "cast" => "string",
                 ],
 
@@ -168,10 +175,11 @@ return [
                  * @param string
                  * ? Nilai dari data tambahan
                  * cara akses data : $item["value"]
-                 * atribut name di html : new_optionals[$index]["value"]
+                 * atribut name di html : new_optionals[$index][value]
+                 * cara akses old dan error : new_optionals.$index.value
                  */
                 "value" => [
-                    "validate" => "required_with:new_optionals.*.key|string|min:3",
+                    "validate" => "required|string|min:3",
                     "cast" => "string",
                 ],
             ],

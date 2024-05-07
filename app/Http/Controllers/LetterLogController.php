@@ -17,7 +17,7 @@ class LetterLogController extends Controller
          * TODO View: kode dibawah ini untuk lihat bentuk datanya
          * kalau mau lihat halamannya, comment saja kode baris 21
          */
-        dd($logs);
+        // dd($logs);
 
         $view = config(sprintf("central.letter_types.%s.view", $commonLetterLog->type));
 

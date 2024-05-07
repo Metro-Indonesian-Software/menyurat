@@ -92,10 +92,11 @@ return [
                  * @param string
                  * ? Nama barang
                  * cara akses data : $item["name"]
-                 * atribut name di html : order_details[$index]["name"]
+                 * atribut name di html : order_details[$index][name]
+                 * cara akses old dan error : order_details.$index.name
                  */
                 "name" => [
-                    "validate" => "required_with:order_details.*.quantity,order_details.*.price|string|min:3",
+                    "validate" => "required|string|min:3",
                     "cast" => "string",
                 ],
 
@@ -103,10 +104,11 @@ return [
                  * @param integer
                  * ? Jumlah barang
                  * cara akses data : $item["quantity"]
-                 * atribut name di html : order_details[$index]["quantity"]
+                 * atribut name di html : order_details[$index][quantity]
+                 * cara akses old dan error : order_details.$index.quantity
                  */
                 "quantity" => [
-                    "validate" => "required_with:order_details.*.name,order_details.*.price|integer|min:0",
+                    "validate" => "required|integer|min:0",
                     "cast" => "integer",
                 ],
 
@@ -114,10 +116,11 @@ return [
                  * @param integer
                  * ? Harga satuan barang
                  * cara akses data : $item["price"]
-                 * atribut name di html : order_details[$index]["price"]
+                 * atribut name di html : order_details[$index][price]
+                 * cara akses old dan error : order_details.$index.price
                  */
                 "price" => [
-                    "validate" => "required_with:order_details.*.name,order_details.*.quantity|integer|min:0",
+                    "validate" => "required|integer|min:0",
                     "cast" => "integer",
                 ],
             ],
