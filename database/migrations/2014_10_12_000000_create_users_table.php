@@ -16,13 +16,18 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->text('web_url')->nullable();
-            $table->text('address')->nullable();
+            $table->string('street', 50)->nullable(); // nama jalan
+            $table->foreignId('urban_village_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete(); // kelurahan
+            $table->foreignId('district_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete(); // kecamatan
+            $table->foreignId('region_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete(); // kota/kabupaten
+            $table->foreignId('province_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete(); // provinsi
             $table->string('phone_number')->nullable();
             $table->string('postal_code')->nullable();
             $table->text('logo_url')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean("active")->default(true);
+            $table->boolean("completed")->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

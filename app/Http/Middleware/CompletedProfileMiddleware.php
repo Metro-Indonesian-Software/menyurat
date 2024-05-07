@@ -17,12 +17,7 @@ class CompletedProfileMiddleware
     {
         $user = auth()->user();
 
-        if(
-            $user->address !== null &&
-            $user->phone_number !== null &&
-            $user->postal_code !== null &&
-            $user->logo_url !== null
-        ) {
+        if($user->completed) {
             return $next($request);
         }
 

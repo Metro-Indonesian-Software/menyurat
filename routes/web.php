@@ -40,7 +40,7 @@ Route::middleware(["auth", "prevent_back"])->group(function() {
             /**
              * data user
              */
-            Route::resource('user', UserController::class)->except("edit", "show");
+            Route::resource('user', UserController::class)->except("edit", "show", "update");
         });
 
         Route::group(["middleware" => ["permission:letters_manage"]], function() {

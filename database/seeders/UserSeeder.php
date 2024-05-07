@@ -27,11 +27,16 @@ class UserSeeder extends Seeder
         $user = User::create([
             'name' => "Metro Indonesian Software",
             'email' => "metrosoftware@gmail.com",
-            'address' => fake()->address(),
-            'phone_number' => fake()->phoneNumber(),
-            'postal_code' => fake()->postcode(),
-            'logo_url' => fake()->imageUrl(),
+            'web_url' => 'https://metrosoftware.id',
+            'street' => "Jl. Seberang Padang",
+            'urban_village_id' => 34045,
+            'district_id' => 4301,
+            'region_id' => 446,
+            'province_id' => 36,
+            'phone_number' => "082289608096",
+            'postal_code' => "25214",
             'password' => static::$password ??= Hash::make('password'),
+            'completed' => true,
         ]);
 
         $user->assignRole("admin");
@@ -39,11 +44,15 @@ class UserSeeder extends Seeder
         $user = User::create([
             'name' => "Metro User",
             'email' => "metro.user@gmail.com",
-            'address' => fake()->address(),
-            'phone_number' => fake()->phoneNumber(),
-            'postal_code' => fake()->postcode(),
-            'logo_url' => fake()->imageUrl(),
+            'street' => "Jl. Seberang Padang",
+            'urban_village_id' => 34045,
+            'district_id' => 4301,
+            'region_id' => 446,
+            'province_id' => 36,
+            'phone_number' => "082289608096",
+            'postal_code' => "25214",
             'password' => static::$password ??= Hash::make('password'),
+            'completed' => true,
         ]);
 
         $user->assignRole("user");

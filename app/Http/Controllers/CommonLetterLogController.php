@@ -121,7 +121,7 @@ class CommonLetterLogController extends Controller
                 "number_of_letter" => $validated["number_of_letter"],
             ]);
 
-        return redirect()->back()->with("success", "Surat berhasil diterbitkan");
+        return back()->with("success", "Surat berhasil diterbitkan");
     }
 
     /**
@@ -150,7 +150,7 @@ class CommonLetterLogController extends Controller
     {
         $commonLetterLog->delete();
 
-        return redirect()->back()->with("success", "Surat berhasil dihapus");
+        return back()->with("success", "Surat berhasil dihapus");
     }
 
     protected function getLetterLog(CommonLetterLog $commonLetterLog)

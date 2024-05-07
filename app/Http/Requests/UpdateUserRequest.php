@@ -23,12 +23,15 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             "logo" => ["required", "file", "image", "max:2048"],
-            "name" => ["required", "string"],
-            "address" => ["required", "string"],
+            "name" => ["required", "string", "min:3"],
             "email" => ["required", "email", "unique:users,email,".auth()->user()->id.",id"],
+            "web_url" => ["nullable", "string", "url"],
+            "street" => ["required", "string", "min:5", "max:50"],
+            "urban_village_id" => ["required", "integer"],
+            "district_id" => ["required", "integer"],
+            "region_id" => ["required", "integer"],
+            "province_id" => ["required", "integer"],
             "phone_number" => ["required", "min:10", "max:13", "regex:/[0]{1}[8]{1}[0-9]{0,11}/"],
-            "web_url" => ["string", "url", "nullable"],
-            "postal_code" => ["required", "integer"],
         ];
     }
 
@@ -44,11 +47,14 @@ class UpdateUserRequest extends FormRequest
         return [
             "logo" => "Logo",
             "name" => "Nama",
-            "address" => "Alamat",
             "email" => "Email",
-            "phone_number" => "Nomor telpon",
             "web_url" => "Tautan website",
-            "postal_code" => "Kode pos",
+            "street" => "Nama jalan",
+            "urban_village_id" => "Kelurahan",
+            "district_id" => "Kecamatan",
+            "region_id" => "Kota/Kabupaten",
+            "province_id" => "Provinsi",
+            "phone_number" => "Nomor telpon",
         ];
     }
 }

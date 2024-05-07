@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Province;
+use App\Models\UrbanVillage;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,8 +16,9 @@ class ProfileController extends Controller
     public function edit()
     {
         $user = auth()->user();
+        $provinces = Province::all();
 
-        return view("profile.profile", ["user" => $user]);
+        return view("profile.profile", ["user" => $user, "provinces" => $provinces]);
     }
 
     /**
@@ -34,11 +37,20 @@ class ProfileController extends Controller
         // save image in folder
         $imagePath = Storage::disk("public")->put(config("central.paths.company_logo"), $validated["logo"]);
         unset($validated["logo"]);
+
+        // get postal code
+        $urbanVillage = UrbanVillage::where("id", $validated["urban_village_id"])
+                        ->first();
+
+
+        // add other value
         $validated["logo_url"] = $imagePath;
+        $validated["completed"] = true;
+        $validated["postal_code"] = $urbanVillage->postal_code;
 
         User::where("id", $user->id)
             ->update($validated);
 
-        return back()->with("success", "Profil berhasil diperbarui");
+        return back()->with("success", "Profil pengguna berhasil diperbarui");
     }
 }

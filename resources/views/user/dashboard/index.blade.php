@@ -202,7 +202,7 @@
                                     <form action="{{ route('letter.common.store') }}" method="post" id="create-blank-letter">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="title"><strong>Judul Surat</strong></label>
+                                            <label for="title" class="mb-1"><strong>Judul Surat<sup class="text-danger fs-6">*</sup></strong></label>
                                             <input type="text" name="title" id="title" class="form-control"
                                                 placeholder="Judul surat..." required>
                                         </div>

@@ -117,11 +117,11 @@
                             <h2 class="modal-title fs-5" id="staticBackdropLabel">Silahkan Buat Akun user</h2>
                         </div>
                         <div class="mb-3">
-                            <label for="name" class="mb-1 text-black"><strong>Nama Perusahaan</strong></label>
+                            <label for="name" class="mb-1 text-black"><strong>Nama Perusahaan<sup class="text-danger fs-6">*</sup></strong></label>
                             <input type="text" name="name" class="form-control" placeholder="Nama perusahaan..." required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="mb-1 text-black"><strong>Email</strong></label>
+                            <label for="email" class="mb-1 text-black"><strong>Email<sup class="text-danger fs-6">*</sup></strong></label>
                             <input type="email" name="email" class="form-control" placeholder="Email..." required>
                         </div>
                         <div class="d-grid">

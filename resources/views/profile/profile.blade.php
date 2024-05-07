@@ -33,8 +33,8 @@
                 @enderror
 
             </div>
-            <div class="row mt-4">
-                <div class="col-md-6 mb-2 ">
+            <div class="row mt-4 mb-3">
+                <div class="col-md-6">
                     <label for="name" class="mb-1">
                         <strong>Nama Perusahaan<sup class="text-danger fs-6">*</sup></strong>
                     </label>
@@ -49,22 +49,24 @@
                     @enderror
                 </div>
 
-                <div class="col-md-6 mb-2">
-                    <label for="address" class="mb-1">
-                        <strong>Alamat<sup class="text-danger fs-6">*</sup></strong>
+                <div class="col-md-6">
+                    <label for="street" class="mb-1">
+                        <strong>Nama jalan<sup class="text-danger fs-6">*</sup></strong>
                     </label>
-                    <input type="text" name="address" value="{{ old('address') ?? $user->address }}"
-                        class="form-control @error('address') is-invalid @enderror" id="address"
+                    <input type="text" name="street" value="{{ old('street') ?? $user->street }}"
+                        class="form-control @error('street') is-invalid @enderror" id="street"
                         placeholder="Alamat Perusahaan..." required>
 
-                    @error('address')
+                    @error('street')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
+            </div>
 
-                <div class="col-md-6 mb-2">
+            <div class="row mb-3">
+                <div class="col-md-6">
                     <label for="email" class="mb-1">
                         <strong>Email<sup class="text-danger fs-6">*</sup></strong>
                     </label>
@@ -79,7 +81,33 @@
                     @enderror
                 </div>
 
-                <div class="col-md-6 mb-2">
+                <div class="col-md-6">
+                    <label for="province" class="mb-1">
+                        <strong>Provinsi<sup class="text-danger fs-6">*</sup></strong>
+                    </label>
+                    <input type="text" id="default-province" value="{{ old('province_id') ?? $user->province_id }}" class="d-none">
+
+                    <select class="form-select @error('province_id') is-invalid @enderror" aria-label="Default select example"
+                        onchange="changeProvince()" id="province" name="province_id">
+                        <option value="" hidden>Provinsi...</option>
+
+                        @foreach ($provinces as $province)
+                            <option value="{{ $province->id }}">
+                                {{ ucwords($province->name) }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('province_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
                     <label for="phone_number" class="mb-1">
                         <strong>Nomor Telepon<sup class="text-danger fs-6">*</sup></strong>
                     </label>
@@ -94,7 +122,27 @@
                     @enderror
                 </div>
 
-                <div class="col-md-6 mb-2">
+                <div class="col-md-6">
+                    <label for="region" class="mb-1">
+                        <strong>Kota/Kabupaten<sup class="text-danger fs-6">*</sup></strong>
+                    </label>
+                    <input type="text" id="default-region" value="{{ old('region_id') ?? $user->region_id }}" class="d-none">
+
+                    <select class="form-select @error('region_id') is-invalid @enderror" aria-label="Default select example"
+                        id="region" name="region_id" onchange="changeRegion()" disabled>
+                        <option value="" hidden>Kota/Kabupaten...</option>
+                    </select>
+
+                    @error('region_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
                     <label for="web_url" class="mb-1"><strong>Website</strong></label>
                     <input type="text" name="web_url" value="{{ old('web_url') ?? $user->web_url }}"
                         class="form-control @error('web_url') is-invalid @enderror" id="web_url" placeholder="Website...">
@@ -106,15 +154,37 @@
                     @enderror
                 </div>
 
-                <div class="col-md-6 mb-2">
-                    <label for="postal_code" class="mb-1">
-                        <strong>Kode Pos<sup class="text-danger fs-6">*</sup></strong>
+                <div class="col-md-6">
+                    <label for="district" class="mb-1">
+                        <strong>Kecamatan<sup class="text-danger fs-6">*</sup></strong>
                     </label>
-                    <input type="text" name="postal_code" value="{{ old('postal_code') ?? $user->postal_code }}"
-                        class="form-control @error('postal_code') is-invalid @enderror" id="postal_code"
-                        placeholder="Kode Pos" required>
+                    <input type="text" id="default-district" value="{{ old('district_id') ?? $user->district_id }}" class="d-none">
 
-                    @error('postal_code')
+                    <select class="form-select @error('district_id') is-invalid @enderror" aria-label="Default select example" id="district" name="district_id" onchange="changeDistrict()" disabled>
+                        <option value="" hidden>Kecamatan...</option>
+                    </select>
+
+                    @error('district_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row mb-3 justify-content-md-end">
+                <div class="col-md-6">
+                    <label for="urban_village" class="mb-1">
+                        <strong>Kelurahan<sup class="text-danger fs-6">*</sup></strong>
+                    </label>
+                    <input type="text" id="default-urban-village" value="{{ old('urban_village_id') ?? $user->urban_village_id }}" class="d-none">
+
+                    <select class="form-select @error('urban_village_id') is-invalid @enderror"
+                        aria-label="Default select example" id="urban_village" name="urban_village_id" disabled>
+                        <option value="" hidden>Kelurahan</option>
+                    </select>
+
+                    @error('urban_village_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -184,6 +254,9 @@
 
 
     </div>
+
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/profile.js') }}"></script>
     <script>
         function previewImage() {
             const image = document.querySelector('#logo');
