@@ -22,7 +22,7 @@ class LetterLogController extends Controller
         $view = config(sprintf("central.letter_types.%s.view", $commonLetterLog->type));
 
         return view($view, [
-            "user" => auth()->user(),
+            "user" => auth()->user()->load("urbanVillage", "district", "region", "province"),
             "commonLog" => $commonLetterLog,
             "logs" => $logs
         ]);

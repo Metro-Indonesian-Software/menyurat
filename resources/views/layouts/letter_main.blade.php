@@ -28,10 +28,10 @@
     <body>
         <div class="bg-white">
             {{-- nav --}}
-            <div class="text-white bg-primer w-100 py-3 d-flex justify-content-between ">
+            <div class="text-white bg-primer py-3 d-flex justify-content-between ">
                 <div class="ms-5 my-auto">
-                    <a href="{{ route('dashboard') }}" class="btn dashboard ">
-                        <h5 class="my-auto " style="color: white"><i class="fa-solid fa-arrow-left me-2"></i>
+                    <a href="{{ route('dashboard') }}" class="btn dashboard">
+                        <h5 class="my-auto" style="color: white"><i class="fa-solid fa-arrow-left me-2"></i>
                             Dashboard</h5>
                     </a>
                 </div>
@@ -49,7 +49,7 @@
             {{-- end-nav --}}
 
             {{-- main --}}
-            <div class="d-flex min-vh-100 ">
+            <div class="d-flex">
                 @yield("letter_content")
             </div>
         </div>

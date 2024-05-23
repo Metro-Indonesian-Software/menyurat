@@ -1,75 +1,40 @@
-.surat{
+.surat {
     background-color: white;
-    padding: 50px;
+    padding: 40px;
+    height: 90vh;
+    overflow-y: auto;
 }
-.kop_surat{
+
+.kop_surat {
     display: flex;
     margin: auto;
 }
-.gambar img{
-    width: 50px;
+
+.letter_body {
+    text-align: justify;
+}
+
+.gambar img {
+    width: 100%;
     height: 100%;
-    
+    object-fit: contain;
 }
 
-.gambar{
-    margin-right: 20px;
-    background-color: red#fff;
+.gambar {
+    width: 60px;
+    height: 100%;
+    margin-right: 18px;
 }
 
-.text_kop_surat{
-    text-align: center;
+p {
+    font-size: 0.6em;
+    color: black;
 }
 
-p{
-    font-size: .6em;
-    color: black !important;
-}
-
-.kontak {
-    display: flex;
-    text-align: center;
-    justify-content: space-between;
-}
-
-hr{
-    margin:0;
+hr {
+    margin: 0;
     margin-top: 5px;
-    border:1px solid black !important;
-    width:100%;
+    border: 1px solid #000;
+    width: 100%;
     opacity: 100;
-}
-
-.isi_surat{
-    margin-top: 5px;
-}
-
-.isi_nomor_surat{
-    display: flex;
-}
-
-.isi_surat_1{
-    display: flex;
-    justify-content: space-between;
-}
-
-.isi_surat_2{
-    margin-top: 20px;
-}
-.isi_surat_3{
-    margin-top: 20px;
-}
-
-.jadwal{
-    display: block;
-    margin-inline-start: 20px;
-}
-
-.isi_jadwal{
-    display: flex;
-}
-
-.isi_surat_4{
-    margin-top: 70px;
-    text-align: right;
 }

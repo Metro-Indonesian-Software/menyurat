@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="{{ asset('assets/css/style_sidebar.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/text_custom.css') }}">
+
 <aside id="sidebar" class="add-scrollbar">
     <div class="sidebar-logo-1 d-flex align-items-center mt-4">
         <div class="sidebar-logo-sm ">

@@ -8,6 +8,8 @@ use App\Models\Scopes\OrderByScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -28,10 +30,10 @@ class User extends Authenticatable
         'email',
         'web_url',
         'street',
-        'urban_village',
-        'district',
-        'region',
-        'province',
+        'urban_village_id',
+        'district_id',
+        'region_id',
+        'province_id',
         'phone_number',
         'postal_code',
         'logo_url',
@@ -60,10 +62,10 @@ class User extends Authenticatable
         'email' => 'string',
         'web_url' => 'string',
         'street' => 'string',
-        'urban_village' => 'string',
-        'district' => 'string',
-        'region' => 'string',
-        'province' => 'string',
+        'urban_village_id' => 'string',
+        'district_id' => 'string',
+        'region_id' => 'string',
+        'province_id' => 'string',
         'phone_number' => 'string',
         'postal_code' => 'integer',
         'logo_url' => 'string',
@@ -90,5 +92,25 @@ class User extends Authenticatable
         $builder->when($active !== null, function() use($active, $builder) {
             $builder->where("active", intval($active));
         });
+    }
+
+    public function urbanVillage(): BelongsTo
+    {
+        return $this->belongsTo(UrbanVillage::class);
+    }
+
+    public function district(): BelongsTo
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    public function region(): BelongsTo
+    {
+        return $this->belongsTo(Region::class);
+    }
+
+    public function province(): BelongsTo
+    {
+        return $this->belongsTo(Province::class);
     }
 }

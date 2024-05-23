@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ asset('assets/css/navbar.css') }}">
+
 {{-- navbar --}}
 <div class=" navbar w-100 align-items-center py-3 px-5">
     <div class=" d-flex align-items-center  justify-content-between ">

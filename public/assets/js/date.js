@@ -1,24 +1,16 @@
-const days = {
-    Monday: "Senin",
-    Tuesday: "Selasa",
-    Wednesday: "Rabu",
-    Thursday: "Kamis",
-    Friday: "Jumat",
-    Saturday: "Sabtu",
-    Sunday: "Minggu",
-};
+const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
 
-const months = {
-    January: "Januari",
-    February: "Februari",
-    March: "Maret",
-    April: "April",
-    May: "Mei",
-    June: "Juni",
-    July: "Juli",
-    August: "Agustus",
-    September: "September",
-    October: "Oktober",
-    November: "November",
-    December: "Desember",
-};
+const months = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+];
