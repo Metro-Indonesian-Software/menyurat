@@ -1,359 +1,543 @@
 @extends('layouts.letter_main')
+
 @section('letter_content')
-    <div class="create w-50 p-5 ">
-        <div class="accordion  accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header  ">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tempat_tanggal"
-                        aria-expanded="true" aria-controls="tempat_tanggal"><strong>
-                            Tempat dan Tanggal Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="tempat_tanggal" class="accordion-collapse collapse show">
-                    <div class="accordion-body row ">
-                        <div class="col-md-6">
-                            <label for="tempat">Tempat</label>
-                            <input name="tempat" id="tempat" class="form-control mb-3 w-100" type="text">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="tanggal">Tanggal</label>
-                            <input name="tanggal" id="tanggal" class="form-control w-100" type="date">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#informasi_surat" aria-expanded="false" aria-controls="informasi_surat">
-                        <strong>
-                            Informasi Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="informasi_surat" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <label for="">Nama Karyawan</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Jabatan (semula)</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Gaji Pokok (semula)</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Lokasi kantor yang baru</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <div id="tambah_informasi_surat_1"></div>
-                        <div class="d-flex">
-                            <button class="btn btn-white-2 w-100 mb-2" id="button_tambah_informasi_surat_1">Tambah</button>
-                        </div>
-                        <label for="">jabatan Baru (Menjadi)</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Gaji Pokok Baru (Menjadi)</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <div id="tambah_informasi_surat_2"></div>
-                        <div class="d-flex">
-                            <button class="btn btn-white-2 w-100" id="button_tambah_informasi_surat_2">Tambah</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#isi_surat" aria-expanded="false" aria-controls="isi_surat">
-                        <strong>
-                            isi Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="isi_surat" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <label><strong>Menimbang</strong></label>
+    <div class="row vh-100">
+        <div class="col-lg-6 create p-5">
+            <form action="{{ route('letter.log.store', ['commonLetterLog' => $commonLog->id]) }}" method="post" id="input-letter-form">
+                @csrf
+                <div class="accordion" id="accordionParent">
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tempat_tanggal" aria-expanded="true"  aria-controls="tempat_tanggal">
+                                <strong>
+                                    Tempat dan Tanggal Surat
+                                </strong>
+                            </button>
+                        </h2>
+                        <div id="tempat_tanggal" class="accordion-collapse collapse show" data-bs-parent="#accordionParent">
+                            <div class="accordion-body row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="signed_place">Tempat</label>
+                                    <input type="text" name="signed_place" id="signed_place" class="form-control @error('signed_place') is-invalid @enderror" value="{{ old('signed_place') ?? $logs['signed_place'] }}">
+
+                                    @error('signed_place')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="signed_date">Tanggal</label>
+                                    <input type="date" name="signed_date" id="signed_date" class="form-control @error('signed_date') is-invalid @enderror" value="{{ old('signed_date') ?? $logs['signed_date'] }}">
+
+                                    @error('signed_date')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="col-md-9">
-                                <label for="">Poin 1</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Poin 2</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Poin 3</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <div id="tambah_menimbang"></div>
-                                <div class="d-flex">
-                                    <button class="btn btn-white-2 w-100 mb-2"
-                                        id="button_tambah_menimbang">Tambah</button>
-                                    <div class="">
-                                        <button class="btn btn-danger ms-2" id="hapus_menimbang"
-                                            style="display: none; border: 1px solid #fc544b"
-                                            onclick="hapusMenimbang()">Hapus</button>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#informasi_surat" aria-expanded="false" aria-controls="informasi_surat">
+                                <strong>
+                                    Informasi Surat
+                                </strong>
+                            </button>
+                        </h2>
+                        <div id="informasi_surat" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label for="employee_name">Nama Karyawan</label>
+                                    <input type="text" name="employee_name" id="employee_name" class="form-control @error('employee_name') is-invalid @enderror" value="{{ old('employee_name') ?? $logs['employee_name'] }}">
+
+                                    @error('employee_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="position">Jabatan (semula)</label>
+                                    <input type="text" name="position" id="position" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') ?? $logs['position'] }}">
+
+                                    @error('position')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="salary">Gaji Pokok (semula)</label>
+                                    <input type="number" name="salary" id="salary" class="form-control @error('salary') is-invalid @enderror" value="{{ old('salary') ?? $logs['salary'] }}">
+
+                                    @error('salary')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div id="optionals_list">
+                                    @if(old("optionals"))
+                                        @foreach (old("optionals") as $index => $item)
+                                            <div class="mb-3" id="{{ sprintf('optionals_%s', $index) }}">
+                                                <div class="d-flex gap-2 mb-3">
+                                                    <div class="w-100">
+                                                        <input type="text" name="{{ sprintf('optionals[%s][key]', $index) }}" id="{{ sprintf('optionals_%s_key', $index) }}" class="form-control fw-bold @error(sprintf("optionals.%s.key", $index)) is-invalid @enderror" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputOptionals('{{ $index }}', this, 'key')">
+
+                                                        @error(sprintf("optionals.%s.key", $index))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_optionals_%s', $index) }}" onclick="removeOptionalsList('{{ $index }}')">Hapus</button>
+                                                    </div>
+                                                </div>
+
+                                                <input type="text" name="{{ sprintf('optionals[%s][value]', $index) }}" id="{{ sprintf('optionals_%s_value', $index) }}" class="form-control @error(sprintf("optionals.%s.value", $index)) is-invalid @enderror" value="{{ $item['value'] }}" placeholder="Masukkan Isi..." required oninput="onInputOptionals('{{ $index }}', this, 'value')">
+
+                                                @error(sprintf("optionals.%s.value", $index))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        @endforeach
+
+                                    @else
+                                        @foreach ($logs["optionals"] as $index => $item)
+                                            <div class="mb-3" id="{{ sprintf('optionals_%s', $index) }}">
+                                                <div class="d-flex gap-2 mb-3">
+                                                    <input type="text" name="{{ sprintf('optionals[%s][key]', $index) }}" id="{{ sprintf('optionals_%s_key', $index) }}" class="form-control fw-bold" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputOptionals('{{ $index }}', this, 'key')">
+
+                                                    <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_optionals_%s', $index) }}" onclick="removeOptionalsList('{{ $index }}')">Hapus</button>
+                                                </div>
+
+                                                <input type="text" name="{{ sprintf('optionals[%s][value]', $index) }}" id="{{ sprintf('optionals_%s_value', $index) }}" class="form-control" value="{{ $item['value'] }}" placeholder="Masukkan Isi..." required oninput="onInputOptionals('{{ $index }}', this, 'value')">
+                                            </div>
+                                        @endforeach
+
+                                    @endif
+                                </div>
+
+                                <div class="d-flex mb-3">
+                                    <button type="button" class="btn btn-white-2 w-100" id="button_add_optional_data" onclick="addOptionalData()">Tambah</button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="new_position">Jabatan Baru (Menjadi)</label>
+                                    <input type="text" name="new_position" id="new_position" class="form-control @error('new_position') is-invalid @enderror" value="{{ old('new_position') ?? $logs['new_position'] }}">
+
+                                    @error('new_position')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="new_salary">Gaji Pokok Baru (Menjadi)</label>
+                                    <input type="number" name="new_salary" id="new_salary" class="form-control @error('new_salary') is-invalid @enderror" value="{{ old('new_salary') ?? $logs['new_salary'] }}">
+
+                                    @error('new_salary')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div id="new_optionals_list">
+                                    @if(old("new_optionals"))
+                                        @foreach (old("new_optionals") as $index => $item)
+                                            <div class="mb-3" id="{{ sprintf('new_optionals_%s', $index) }}">
+                                                <div class="d-flex gap-2 mb-3">
+                                                    <div class="w-100">
+                                                        <input type="text" name="{{ sprintf('new_optionals[%s][key]', $index) }}" id="{{ sprintf('new_optionals_%s_key', $index) }}" class="form-control fw-bold @error(sprintf("new_optionals.%s.key", $index)) is-invalid @enderror" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputNewOptionals('{{ $index }}', this, 'key')">
+
+                                                        @error(sprintf("new_optionals.%s.key", $index))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_new_optionals_%s', $index) }}" onclick="removeNewOptionalsList('{{ $index }}')">Hapus</button>
+                                                    </div>
+                                                </div>
+
+                                                <input type="text" name="{{ sprintf('new_optionals[%s][value]', $index) }}" id="{{ sprintf('new_optionals_%s_value', $index) }}" class="form-control @error(sprintf("new_optionals.%s.value", $index)) is-invalid @enderror" value="{{ $item['value'] }}" placeholder="Masukkan Isi..." required oninput="onInputNewOptionals('{{ $index }}', this, 'value')">
+
+                                                @error(sprintf("new_optionals.%s.value", $index))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        @endforeach
+
+                                    @else
+                                        @foreach ($logs["new_optionals"] as $index => $item)
+                                            <div class="mb-3" id="{{ sprintf('new_optionals_%s', $index) }}">
+                                                <div class="d-flex gap-2 mb-3">
+                                                    <input type="text" name="{{ sprintf('new_optionals[%s][key]', $index) }}" id="{{ sprintf('new_optionals_%s_key', $index) }}" class="form-control fw-bold" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputNewOptionals('{{ $index }}', this, 'key')">
+
+                                                    <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_new_optionals_%s', $index) }}" onclick="removeNewOptionalsList('{{ $index }}')">Hapus</button>
+                                                </div>
+
+                                                <input type="text" name="{{ sprintf('new_optionals[%s][value]', $index) }}" id="{{ sprintf('new_optionals_%s_value', $index) }}" class="form-control" value="{{ $item['value'] }}" placeholder="Masukkan Isi..." required oninput="onInputNewOptionals('{{ $index }}', this, 'value')">
+                                            </div>
+                                        @endforeach
+
+                                    @endif
+                                </div>
+
+                                <div class="d-flex mb-3">
+                                    <button type="button" class="btn btn-white-2 w-100" id="button_add_new_optional_data" onclick="addNewOptionalData()">Tambah</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#isi_surat" aria-expanded="false" aria-controls="isi_surat">
+                                <strong>
+                                    isi Surat
+                                </strong>
+                            </button>
+                        </h2>
+                        <div id="isi_surat" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
+                            <div class="accordion-body">
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
+                                        <label><strong>Menimbang</strong></label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div id="considerings_list">
+                                            @if (old("considerings"))
+                                                @foreach (old("considerings") as $index => $item)
+                                                    <div class="mb-3">
+                                                        <label for="{{ sprintf('considerings_%s', $index) }}">Poin {{ $loop->iteration }}</label>
+                                                        <textarea name="considerings[]" id="{{ sprintf('considerings_%s', $index) }}" class="form-control" rows="3" required oninput="onInputConsiderings('{{ $index }}', this)">{{ $item }}</textarea>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                @foreach ($logs["considerings"] as $index => $item)
+                                                    <div class="mb-3">
+                                                        <label for="{{ sprintf('considerings_%s', $index) }}">Poin {{ $loop->iteration }}</label>
+                                                        <textarea name="considerings[]" id="{{ sprintf('considerings_%s', $index) }}" class="form-control" rows="3" required oninput="onInputConsiderings('{{ $index }}', this)">{{ $item }}</textarea>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-white-2 w-100" id="button_add_considerings_data" onclick="addConsiderings()">Tambah</button>
+                                            <button type="button" class="btn btn-danger ms-2 @if((old('considerings') && count(old('considerings')) <= 1) || count($logs['considerings']) <= 1) d-none @endif" id="button_remove_considerings_data" onclick="removeConsiderings()">Hapus</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
+                                        <label><strong>Mengingatkan</strong></label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div id="rememberings_list">
+                                            @if (old("rememberings"))
+                                                @foreach (old("rememberings") as $index => $item)
+                                                    <div class="mb-3">
+                                                        <label for="{{ sprintf('rememberings_%s', $index) }}">Poin {{ $loop->iteration }}</label>
+                                                        <textarea name="rememberings[]" id="{{ sprintf('rememberings_%s', $index) }}" class="form-control" rows="3" required oninput="onInputRememberings('{{ $index }}', this)">{{ $item }}</textarea>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                @foreach ($logs["rememberings"] as $index => $item)
+                                                    <div class="mb-3">
+                                                        <label for="{{ sprintf('rememberings_%s', $index) }}">Poin {{ $loop->iteration }}</label>
+                                                        <textarea name="rememberings[]" id="{{ sprintf('rememberings_%s', $index) }}" class="form-control" rows="3" required oninput="onInputRememberings('{{ $index }}', this)">{{ $item }}</textarea>
+                                                    </div>
+                                                @endforeach
+
+                                            @endif
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-white-2 w-100" id="button_add_rememberings_data" onclick="addRememberings()">Tambah</button>
+                                            <button type="button" class="btn btn-danger ms-2 @if((old('rememberings') && count(old('rememberings')) <= 1) || count($logs['rememberings']) <= 1) d-none @endif" id="button_remove_rememberings_data" onclick="removeRememberings()">Hapus</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
+                                        <label><strong>Memutuskan</strong></label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="mb-3">
+                                            <label for="decidings_first">Pertama</label>
+                                            <textarea name="decidings[first]" id="decidings_first" class="form-control @error('decidings.first') is-invalid @enderror" rows="3">{{ old('decidings.first') ?? $logs["decidings"]["first"] }}</textarea>
+
+                                            @error('decidings.first')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="decidings_second">Kedua</label>
+                                            <textarea name="decidings[second]" id="decidings_second" class="form-control @error('decidings.second') is-invalid @enderror" rows="3">{{ old('decidings.second') ?? $logs["decidings"]["second"] }}</textarea>
+
+                                            @error('decidings.second')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <label><strong>Mengingatkan</strong></label>
-                            </div>
-                            <div class="col-md-9">
-                                <label for="">Poin 1</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Poin 2</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Poin 3</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <div id="tambah_mengingatkan"></div>
-                                <div class="d-flex">
-                                    <button class="btn btn-white-2 w-100 mb-2"
-                                        id="button_tambah_mengingatkan">Tambah</button>
-                                    <div class="">
-                                        <button class="btn btn-danger ms-2" id="hapus_mengingatkan"
-                                            style="display: none; border: 1px solid #fc544b"
-                                            onclick="hapusMengingatkan()">Hapus</button>
-                                    </div>
+                    </div>
+
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#informasi_surat_2" aria-expanded="false" aria-controls="informasi_surat_2">
+                                <strong>
+                                    Informasi Surat
+                                </strong>
+                            </button>
+                        </h2>
+
+                        <div id="informasi_surat_2" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label for="signed_name">Nama Penanda Tangan</label>
+                                    <input type="text" name="signed_name" id="signed_name" class="form-control @error('signed_name') is-invalid @enderror" value="{{ old('signed_name') ?? $logs['signed_name'] }}">
+
+                                    @error('signed_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="signed_position">Jabatan Penanda Tangan</label>
+                                    <input type="text" name="signed_position" id="signed_position" class="form-control @error('signed_position') is-invalid @enderror" value="{{ old('signed_position') ?? $logs['signed_position'] }}">
+
+                                    @error('signed_position')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <label><strong>Memutuskan</strong></label>
-                            </div>
-                            <div class="col-md-9">
-                                <label for="">Pertama</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Kedua</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#informasi_surat_2" aria-expanded="false" aria-controls="informasi_surat_2">
-                        <strong>
-                            Informasi Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="informasi_surat_2" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <label for="">Nama Penanda Tangan</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                        <label for="">Jabatan Penanda Tangan</label>
-                        <input name="" id="" class="form-control mb-3" type="text">
-                    </div>
-                </div>
-            </div>
+                <button type="submit" class="btn btn-primer mt-4">Simpan</button>
+            </form>
         </div>
-        <a href="" class="btn btn-primer mt-4">Simpan</a>
 
-    </div>
-    <div class="preview w-50 ">
-        <div class="m-5">
-            <div class="surat">
+        <div class="col-lg-6 preview p-5">
+            <div class="surat mx-5">
                 {{-- kop-surat --}}
-                <div class="kop_surat">
-                    <div class="gambar">
-                        <img src="/assets/img/metro.png" alt="">
-                    </div>
-                    <div class="text_kop_surat">
-                        <p style="font-size: .8em"> <strong>PT Metro Software Indonesia</strong></p>
-                        <p>Jl. Utama Residences, Kelurahan Seberang Padang, Kec. Padang Selatan, Kota
-                            Padang, Provinsi Sumatera Barat</p>
-                        <div class="kontak">
-                            <p>Telp : 0812345678910</p>
-                            <p>Email : metrosoftware@gmail.com</p>
-                            <p>Website : https://metrosoftware.id</p>
-                        </div>
-                    </div>
-                </div>
-                <hr style="">
+                @include("components.buat_surat.kop")
                 {{-- end-kop-surat --}}
+
                 {{-- isi-surat --}}
-                <div class="isi_surat">
-                    <div class="isi_surat_1">
-                        <div class="nomor_surat">
-                            <div class="isi_nomor_surat">
-                                <p style="width: 45px">Nomor </p>
-                                <p id="isi_nomor"> : 01 /SM-US/4/2024</p>
-                            </div>
-                            <div class="isi_nomor_surat">
-                                <p style="width: 45px">Perihal </p>
-                                <p id="isi_perihal"></p>
-                            </div>
-                            <div class="isi_nomor_surat">
-                                <p style="width: 45px">Lampiran </p>
-                                <p id="isi_lampiran"></p>
-                            </div>
+                <div class="mt-3">
+                    <div class="letter_header text-center">
+                        <h1 class="fw-bold text-dark text-8"><u>SURAT KEPUTUSAN</u></h1>
+                        <p class="mt-n7">No. {{ $commonLog->number_of_letter ?? "[Nomor surat]" }}</p>
+                        <p>Tentang:</p>
+                        <p class="fw-bold text-8">DEMOSI JABATAN KARYAWAN</p>
+                    </div>
 
+                    <div class="letter_body mt-4">
+                        <h2 class="text-dark text-8"><u>Menimbang:</u></h2>
+                        <div>
+                            <ol class="mt-n5" id="considerings_data">
+                                @if (old("considerings"))
+                                    @foreach (old("considerings") as $index => $item)
+                                        <li class="decimal-number" id="{{ sprintf('considerings_%s_data', $index) }}">{{ $item }}</li>
+                                    @endforeach
+                                @else
+                                    @foreach ($logs["considerings"] as $index => $item)
+                                        <li class="decimal-number" id="{{ sprintf('considerings_%s_data', $index) }}">{{ $item }}</li>
+                                    @endforeach
+                                @endif
+                            </ol>
                         </div>
-                        <div class="tanggal_surat">
-                            <p>Senin, 8 April 2024</p>
+
+                        <h2 class="text-dark text-8"><u>Mengingat:</u></h2>
+                        <div>
+                            <ol class="mt-n5" id="rememberings_data">
+                                @if (old("rememberings"))
+                                    @foreach (old("rememberings") as $index => $item)
+                                        <li class="decimal-number"  id="{{ sprintf('rememberings_%s_data', $index) }}">{{ $item }}</li>
+                                    @endforeach
+                                @else
+                                    @foreach ($logs["rememberings"] as $index => $item)
+                                        <li class="decimal-number"  id="{{ sprintf('rememberings_%s_data', $index) }}">{{ $item }}</li>
+                                    @endforeach
+                                @endif
+                            </ol>
+                        </div>
+
+                        <h2 class="text-dark text-8"><u>Memutuskan:</u></h2>
+                        <div id="decidings_data">
+                            <div class="ms-4 mt-n5">
+                                <h3 class="fw-bold text-8"><u>Pertama:</u></h3>
+                                <p class="mt-n5" id="decidings_first_data">{{ old("decidings.first") ?? $logs["decidings"]["first"] }}</p>
+
+                                <p class="mt-2">
+                                    Nama yang bersangkutan :
+                                    <span id="employee_name_data">{{ old("employee_name") ?? $logs["employee_name"] ?? "[Nama yang bersangkutan]" }}</span>
+                                </p>
+
+                                <div class="ms-3 row">
+                                    <div class="col-md-2 text-6">
+                                        <span>a. Semula &nbsp;&nbsp;&nbsp;:</span>
+                                    </div>
+                                    <div class="col">
+                                        <ol>
+                                            <li class="lower-roman-number">
+                                                <span class="row">
+                                                    <span class="col-3">Jabatan</span>
+                                                    <span class="col" id="position_data">: {{ old("position") ?? $logs["position"] ?? "[Jabatan semula]" }}</span>
+                                                </span>
+                                            </li>
+
+                                            <li class="lower-roman-number">
+                                                <span class="row">
+                                                    <span class="col-3">Gaji Pokok</span>
+                                                    <span class="col" id="salary_data">: {{ old("salary") ?? $logs["salary"] ?? "[Gaji pokok semula]" }}</span>
+                                                </span>
+                                            </li>
+
+                                            <div id="optionals_data">
+                                                @if(old("optionals"))
+                                                    @foreach (old("optionals") as $index => $item)
+                                                        <li class="lower-roman-number" id="{{ sprintf('optionals_%s_data', $index) }}">
+                                                            <span class="row">
+                                                                <span class="col-3" id="{{ sprintf('optionals_%s_key_data', $index) }}">{{ old(sprintf("optionals.%s.key", $index)) ?? $item["key"] ?? "[Kata kunci semula]" }}</span>
+
+                                                                <span class="col" id="{{ sprintf('optionals_%s_value_data', $index) }}">: {{ old(sprintf("optionals.%s.value", $index)) ?? $item["value"] ?? "[Data tambahan semula]" }}</span>
+                                                            </span>
+                                                        </li>
+                                                    @endforeach
+                                                @else
+                                                    @foreach ($logs["optionals"] as $index => $item)
+                                                        <li class="lower-roman-number" id="{{ sprintf('optionals_%s_data', $index) }}">
+                                                            <span class="row">
+                                                                <span class="col-3" id="{{ sprintf('optionals_%s_key_data', $index) }}">{{ old(sprintf("optionals.%s.key", $index)) ?? $item["key"] ?? "[Kata kunci semula]" }}</span>
+
+                                                                <span class="col" id="{{ sprintf('optionals_%s_value_data', $index) }}">: {{ old(sprintf("optionals.%s.value", $index)) ?? $item["value"] ?? "[Data tambahan semula]" }}</span>
+                                                            </span>
+                                                        </li>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <div class="ms-3 row">
+                                    <div class="col-md-2 text-6">
+                                        <span>b. Menjadi &nbsp;&nbsp;:</span>
+                                    </div>
+                                    <div class="col">
+                                        <ol>
+                                            <li class="lower-roman-number">
+                                                <span class="row">
+                                                    <span class="col-3">Jabatan</span>
+                                                    <span class="col" id="new_position_data">: {{ old("new_position") ?? $logs["new_position"] ?? "[Jabatan baru]" }}</span>
+                                                </span>
+                                            </li>
+
+                                            <li class="lower-roman-number">
+                                                <span class="row">
+                                                    <span class="col-3">Gaji Pokok</span>
+                                                    <span class="col" id="new_salary_data">: {{ old("new_salary") ?? $logs["new_salary"] ?? "[Gaji pokok baru]" }}</span>
+                                                </span>
+                                            </li>
+
+                                            <div id="new_optionals_data">
+                                                @if(old("new_optionals"))
+                                                    @foreach (old("new_optionals") as $index => $item)
+                                                        <li class="lower-roman-number" id="{{ sprintf('new_optionals_%s_data', $index) }}">
+                                                            <span class="row">
+                                                                <span class="col-3" id="{{ sprintf('new_optionals_%s_key_data', $index) }}">{{ old(sprintf("new_optionals.%s.key", $index)) ?? $item["key"] ?? "[Kata kunci baru]" }}</span>
+
+                                                                <span class="col" id="{{ sprintf('new_optionals_%s_value_data', $index) }}">: {{ old(sprintf("new_optionals.%s.value", $index)) ?? $item["value"] ?? "[Data tambahan baru]" }}</span>
+                                                            </span>
+                                                        </li>
+                                                    @endforeach
+                                                @else
+                                                    @foreach ($logs["new_optionals"] as $index => $item)
+                                                        <li class="lower-roman-number" id="{{ sprintf('new_optionals_%s_data', $index) }}">
+                                                            <span class="row">
+                                                                <span class="col-3" id="{{ sprintf('new_optionals_%s_key_data', $index) }}">{{ old(sprintf("new_optionals.%s.key", $index)) ?? $item["key"] ?? "[Kata kunci baru]" }}</span>
+
+                                                                <span class="col" id="{{ sprintf('new_optionals_%s_value_data', $index) }}">: {{ old(sprintf("new_optionals.%s.value", $index)) ?? $item["value"] ?? "[Data tambahan baru]" }}</span>
+                                                            </span>
+                                                        </li>
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <h3 class="fw-bold text-8"><u>Kedua:</u></h3>
+                                <p class="mt-n5" id="decidings_second_data">{{ old("decidings.second") ?? $logs["decidings"]["second"] }}</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="isi_surat_2">
-                        <p>Kepada Yth,</p>
-                        <p>Direktur PT Metro Indonesia Properti</p>
-                        <p>Ditempat</p>
-                    </div>
-                    <div class="isi_surat_3">
-                        <p>Dengan Hormat,</p>
-                        <p>Sehubung Akan Dilaksanakannya Acara Pengesahan Cabang baru PT Metro Indonesia
-                            Software,
-                            kami bermaksud mengundang Bapak/Ibu untuk dapat menghadiri acara yang akan
-                            dilaksanakan pada:
+
+                    <div class="letter_footer text-end mt-5">
+                        <p class="mb-5">
+                            <span id="signed_place_data">{{ old("signed_place") ?? $logs["signed_place"] ?? "[Tempat" }}</span>,
+                            <span id="signed_date_data">
+                                @if(old("signed_date"))
+                                    {{ date("d", strtotime(old("signed_date"))) }}
+                                    {{ config(sprintf("central.months.%s", date("F", strtotime(old("signed_date"))))) }}
+                                    {{ date("Y", strtotime(old("signed_date"))) }}
+                                @elseif ($logs["signed_date"])
+                                    {{ date("d", strtotime($logs["signed_date"])) }}
+                                    {{ config(sprintf("central.months.%s", date("F", strtotime($logs["signed_date"])))) }}
+                                    {{ date("Y", strtotime($logs["signed_date"])) }}
+                                @else
+                                    {{ "tanggal, bulan, tahun]" }}
+                                @endif
+                            </span>
                         </p>
-                        <div class="jadwal">
-                            <div class="isi_jadwal">
-                                <p style="width: 10%">Hari</p>
-                                <p>: Selasa, 9 April 2024</p>
-                            </div>
-                            <div class="isi_jadwal">
-                                <p style="width: 10%">Waktu</p>
-                                <p>: 09.00 - selesai</p>
-                            </div>
-                            <div class="isi_jadwal">
-                                <p style="width: 12%">Tempat</p>
-                                <p>: Jl. Utama Residences, Kelurahan Seberang Padang, Kec. Padang Selatan, Kota
-                                    Padang, Provinsi Sumatera Barat</p>
-                            </div>
-                            <div class="isi_jadwal">
-                                <p style="width: 10%">Acara</p>
-                                <p>: Pengesahan Cabang baru PT Metro Indonesia
-                                    Software</p>
-                            </div>
-                        </div>
-                        <p>Dengan surat undangan ini kami sampaikan, atas perhatian dan kehadiran Bapak/Ibu kami
-                            ucapkan terima kasih.</p>
-                    </div>
-                    <div class="isi_surat_4">
-                        <p style="margin-bottom: 50px">Direktur PT Metro Indonesia Software</p>
-                        <p><Strong>Daffa Riza Mulya</Strong></p>
-                    </div>
 
+                        <p class="fw-bold"><u id="signed_name_data">{{ old("signed_name") ?? $logs["signed_name"] ?? "[Nama yang bertanda tangan]" }}</u></p>
+                        <p id="signed_position_data">{{ old("signed_position") ?? $logs["signed_position"] ?? "[Jabatan yang bertanda tangan]" }}</p>
+                    </div>
                 </div>
                 {{-- end-isi-surat --}}
+
+                <div class="page-break"></div>
             </div>
         </div>
     </div>
 
-
-
-    <script>
-        // tambah informasi surat 1
-        document.getElementById('button_tambah_informasi_surat_1').addEventListener('click', function() {
-            var tambah_informasi_surat_1 = document.getElementById('tambah_informasi_surat_1');
-            var divInputan1 = document.createElement('div');
-            divInputan1.classList.add('mb-3');
-            divInputan1.setAttribute('id', 'tambah_inputan_baru');
-            divInputan1.innerHTML = `
-                <div class="d-flex gap-2">
-                    <input name="judul" class="form-control mb-3 fw-bold" type="text" placeholder="Masukkan judul">
-                    <div>
-                        <button class="btn btn-danger" onclick="hapus_informasi_surat_1(this)">Hapus</button>
-                    </div>
-                </div>
-                <input name="isi" class="form-control mb-3" type="text" placeholder="Masukkan Isi">
-            `;
-            tambah_informasi_surat_1.appendChild(divInputan1);
-        });
-
-        function hapus_informasi_surat_1(button) {
-            var divInputan1 = button.parentNode.parentNode.parentNode;
-            divInputan1.parentNode.removeChild(divInputan1);
-        }
-
-        // tambah informasi surat 2
-        document.getElementById('button_tambah_informasi_surat_2').addEventListener('click', function() {
-            var tambah_informasi_surat_2 = document.getElementById('tambah_informasi_surat_2');
-            var divInputan2 = document.createElement('div');
-            divInputan2.classList.add('mb-3');
-            divInputan2.setAttribute('id', 'tambah_inputan_baru');
-            divInputan2.innerHTML = `
-                <div class="d-flex gap-2">
-                    <input name="judul" class="form-control mb-3 fw-bold" type="text" placeholder="Masukkan judul">
-                    <div>
-                        <button class="btn btn-danger" onclick="hapus_informasi_surat_2(this)">Hapus</button>
-                    </div>
-                </div>
-                <input name="isi" class="form-control mb-3" type="text" placeholder="Masukkan Isi">
-            `;
-            tambah_informasi_surat_2.appendChild(divInputan2);
-        });
-
-        function hapus_informasi_surat_2(button) {
-            var divInputan2 = button.parentNode.parentNode.parentNode;
-            divInputan2.parentNode.removeChild(divInputan2);
-        }
-
-        // tambah menimbang
-        var nextNumber_menimbang = 4;
-        document.getElementById('button_tambah_menimbang').addEventListener('click', function() {
-            var tambah_menimbang = document.getElementById('tambah_menimbang');
-            var divtambah_menimbang = document.createElement('div');
-            divtambah_menimbang.classList.add('mb-3');
-            var currentNumber =
-                nextNumber_menimbang++;
-            divtambah_menimbang.innerHTML = `
-        <div class="d-flex justify-content-between test">
-            <label for="">Poin ${currentNumber}</label>
-        </div>
-        <input name="" id="" class="form-control mb-3" type="text">
-    `;
-            tambah_menimbang.appendChild(divtambah_menimbang);
-            document.getElementById('hapus_menimbang').style.display = 'block';
-        });
-
-        function hapusMenimbang() {
-            var tambah_menimbang = document.getElementById('tambah_menimbang');
-            var inputs = tambah_menimbang.querySelectorAll('.mb-3');
-            var test = tambah_menimbang.querySelectorAll('.test');
-            // Hapus elemen input dan label terakhir jika ada
-            if (inputs.length > 0) {
-                var lastInputContainer = inputs[inputs.length - 1].parentNode;
-                tambah_menimbang.removeChild(lastInputContainer);
-                nextNumber_menimbang--; // Kurangi nomor urut
-            }
-            // Jika tidak ada input lagi, sembunyikan tombol hapus
-            if (test.length === 1) {
-                document.getElementById('hapus_menimbang').style.display = 'none';
-            }
-        }
-
-        // tambah mengingatkan
-        var nextNumber_mengingatkan = 4;
-        document.getElementById('button_tambah_mengingatkan').addEventListener('click', function() {
-            var tambah_mengingatkan = document.getElementById('tambah_mengingatkan');
-            var divtambah_mengingatkan = document.createElement('div');
-            divtambah_mengingatkan.classList.add('mb-3');
-            var currentNumber =
-                nextNumber_mengingatkan++;
-            divtambah_mengingatkan.innerHTML = `
-        <div class="d-flex justify-content-between test">
-            <label for="">Poin ${currentNumber}</label>
-        </div>
-        <input name="" id="" class="form-control mb-3" type="text">
-    `;
-            tambah_mengingatkan.appendChild(divtambah_mengingatkan);
-            document.getElementById('hapus_mengingatkan').style.display = 'block';
-        });
-
-        function hapusMengingatkan() {
-            var tambah_mengingatkan = document.getElementById('tambah_mengingatkan');
-            var inputs = tambah_mengingatkan.querySelectorAll('.mb-3');
-            var test = tambah_mengingatkan.querySelectorAll('.test');
-            // Hapus elemen input dan label terakhir jika ada
-            if (inputs.length > 0) {
-                var lastInputContainer = inputs[inputs.length - 1].parentNode;
-                tambah_mengingatkan.removeChild(lastInputContainer);
-                nextNumber_mengingatkan--; // Kurangi nomor urut
-            }
-            // Jika tidak ada input lagi, sembunyikan tombol hapus
-            if (test.length === 1) {
-                document.getElementById('hapus_mengingatkan').style.display = 'none';
-            }
-        }
-    </script>
+    <script src="{{ asset("assets/js/date.js") }}"></script>
+    <script src="{{ asset('assets/js/buat_surat/demosi.js') }}"></script>
 @endsection
