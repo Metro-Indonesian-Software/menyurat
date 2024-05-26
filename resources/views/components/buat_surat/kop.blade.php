@@ -7,10 +7,10 @@
         @endif
     </div>
     <div class="text-center">
-        <p style="font-size: .8em">
-            <strong>{{ $user->name }}</strong>
-        </p>
-        <p>
+        <h1 class="text-dark text-8">
+            <strong>{{ strtoupper($user->name) }}</strong>
+        </h1>
+        <p class="mt-n7">
             {{ $user->street }}, Kelurahan {{ $user->urbanVillage->name }}, Kecamatan {{ $user->district->name }}
         </p>
         <p>

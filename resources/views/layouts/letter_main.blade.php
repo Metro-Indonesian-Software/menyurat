@@ -49,9 +49,7 @@
             {{-- end-nav --}}
 
             {{-- main --}}
-            <div class="d-flex">
-                @yield("letter_content")
-            </div>
+            @yield("letter_content")
         </div>
 
         @include("layouts.toast")

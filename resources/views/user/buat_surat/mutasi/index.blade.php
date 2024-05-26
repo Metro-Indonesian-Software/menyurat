@@ -111,8 +111,7 @@
 
                     <div class="accordion-item border-bottom">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#tujuan" aria-expanded="false" aria-controls="tujuan">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tujuan" aria-expanded="false" aria-controls="tujuan">
                                 <strong>
                                     Pengesahan Surat
                                 </strong>
@@ -159,8 +158,8 @@
                 {{-- isi-surat --}}
                 <div class="mt-3">
                     <div class="letter_header text-center">
-                        <p style="font-size: .8em;" class="fw-bold"><u>SURAT MUTASI</u></p>
-                        <p>No. {{ $commonLog->number_of_letter ?? "[Nomor surat]" }}</p>
+                        <h1 class="fw-bold text-dark text-8"><u>SURAT MUTASI</u></h1>
+                        <p class="mt-n7">No. {{ $commonLog->number_of_letter ?? "[Nomor surat]" }}</p>
                     </div>
 
                     <div class="letter_body mt-4">
@@ -218,9 +217,9 @@
                         <p>&emsp;&emsp;&emsp;Demikian Surat Keputusan Mutasi ini dibuat untuk dapat dipergunakan sebagaimana mestinya.</p>
                     </div>
 
-                    <div class="letter_footer text-end mt-4">
+                    <div class="letter_footer text-end mt-5">
                         <p>
-                            <span id="signed_place_data">{{ old("signed_place") ?? $logs["signed_place"] ?? "[Tempat" }}</span>
+                            <span id="signed_place_data">{{ old("signed_place") ?? $logs["signed_place"] ?? "[Tempat" }}</span>,
                             <span id="signed_date_data">
                                 @if(old("signed_date"))
                                     {{ date("d", strtotime(old("signed_date"))) }}

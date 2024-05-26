@@ -3,15 +3,57 @@
     padding: 40px;
     height: 90vh;
     overflow-y: auto;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.text-6 {
+    font-size: 0.6em;
+}
+
+.text-8 {
+    font-size: 0.8em;
+}
+
+.mt-n5 {
+    margin-top: -5px;
+}
+
+.mt-n7 {
+    margin-top: -7px;
+}
+
+.decimal-number {
+    list-style-type: decimal;
+}
+
+.lower-alpha-number {
+    list-style-type: lower-alpha;
+}
+
+.lower-roman-number {
+    list-style-type: lower-roman;
 }
 
 .kop_surat {
-    display: flex;
-    margin: auto;
+    /* display: flex;
+    margin: auto; */
+    position: relative;
+    overflow: hidden;
 }
 
 .letter_body {
     text-align: justify;
+}
+
+.gambar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    /* margin-right: 18px; */
 }
 
 .gambar img {
@@ -20,15 +62,24 @@
     object-fit: contain;
 }
 
-.gambar {
-    width: 60px;
-    height: 100%;
-    margin-right: 18px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: 0;
 }
 
-p {
+p,
+ol,
+ul {
     font-size: 0.6em;
     color: black;
+}
+
+ol li {
+    list-style-position: outside;
 }
 
 hr {
@@ -37,4 +88,26 @@ hr {
     border: 1px solid #000;
     width: 100%;
     opacity: 100;
+}
+
+.surat .page-break {
+    height: 100% !important;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.surat .page-break-item {
+    bottom: 0;
+    position: relative;
+}
+
+.surat .page-break-item::before {
+    border-bottom: 2px dashed #ced0d1;
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100vw !important;
 }

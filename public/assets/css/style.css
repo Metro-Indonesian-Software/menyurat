@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 ::after,
 ::before {
@@ -8,9 +7,12 @@
     padding: 0;
 }
 
-label{
-    color: rgb(91, 91, 91);
+body {
+    box-sizing: border-box;
+}
 
+label {
+    color: rgb(91, 91, 91);
 }
 
 a {
@@ -21,14 +23,14 @@ li {
     list-style: none;
 }
 
-h2{
+h2 {
     font-weight: 600;
     font-size: 1.5rem;
     color: rgb(91, 91, 91);
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
 }
 
-p{
+p {
     color: rgb(91, 91, 91);
     margin-bottom: 0;
 }
@@ -40,38 +42,35 @@ h1 {
     letter-spacing: 1px;
 }
 
-
-
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
-.w-35{
+.w-35 {
     width: 35% !important;
 }
 
-.w-30{
+.w-30 {
     width: 30% !important;
 }
 
-.wrapper{
+.wrapper {
     display: flex;
 }
 
-.main{
+.main {
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
     transition: all 0.35s ease-in-out;
     background-color: rgb(248, 250, 252);
-
 }
 
-.tinggi{
+.tinggi {
     height: 100vh;
 }
 
-.content{
+.content {
     /* background-color: rgb(241, 241, 241); */
     background-color: white;
     min-height: 88vh;
@@ -79,9 +78,9 @@ body {
 
 /* title */
 
-.title-content{
-    padding-top: 20px ;
-    padding-bottom: 20px ;
+.title-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
     align-items: center;
     display: flex;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
@@ -89,98 +88,88 @@ body {
     background-color: white;
 }
 
-.title-content h1{
+.title-content h1 {
     margin: auto 0;
     color: rgb(91, 91, 91);
 }
 
-.body-content{
+.body-content {
     padding: 0px 40px;
-    
 }
 
-.card{
+.card {
     background-color: white;
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
-    padding: 8px 12px;   
+    padding: 8px 12px;
 }
 
-.card-border{
-    border : 1px solid rgb(222, 226, 230);
-    transition: .5s;
+.card-border {
+    border: 1px solid rgb(222, 226, 230);
+    transition: 0.5s;
 }
 
-.card-border:hover{
-    border : 1px solid rgb(133, 56, 234);
+.card-border:hover {
+    border: 1px solid rgb(133, 56, 234);
 }
 
-
-.card-title{
+.card-title {
     color: rgb(91, 91, 91);
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
 }
 
-.form-control:focus{
+.form-control:focus {
     box-shadow: none;
     border-color: rgb(133, 56, 234);
 }
 
-.min-tinggi-card{
+.min-tinggi-card {
     min-height: 130px;
     height: 130px;
 }
 
-
-
-
 /* logo */
-.logo{
+.logo {
     max-height: 50px;
     height: 60px;
     max-width: 50px;
     width: 50px;
     background-color: rgb(221, 221, 248);
-
 }
-
-
-
 
 /* Table */
-.table-primary{
+.table-primary {
     --bs-table-bg: rgb(240, 231, 252) !important;
-    --bs-table-color: rgb(133, 56, 234) ;
+    --bs-table-color: rgb(133, 56, 234);
 }
 
-.table-white{
+.table-white {
     --bs-table-bg: rgb(255, 255, 255) !important;
     border: none;
     border-bottom: 1px solid rgb(219, 219, 219);
 }
 
 table tr:first-child th:first-child {
-    border-top-left-radius: 0.30rem !important;
-    border-bottom-left-radius: 0.30rem !important;
-  }
+    border-top-left-radius: 0.3rem !important;
+    border-bottom-left-radius: 0.3rem !important;
+}
 
-table tr th{
+table tr th {
     border-bottom: 1px solid transparent;
 }
-  
-table tr:first-child th:last-child {
-    border-top-right-radius: 0.30rem !important;
-    border-bottom-right-radius: 0.30rem !important;
-  }
 
+table tr:first-child th:last-child {
+    border-top-right-radius: 0.3rem !important;
+    border-bottom-right-radius: 0.3rem !important;
+}
 
 /*dropdown-item  */
-.dropdown-item{
+.dropdown-item {
     width: 90%;
     border-bottom: 1px solid rgb(209, 209, 209);
     margin: auto;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
     background-color: rgb(240, 231, 252) !important;
 }
