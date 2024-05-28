@@ -8,48 +8,13 @@
                 <div class="accordion" id="accordionParent">
                     <div class="accordion-item border-bottom">
                         <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#informasi_surat" aria-expanded="true" aria-controls="informasi_surat">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#information_letter" aria-expanded="true" aria-controls="information_letter">
                                 <strong>
-                                    Tempat dan Tanggal Surat
+                                    Informasi Surat
                                 </strong>
                             </button>
                         </h2>
-                        <div id="informasi_surat" class="accordion-collapse collapse show" data-bs-parent="#accordionParent">
-                            <div class="accordion-body row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="signed_place">Tempat</label>
-                                    <input type="text" name="signed_place" id="signed_place" class="form-control @error('signed_place') is-invalid @enderror" value="{{ old('signed_place') ?? $logs['signed_place'] }}">
-
-                                    @error("signed_place")
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label for="signed_date">Tanggal</label>
-                                    <input type="date" name="signed_date" id="signed_date" class="form-control @error('signed_date') is-invalid @enderror" value="{{ old('signed_date') ?? $logs['signed_date'] }}">
-
-                                    @error("signed_date")
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item border-bottom">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#isi_surat" aria-expanded="false" aria-controls="isi_surat">
-                                <strong>
-                                    Isi Surat
-                                </strong>
-                            </button>
-                        </h2>
-                        <div id="isi_surat" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
+                        <div id="information_letter" class="accordion-collapse collapse show" data-bs-parent="#accordionParent">
                             <div class="accordion-body">
                                 <div class="mb-3">
                                     <label for="mutated_name">Nama yang dimutasi</label>
@@ -111,14 +76,36 @@
 
                     <div class="accordion-item border-bottom">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tujuan" aria-expanded="false" aria-controls="tujuan">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#letter_validation" aria-expanded="false" aria-controls="letter_validation">
                                 <strong>
                                     Pengesahan Surat
                                 </strong>
                             </button>
                         </h2>
-                        <div id="tujuan" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
+                        <div id="letter_validation" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
                             <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label for="signed_place">Tempat</label>
+                                    <input type="text" name="signed_place" id="signed_place" class="form-control @error('signed_place') is-invalid @enderror" value="{{ old('signed_place') ?? $logs['signed_place'] }}">
+
+                                    @error("signed_place")
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="signed_date">Tanggal</label>
+                                    <input type="date" name="signed_date" id="signed_date" class="form-control @error('signed_date') is-invalid @enderror" value="{{ old('signed_date') ?? $logs['signed_date'] }}">
+
+                                    @error("signed_date")
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="signed_name">Nama yang bertanda-tangan</label>
                                     <input type="text" name="signed_name" id="signed_name" class="form-control @error('signed_name') is-invalid @enderror" value="{{ old('signed_name') ?? $logs['signed_name'] }}">
