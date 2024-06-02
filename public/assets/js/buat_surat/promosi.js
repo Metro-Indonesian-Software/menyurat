@@ -92,6 +92,9 @@ function addOptionalData() {
         onInputOptionals(id, this, "key");
     };
 
+    const iconDelete = document.createElement("i");
+    iconDelete.classList.add("fa-solid", "fa-trash");
+
     const buttonDelete = document.createElement("button");
     buttonDelete.setAttribute("type", "button");
     buttonDelete.setAttribute(
@@ -103,7 +106,7 @@ function addOptionalData() {
         const id = this.getAttribute("id").split("_")[3];
         removeOptionalsList(id);
     };
-    buttonDelete.innerText = "Hapus";
+    buttonDelete.appendChild(iconDelete);
 
     const inputValue = document.createElement("input");
     inputValue.setAttribute("type", "text");
@@ -208,6 +211,9 @@ function addNewOptionalData() {
         onInputNewOptionals(id, this, "key");
     };
 
+    const iconDelete = document.createElement("i");
+    iconDelete.classList.add("fa-solid", "fa-trash");
+
     const buttonDelete = document.createElement("button");
     buttonDelete.setAttribute("type", "button");
     buttonDelete.setAttribute(
@@ -219,7 +225,7 @@ function addNewOptionalData() {
         const id = this.getAttribute("id").split("_")[4];
         removeNewOptionalsList(id);
     };
-    buttonDelete.innerText = "Hapus";
+    buttonDelete.appendChild(iconDelete);
 
     const inputValue = document.createElement("input");
     inputValue.setAttribute("type", "text");

@@ -49,6 +49,11 @@
                                     @enderror
                                 </div>
 
+                                <div class="mb-3 d-flex justify-content-between">
+                                    <label class="align-self-center">Data tambahan (semula)</label>
+                                    <button type="button" class="btn btn-primary" id="button_add_optional_data" onclick="addOptionalData()"><i class="fa-solid fa-plus"></i></button>
+                                </div>
+
                                 <div id="optionals_list">
                                     @if(old("optionals"))
                                         @foreach (old("optionals") as $index => $item)
@@ -65,7 +70,7 @@
                                                     </div>
 
                                                     <div>
-                                                        <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_optionals_%s', $index) }}" onclick="removeOptionalsList('{{ $index }}')">Hapus</button>
+                                                        <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_optionals_%s', $index) }}" onclick="removeOptionalsList('{{ $index }}')"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
 
@@ -85,7 +90,7 @@
                                                 <div class="d-flex gap-2 mb-3">
                                                     <input type="text" name="{{ sprintf('optionals[%s][key]', $index) }}" id="{{ sprintf('optionals_%s_key', $index) }}" class="form-control fw-bold" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputOptionals('{{ $index }}', this, 'key')">
 
-                                                    <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_optionals_%s', $index) }}" onclick="removeOptionalsList('{{ $index }}')">Hapus</button>
+                                                    <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_optionals_%s', $index) }}" onclick="removeOptionalsList('{{ $index }}')"><i class="fa-solid fa-trash"></i></button>
                                                 </div>
 
                                                 <input type="text" name="{{ sprintf('optionals[%s][value]', $index) }}" id="{{ sprintf('optionals_%s_value', $index) }}" class="form-control" value="{{ $item['value'] }}" placeholder="Masukkan Isi..." required oninput="onInputOptionals('{{ $index }}', this, 'value')">
@@ -95,12 +100,8 @@
                                     @endif
                                 </div>
 
-                                <div class="d-flex mb-3">
-                                    <button type="button" class="btn btn-white-2 w-100" id="button_add_optional_data" onclick="addOptionalData()">Tambah</button>
-                                </div>
-
                                 <div class="mb-3">
-                                    <label for="new_position">Jabatan Baru (Menjadi)</label>
+                                    <label for="new_position">Jabatan Baru (menjadi)</label>
                                     <input type="text" name="new_position" id="new_position" class="form-control @error('new_position') is-invalid @enderror" value="{{ old('new_position') ?? $logs['new_position'] }}">
 
                                     @error('new_position')
@@ -111,7 +112,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="new_salary">Gaji Pokok Baru (Menjadi)</label>
+                                    <label for="new_salary">Gaji Pokok Baru (menjadi)</label>
                                     <input type="number" name="new_salary" id="new_salary" class="form-control @error('new_salary') is-invalid @enderror" value="{{ old('new_salary') ?? $logs['new_salary'] }}">
 
                                     @error('new_salary')
@@ -119,6 +120,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+
+                                <div class="mb-3 d-flex justify-content-between">
+                                    <label class="align-self-center">Data tambahan (menjadi)</label>
+                                    <button type="button" class="btn btn-primary" id="button_add_new_optional_data" onclick="addNewOptionalData()"><i class="fa-solid fa-plus"></i></button>
                                 </div>
 
                                 <div id="new_optionals_list">
@@ -137,7 +143,7 @@
                                                     </div>
 
                                                     <div>
-                                                        <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_new_optionals_%s', $index) }}" onclick="removeNewOptionalsList('{{ $index }}')">Hapus</button>
+                                                        <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_new_optionals_%s', $index) }}" onclick="removeNewOptionalsList('{{ $index }}')"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
 
@@ -157,7 +163,7 @@
                                                 <div class="d-flex gap-2 mb-3">
                                                     <input type="text" name="{{ sprintf('new_optionals[%s][key]', $index) }}" id="{{ sprintf('new_optionals_%s_key', $index) }}" class="form-control fw-bold" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputNewOptionals('{{ $index }}', this, 'key')">
 
-                                                    <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_new_optionals_%s', $index) }}" onclick="removeNewOptionalsList('{{ $index }}')">Hapus</button>
+                                                    <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_new_optionals_%s', $index) }}" onclick="removeNewOptionalsList('{{ $index }}')"><i class="fa-solid fa-trash"></i></button>
                                                 </div>
 
                                                 <input type="text" name="{{ sprintf('new_optionals[%s][value]', $index) }}" id="{{ sprintf('new_optionals_%s_value', $index) }}" class="form-control" value="{{ $item['value'] }}" placeholder="Masukkan Isi..." required oninput="onInputNewOptionals('{{ $index }}', this, 'value')">
@@ -165,10 +171,6 @@
                                         @endforeach
 
                                     @endif
-                                </div>
-
-                                <div class="d-flex mb-3">
-                                    <button type="button" class="btn btn-white-2 w-100" id="button_add_new_optional_data" onclick="addNewOptionalData()">Tambah</button>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +180,7 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content_of_letter" aria-expanded="false" aria-controls="content_of_letter">
                                 <strong>
-                                    isi Surat
+                                    Isi Surat
                                 </strong>
                             </button>
                         </h2>
