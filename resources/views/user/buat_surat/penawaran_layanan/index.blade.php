@@ -1,227 +1,264 @@
 @extends('layouts.letter_main')
+
 @section('letter_content')
-    <div class="create w-50 p-5 ">
-        <div class="accordion  accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header  ">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tempat_tanggal"
-                        aria-expanded="true" aria-controls="tempat_tanggal"><strong>
-                            Tempat dan Tanggal Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="tempat_tanggal" class="accordion-collapse collapse show">
-                    <div class="accordion-body row ">
-                        <div class="col-md-6">
-                            <label for="tempat">Tempat</label>
-                            <input name="tempat" id="tempat" class="form-control mb-3 w-100" type="text">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="tanggal">Tanggal</label>
-                            <input name="tanggal" id="tanggal" class="form-control w-100" type="date">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header  ">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#pokok_surat" aria-expanded="false" aria-controls="pokok_surat"><strong>
-                            Pokok Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="pokok_surat" class="accordion-collapse collapse">
-                    <div class="accordion-body row ">
-                        <label for="lampiran" class="ps-0">Lampiran</label>
-                        <input name="lampiran" id="lampiran" class="form-control mb-3 w-100" type="text">
-                        <label for="perihal" class="ps-0">Perihal</label>
-                        <input name="perihal" id="perihal" class="form-control w-100" type="text">
-                        <label for="tujuan" class="ps-0">Tujuan Surat</label>
-                        <input name="tujuan" id="tujuan" class="form-control w-100" type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header  ">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#isi_surat" aria-expanded="false" aria-controls="isi_surat"><strong>
-                            Isi Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="isi_surat" class="accordion-collapse collapse">
-                    <div class="accordion-body row ">
-                        <label for="paragraf_1" class="ps-0">Paragraf Satu</label>
-                        <input name="paragraf_1" id="paragraf_1" class="form-control mb-3 w-100" type="text">
-                        <div class="row mb-3 p-0 g-1">
-                            <div class="col-md-3">
-                                <label class="ps-0"><strong>Paragraf Dua</strong></label>
-                            </div>
-                            <div class="col-md-9">
-                                <label class="ps-0" for="">Poin 1</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <label for="">Poin 2</label>
-                                <input name="" id="" class="form-control mb-3" type="text">
-                                <div id="paragraf_dua"></div>
-                                <div class="d-flex">
-                                    <button class="btn btn-white-2 w-100 mb-2" id="button_paragraf_dua">Tambah</button>
-                                    <div class="">
-                                        <button class="btn btn-danger ms-2" id="hapus_paragraf_dua"
-                                            style="display: none; border: 1px solid #fc544b"
-                                            onclick="hapusParagramDua()">Hapus</button>
-                                    </div>
+    <div class="row vh-100">
+        <div class="col-lg-6 create p-5 ">
+            <form action="{{ route('letter.log.store', ['commonLetterLog' => $commonLog->id]) }}" method="post" id="input-letter-form">
+                @csrf
+                <div class="accordion" id="accordionParent">
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#subject_of_letter" aria-expanded="true" aria-controls="subject_of_letter">
+                                <strong>
+                                    Pokok Surat
+                                </strong>
+                            </button>
+                        </h2>
+                        <div id="subject_of_letter" class="accordion-collapse collapse show" data-bs-parent="#accordionParent">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label for="attachment">Lampiran</label>
+                                    <input type="text" name="attachment" id="attachment" class="form-control @error('attachment') is-invalid @enderror" value="{{ old('attachment') ?? $logs['attachment'] }}">
+
+                                    @error('attachment')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="subject">Perihal</label>
+                                    <input type="text" name="subject" id="subject" class="form-control @error('subject') is-invalid @enderror" value="{{ old('subject') ?? $logs['subject'] }}">
+
+                                    @error('subject')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="recipient_name">Nama Penerima</label>
+                                    <input type="text" name="recipient_name" id="recipient_name" class="form-control @error('recipient_name') is-invalid @enderror" value="{{ old('recipient_name') ?? $logs['recipient_name'] }}">
+
+                                    @error('recipient_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="recipient_address">Alamat Penerima</label>
+                                    <input type="text" name="recipient_address" id="recipient_address" class="form-control @error('recipient_address') is-invalid @enderror" value="{{ old('recipient_address') ?? $logs['recipient_address'] }}">
+
+                                    @error('recipient_address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
-                        <label for="penutup" class="ps-0">Penutup</label>
-                        <input name="penutup" id="penutup" class="form-control w-100" type="text">
+                    </div>
+
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content_of_letter" aria-expanded="false" aria-controls="content_of_letter">
+                                <strong>
+                                    Isi Surat
+                                </strong>
+                            </button>
+                        </h2>
+                        <div id="content_of_letter" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label for="contents_first">Paragraf Satu</label>
+                                    <textarea name="contents[first]" id="contents_first" class="form-control @error('contents.first') is-invalid @enderror" rows="3">{{ old('contents.first') ?? $logs["contents"]["first"] }}</textarea>
+
+                                    @error('contents.first')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3 d-flex justify-content-between">
+                                    <label class="align-self-center">Deskripsi Penawaran</label>
+                                    <button type="button" class="btn btn-primary" id="button_add_service_description_data" onclick="addDescriptionOffering()"><i class="fa-solid fa-plus"></i></button>
+                                </div>
+
+                                <div id="contents_second_list">
+                                    @if (old("contents.second"))
+                                        @foreach (old("contents.second") as $index => $item)
+                                            <div class="mb-3" id="{{ sprintf('contents_second_%s', $index) }}">
+                                                <div class="d-flex gap-2 mb-3">
+                                                    <div class="w-100">
+                                                        <input type="text" name="{{ sprintf('contents[second][%s][key]', $index) }}" id="{{ sprintf('contents_second_%s_key', $index) }}" class="form-control fw-bold @error(sprintf("contents.second.%s.key", $index)) is-invalid @enderror" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputDescriptionOffering('{{ $index }}', this, 'key')">
+
+                                                        @error(sprintf("contents.second.%s.key", $index))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_contents_second_%s_key', $index) }}" onclick="removeDescriptionOffering('{{ $index }}')"><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
+                                                </div>
+
+                                                <textarea name="{{ sprintf('contents[second][%s][value]', $index) }}" id="{{ sprintf('contents_second_%s_value', $index) }}" class="form-control @error(sprintf("contents.second.%s.value", $index)) is-invalid @enderror" rows="3"  oninput="onInputDescriptionOffering('{{ $index }}', this, 'value')">{{ $item["value"] }}</textarea>
+
+                                                @error(sprintf("contents.second.%s.value", $index))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        @endforeach
+
+                                    @else
+                                        @foreach ($logs["contents"]["second"] as $index => $item)
+                                            <div class="mb-3" id="{{ sprintf('contents_second_%s', $index) }}">
+                                                <div class="d-flex gap-2 mb-3">
+                                                    <input type="text" name="{{ sprintf('contents[second][%s][key]', $index) }}" id="{{ sprintf('contents_second_%s_key', $index) }}" class="form-control fw-bold" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputDescriptionOffering('{{ $index }}', this, 'key')">
+
+                                                    <button type="button" class="btn btn-danger" id="{{ sprintf('button_remove_contents_second_%s', $index) }}" onclick="removeDescriptionOffering('{{ $index }}')"><i class="fa-solid fa-trash"></i></button>
+                                                </div>
+
+                                                <textarea name="{{ sprintf('contents[second][%s][value]', $index) }}" id="{{ sprintf('contents_second_%s_value', $index) }}" class="form-control" rows="3" oninput="onInputDescriptionOffering('{{ $index }}', this, 'value')">{{ $item["value"] }}</textarea>
+                                            </div>
+                                        @endforeach
+
+                                    @endif
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="contents_third">Penutup</label>
+                                    <textarea name="contents[third]" id="contents_third" class="form-control @error('contents.third') is-invalid @enderror" rows="3">{{ old('contents.third') ?? $logs["contents"]["third"] }}</textarea>
+
+                                    @error('contents.third')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#letter_validation" aria-expanded="false" aria-controls="letter_validation">
+                                <strong>
+                                    Pengesahan Surat
+                                </strong>
+                            </button>
+                        </h2>
+                        <div id="letter_validation" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label for="signed_date">Tanggal</label>
+                                    <input type="date" name="signed_date" id="signed_date" class="form-control @error('signed_date') is-invalid @enderror" value="{{ old('signed_date') ?? $logs['signed_date'] }}">
+
+                                    @error('signed_date')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="signed_name">Nama Penanda Tangan</label>
+                                    <input type="text" name="signed_name" id="signed_name" class="form-control @error('signed_name') is-invalid @enderror" value="{{ old('signed_name') ?? $logs['signed_name'] }}">
+
+                                    @error('signed_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="signed_position">Jabatan Penanda Tangan</label>
+                                    <input type="text" name="signed_position" id="signed_position" class="form-control @error('signed_position') is-invalid @enderror" value="{{ old('signed_position') ?? $logs['signed_position'] }}">
+
+                                    @error('signed_position')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header  ">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#pengesahan_surat" aria-expanded="false"
-                        aria-controls="pengesahan_surat"><strong>
-                            Pengesahan Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="pengesahan_surat" class="accordion-collapse collapse">
-                    <div class="accordion-body row ">
-                        <label for="" class="ps-0">Nama yang bertanda-tangan</label>
-                        <input name="" id="" class="form-control mb-3 w-100" type="text">
-                        <label for="" class="ps-0">Jabatan Penanda tangan</label>
-                        <input name="" id="" class="form-control w-100" type="text">
-                    </div>
-                </div>
-            </div>
+                <button type="submit" class="btn btn-primary mt-4">Simpan</button>
+            </form>
         </div>
-        <a href="" class="btn btn-primer mt-4">Simpan</a>
-    </div>
-    <div class="preview w-50 ">
-        <div class="m-5">
-            <div class="surat">
+
+        <div class="col-lg-6 preview p-5">
+            <div class="surat mx-5">
                 {{-- kop-surat --}}
-                <div class="kop_surat">
-                    <div class="gambar">
-                        <img src="/assets/img/metro.png" alt="">
-                    </div>
-                    <div class="text_kop_surat">
-                        <p style="font-size: .8em"> <strong>PT Metro Software Indonesia</strong></p>
-                        <p>Jl. Utama Residences, Kelurahan Seberang Padang, Kec. Padang Selatan, Kota
-                            Padang, Provinsi Sumatera Barat</p>
-                        <div class="kontak">
-                            <p>Telp : 0812345678910</p>
-                            <p>Email : metrosoftware@gmail.com</p>
-                            <p>Website : https://metrosoftware.id</p>
-                        </div>
-                    </div>
-                </div>
-                <hr style="">
+                @include("components.buat_surat.kop")
                 {{-- end-kop-surat --}}
+
                 {{-- isi-surat --}}
-                <div class="isi_surat">
-                    <div class="isi_surat_1">
-                        <div class="nomor_surat">
-                            <div class="isi_nomor_surat">
-                                <p style="width: 45px">Nomor </p>
-                                <p id="isi_nomor"> : 01 /SM-US/4/2024</p>
-                            </div>
-                            <div class="isi_nomor_surat">
-                                <p style="width: 45px">Perihal </p>
-                                <p id="isi_perihal"></p>
-                            </div>
-                            <div class="isi_nomor_surat">
-                                <p style="width: 45px">Lampiran </p>
-                                <p id="isi_lampiran"></p>
-                            </div>
+                <div class="mt-3">
+                    <div class="letter_header">
+                        <div class="d-flex gap-2 justify-content-between">
+                            <p>Nomor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: [Nomor surat]</p>
+                            <p id="signed_date_data">{{ old("signed_date") ?? $logs["signed_date"] ?? "[Tanggal]" }}</p>
+                        </div>
+                        <p>Lampiran &nbsp;&nbsp;&nbsp;: <span id="attachment_data">{{ old("attachment") ?? $logs["attachment"] ?? "[Lampiran]" }}</span></p>
+                        <p>Perihal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="subject_data">{{ old("subject") ?? $logs["subject"] ?? "[Perihal]" }}</span></p>
 
-                        </div>
-                        <div class="tanggal_surat">
-                            <p>Senin, 8 April 2024</p>
-                        </div>
-                    </div>
-                    <div class="isi_surat_2">
-                        <p>Kepada Yth,</p>
-                        <p>Direktur PT Metro Indonesia Properti</p>
-                        <p>Ditempat</p>
-                    </div>
-                    <div class="isi_surat_3">
-                        <p>Dengan Hormat,</p>
-                        <p>Sehubung Akan Dilaksanakannya Acara Pengesahan Cabang baru PT Metro Indonesia
-                            Software,
-                            kami bermaksud mengundang Bapak/Ibu untuk dapat menghadiri acara yang akan
-                            dilaksanakan pada:
-                        </p>
-                        <div class="jadwal">
-                            <div class="isi_jadwal">
-                                <p style="width: 10%">Hari</p>
-                                <p>: Selasa, 9 April 2024</p>
-                            </div>
-                            <div class="isi_jadwal">
-                                <p style="width: 10%">Waktu</p>
-                                <p>: 09.00 - selesai</p>
-                            </div>
-                            <div class="isi_jadwal">
-                                <p style="width: 12%">Tempat</p>
-                                <p>: Jl. Utama Residences, Kelurahan Seberang Padang, Kec. Padang Selatan, Kota
-                                    Padang, Provinsi Sumatera Barat</p>
-                            </div>
-                            <div class="isi_jadwal">
-                                <p style="width: 10%">Acara</p>
-                                <p>: Pengesahan Cabang baru PT Metro Indonesia
-                                    Software</p>
-                            </div>
-                        </div>
-                        <p>Dengan surat undangan ini kami sampaikan, atas perhatian dan kehadiran Bapak/Ibu kami
-                            ucapkan terima kasih.</p>
-                    </div>
-                    <div class="isi_surat_4">
-                        <p style="margin-bottom: 50px">Direktur PT Metro Indonesia Software</p>
-                        <p><Strong>Daffa Riza Mulya</Strong></p>
+                        <p class="mt-3">Kepada Yth,</p>
+                        <p class="fw-bold" id="recipient_name_data">{{ old("recipient_name") ?? $logs["recipient_name"] ?? "[Tujuan surat]" }}</p>
+                        <p id="recipient_address_data">{{ old("recipient_address") ?? $logs["recipient_address"] ?? "Di tempat" }}</p>
                     </div>
 
+                    <div class="letter-body mt-4">
+                        <p>Dengan hormat,</p>
+                        <p>&emsp;&emsp;&emsp;<span id="contents_first_data">{{ old("contents.first") ?? $logs["contents"]["first"] }}</span></p>
+                        <ol id="contents_second_data">
+                            @if (old("contents.second"))
+                                @foreach (old("contents.second") as $index => $item)
+                                    <div id="{{ sprintf('contents_second_%s_data', $index) }}">
+                                        <li class="decimal-number fw-bold" id="{{ sprintf('contents_second_%s_key_data', $index) }}">{{ $item["key"] }}</li>
+                                        <span class="d-block" id="{{ sprintf('contents_second_%s_value_data', $index) }}">{{ $item["value"] }}</span>
+                                    </div>
+                                @endforeach
+
+                            @else
+                                @foreach ($logs["contents"]["second"] as $index => $item)
+                                    <div id="{{ sprintf('contents_second_%s_data', $index) }}">
+                                        <li class="decimal-number fw-bold" id="{{ sprintf('contents_second_%s_key_data', $index) }}">{{ $item["key"] }}</li>
+                                        <span class="d-block" id="{{ sprintf('contents_second_%s_value_data', $index) }}">{{ $item["value"] }}</span>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </ol>
+                        <p style="margin-top: -15px;">&emsp;&emsp;&emsp;<span id="contents_third_data">{{ old("contents.third") ?? $logs["contents"]["third"] }}</span></p>
+                    </div>
+
+                    <div class="letter_footer text-end mt-5">
+                        <p class="mb-5">Hormat kami,</p>
+                        <p class="fw-bold"><u id="signed_name_data">{{ old("signed_name") ?? $logs["signed_name"] ?? "[Nama yang bertanda tangan]" }}</u></p>
+                        <p id="signed_position_data">{{ old("signed_position") ?? $logs["signed_position"] ?? "[Jabatan yang bertanda tangan]" }}</p>
+                    </div>
                 </div>
                 {{-- end-isi-surat --}}
+
+                <div class="page-break"></div>
             </div>
         </div>
     </div>
 
-    <script>
-        // tambah paragraf dua
-        var nextNumber_paragraf_dua = 3;
-        document.getElementById('button_paragraf_dua').addEventListener('click', function() {
-            var paragraf_dua = document.getElementById('paragraf_dua');
-            var divparagraf_dua = document.createElement('div');
-            divparagraf_dua.classList.add('mb-3');
-            var currentNumber =
-                nextNumber_paragraf_dua++;
-            divparagraf_dua.innerHTML = `
-        <div class="d-flex justify-content-between test">
-            <label for="">Poin ${currentNumber}</label>
-        </div>
-        <input name="" id="" class="form-control mb-3" type="text">
-    `;
-            paragraf_dua.appendChild(divparagraf_dua);
-            document.getElementById('hapus_paragraf_dua').style.display = 'block';
-        });
-
-        function hapusParagramDua() {
-            var paragraf_dua = document.getElementById('paragraf_dua');
-            var inputs = paragraf_dua.querySelectorAll('.mb-3');
-            var test = paragraf_dua.querySelectorAll('.test');
-            // Hapus elemen input dan label terakhir jika ada
-            if (inputs.length > 0) {
-                var lastInputContainer = inputs[inputs.length - 1].parentNode;
-                paragraf_dua.removeChild(lastInputContainer);
-                nextNumber_paragraf_dua--; // Kurangi nomor urut
-            }
-            // Jika tidak ada input lagi, sembunyikan tombol hapus
-            if (test.length === 1) {
-                document.getElementById('hapus_paragraf_dua').style.display = 'none';
-            }
-        }
-    </script>
+    <script src="{{ asset('assets/js/date.js') }}"></script>
+    <script src="{{ asset('assets/js/page_break.js') }}"></script>
+    <script src="{{ asset('assets/js/buat_surat/service_offering.js') }}"></script>
 @endsection

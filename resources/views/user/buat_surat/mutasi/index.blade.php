@@ -132,7 +132,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primer mt-4">Simpan</button>
+                <button type="submit" class="btn btn-primary mt-4">Simpan</button>
             </form>
         </div>
 

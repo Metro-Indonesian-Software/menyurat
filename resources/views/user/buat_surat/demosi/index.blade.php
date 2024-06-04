@@ -337,7 +337,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primer mt-4">Simpan</button>
+                <button type="submit" class="btn btn-primary mt-4">Simpan</button>
             </form>
         </div>
 
@@ -364,6 +364,7 @@
                                     @foreach (old("considerings") as $index => $item)
                                         <li class="decimal-number" id="{{ sprintf('considerings_%s_data', $index) }}">{{ $item }}</li>
                                     @endforeach
+
                                 @else
                                     @foreach ($logs["considerings"] as $index => $item)
                                         <li class="decimal-number" id="{{ sprintf('considerings_%s_data', $index) }}">{{ $item }}</li>
@@ -379,6 +380,7 @@
                                     @foreach (old("rememberings") as $index => $item)
                                         <li class="decimal-number"  id="{{ sprintf('rememberings_%s_data', $index) }}">{{ $item }}</li>
                                     @endforeach
+
                                 @else
                                     @foreach ($logs["rememberings"] as $index => $item)
                                         <li class="decimal-number"  id="{{ sprintf('rememberings_%s_data', $index) }}">{{ $item }}</li>
@@ -423,19 +425,20 @@
                                                     @foreach (old("optionals") as $index => $item)
                                                         <li class="lower-roman-number" id="{{ sprintf('optionals_%s_data', $index) }}">
                                                             <span class="row">
-                                                                <span class="col-3" id="{{ sprintf('optionals_%s_key_data', $index) }}">{{ old(sprintf("optionals.%s.key", $index)) ?? $item["key"] ?? "[Kata kunci semula]" }}</span>
+                                                                <span class="col-3" id="{{ sprintf('optionals_%s_key_data', $index) }}">{{ $item["key"] ?? "[Kata kunci semula]" }}</span>
 
-                                                                <span class="col" id="{{ sprintf('optionals_%s_value_data', $index) }}">: {{ old(sprintf("optionals.%s.value", $index)) ?? $item["value"] ?? "[Data tambahan semula]" }}</span>
+                                                                <span class="col" id="{{ sprintf('optionals_%s_value_data', $index) }}">: {{ $item["value"] ?? "[Data tambahan semula]" }}</span>
                                                             </span>
                                                         </li>
                                                     @endforeach
+
                                                 @else
                                                     @foreach ($logs["optionals"] as $index => $item)
                                                         <li class="lower-roman-number" id="{{ sprintf('optionals_%s_data', $index) }}">
                                                             <span class="row">
-                                                                <span class="col-3" id="{{ sprintf('optionals_%s_key_data', $index) }}">{{ old(sprintf("optionals.%s.key", $index)) ?? $item["key"] ?? "[Kata kunci semula]" }}</span>
+                                                                <span class="col-3" id="{{ sprintf('optionals_%s_key_data', $index) }}">{{ $item["key"] ?? "[Kata kunci semula]" }}</span>
 
-                                                                <span class="col" id="{{ sprintf('optionals_%s_value_data', $index) }}">: {{ old(sprintf("optionals.%s.value", $index)) ?? $item["value"] ?? "[Data tambahan semula]" }}</span>
+                                                                <span class="col" id="{{ sprintf('optionals_%s_value_data', $index) }}">: {{ $item["value"] ?? "[Data tambahan semula]" }}</span>
                                                             </span>
                                                         </li>
                                                     @endforeach
@@ -470,19 +473,20 @@
                                                     @foreach (old("new_optionals") as $index => $item)
                                                         <li class="lower-roman-number" id="{{ sprintf('new_optionals_%s_data', $index) }}">
                                                             <span class="row">
-                                                                <span class="col-3" id="{{ sprintf('new_optionals_%s_key_data', $index) }}">{{ old(sprintf("new_optionals.%s.key", $index)) ?? $item["key"] ?? "[Kata kunci baru]" }}</span>
+                                                                <span class="col-3" id="{{ sprintf('new_optionals_%s_key_data', $index) }}">{{ $item["key"] ?? "[Kata kunci baru]" }}</span>
 
-                                                                <span class="col" id="{{ sprintf('new_optionals_%s_value_data', $index) }}">: {{ old(sprintf("new_optionals.%s.value", $index)) ?? $item["value"] ?? "[Data tambahan baru]" }}</span>
+                                                                <span class="col" id="{{ sprintf('new_optionals_%s_value_data', $index) }}">: {{ $item["value"] ?? "[Data tambahan baru]" }}</span>
                                                             </span>
                                                         </li>
                                                     @endforeach
+
                                                 @else
                                                     @foreach ($logs["new_optionals"] as $index => $item)
                                                         <li class="lower-roman-number" id="{{ sprintf('new_optionals_%s_data', $index) }}">
                                                             <span class="row">
-                                                                <span class="col-3" id="{{ sprintf('new_optionals_%s_key_data', $index) }}">{{ old(sprintf("new_optionals.%s.key", $index)) ?? $item["key"] ?? "[Kata kunci baru]" }}</span>
+                                                                <span class="col-3" id="{{ sprintf('new_optionals_%s_key_data', $index) }}">{{ $item["key"] ?? "[Kata kunci baru]" }}</span>
 
-                                                                <span class="col" id="{{ sprintf('new_optionals_%s_value_data', $index) }}">: {{ old(sprintf("new_optionals.%s.value", $index)) ?? $item["value"] ?? "[Data tambahan baru]" }}</span>
+                                                                <span class="col" id="{{ sprintf('new_optionals_%s_value_data', $index) }}">: {{ $item["value"] ?? "[Data tambahan baru]" }}</span>
                                                             </span>
                                                         </li>
                                                     @endforeach
@@ -506,10 +510,12 @@
                                     {{ date("d", strtotime(old("signed_date"))) }}
                                     {{ config(sprintf("central.months.%s", date("F", strtotime(old("signed_date"))))) }}
                                     {{ date("Y", strtotime(old("signed_date"))) }}
+
                                 @elseif ($logs["signed_date"])
                                     {{ date("d", strtotime($logs["signed_date"])) }}
                                     {{ config(sprintf("central.months.%s", date("F", strtotime($logs["signed_date"])))) }}
                                     {{ date("Y", strtotime($logs["signed_date"])) }}
+
                                 @else
                                     {{ "tanggal, bulan, tahun]" }}
                                 @endif
@@ -527,6 +533,7 @@
         </div>
     </div>
 
-    <script src="{{ asset("assets/js/date.js") }}"></script>
+    <script src="{{ asset('assets/js/date.js') }}"></script>
+    <script src="{{ asset('assets/js/page_break.js') }}"></script>
     <script src="{{ asset('assets/js/buat_surat/demosi.js') }}"></script>
 @endsection
