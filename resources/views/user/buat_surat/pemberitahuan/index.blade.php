@@ -205,10 +205,9 @@
                         <p>Dengan hormat,</p>
                         <p>&emsp;&emsp;&emsp;<span id="contents_first_data">{{ old("contents.first") ?? $logs["contents"]["first"] }}</span></p>
 
-                        <ol id="contents_second_data" class="@if((old('contents.second') && count(old('contents.second') === 0)) || count($logs['contents']['second']) === 0) d-none @endif">
-                        </ol>
+                        <ol id="contents_second_data"></ol>
 
-                        <p>&emsp;&emsp;&emsp;<span id="contents_third_data">{{ old("contents.third") ?? $logs["contents"]["third"] }}</span></p>
+                        <p style="margin-top: -15px;">&emsp;&emsp;&emsp;<span id="contents_third_data">{{ old("contents.third") ?? $logs["contents"]["third"] }}</span></p>
                     </div>
 
                     <div class="letter_footer text-end mt-5">

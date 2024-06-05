@@ -24,16 +24,10 @@ document
 
 function checkCountContentsSecond() {
     if (indexContentsSecondList === 0) {
-        document.getElementById("contents_second_data").classList.add("d-none");
-
         document
             .getElementById("button_remove_contents_second_data")
             .classList.add("d-none");
     } else {
-        document
-            .getElementById("contents_second_data")
-            .classList.remove("d-none");
-
         document
             .getElementById("button_remove_contents_second_data")
             .classList.remove("d-none");
