@@ -1,163 +1,208 @@
 @extends('layouts.letter_main')
+
 @section('letter_content')
-    <div class="create w-50 p-5 ">
-        <div class="accordion  accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header  ">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#pokok_surat"
-                        aria-expanded="true" aria-controls="pokok_surat"><strong>
-                            Pokok Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="pokok_surat" class="accordion-collapse collapse show">
-                    <div class="accordion-body row g-1 ">
-                        <label for="" class="ps-0">Lampiran</label>
-                        <input name="" id="" class="form-control mb-3 w-100" type="text">
-                        <label for="" class="ps-0">Perihal</label>
-                        <input name="" id="" class="form-control mb-3 w-100" type="text">
-                        <label for="" class="ps-0">Tujuan Surat</label>
-                        <input name="" id="" class="form-control mb-3 w-100" type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header  ">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#informasi_surat" aria-expanded="true" aria-controls="informasi_surat"><strong>
-                            Informasi Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="informasi_surat" class="accordion-collapse collapse ">
-                    <div class="accordion-body row g-1 ">
-                        <label for="" class="ps-0">Nama Penerima</label>
-                        <input name="" id="" class="form-control mb-3 w-100" type="text">
-                        <label for="" class="ps-0">jabatan Penerima</label>
-                        <input name="" id="" class="form-control mb-3 w-100" type="text">
-                        <label for="" class="ps-0">Tanggal Pelanggaran</label>
-                        <input name="" id="" class="form-control w-100 mb-3" type="date">
-                        <label for="" class="ps-0">Deskripsi Pelanggaran</label>
-                        <textarea name="" id="" class="form-control w-100 mb-3"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item border-bottom">
-                <h2 class="accordion-header  ">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#pengesahan_surat" aria-expanded="true" aria-controls="pengesahan_surat"><strong>
-                            Pengesahan Surat
-                        </strong>
-                    </button>
-                </h2>
-                <div id="pengesahan_surat" class="accordion-collapse collapse ">
-                    <div class="accordion-body row g-1 ">
-                        <div class="d-flex justify-content-between gap-3">
-                            <div class="col ">
-                                <label for="" class="ps-0">Tempat</label>
-                                <input name="" id="" class="form-control mb-3 w-100" type="text">
-                            </div>
-                            <div class="col">
-                                <label for="" class="ps-0">Tanggal</label>
-                                <input name="" id="" class="form-control w-100" type="date">
+    <div class="row vh-100">
+        <div class="col-lg-6 create p-5">
+            <form action="{{ route('letter.log.store', ['commonLetterLog' => $commonLog->id]) }}" method="post" id="input-letter-form">
+                @csrf
+                <div class="accordion" id="accordionParent">
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#subject_of_letter" aria-expanded="true" aria-controls="subject_of_letter"><strong>
+                                    Pokok Surat
+                                </strong>
+                            </button>
+                        </h2>
+                        <div id="subject_of_letter" class="accordion-collapse collapse show" data-bs-parent="#accordionParent">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label for="subject">Perihal</label>
+                                    <input type="text" name="subject" id="subject" class="form-control @error('subject') is-invalid @enderror" value="{{ old('subject') ?? $logs['subject'] }}">
+
+                                    @error('subject')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
-                        <label for="" class="ps-0">Nama yang bertanda tangan</label>
-                        <input name="" id="" class="form-control w-100 mb-3" type="text">
-                        <label for="" class="ps-0">jabatan Penanda tangan</label>
-                        <input name="" id="" class="form-control w-100 mb-3" type="text">
+                    </div>
+
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#information_letter" aria-expanded="false" aria-controls="information_letter">
+                                <strong>
+                                    Informasi Surat
+                                </strong>
+                            </button>
+                        </h2>
+                        <div id="information_letter" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label for="recipient_name">Nama Penerima</label>
+                                    <input type="text" name="recipient_name" id="recipient_name" class="form-control @error('recipient_name') is-invalid @enderror" value="{{ old('recipient_name') ?? $logs['recipient_name'] }}">
+
+                                    @error('recipient_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="recipient_position">Jabatan Penerima</label>
+                                    <input type="text" name="recipient_position" id="recipient_position" class="form-control @error('recipient_position') is-invalid @enderror" value="{{ old('recipient_position') ?? $logs['recipient_position'] }}">
+
+                                    @error('recipient_position')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="violation_date">Tanggal Pelanggaran</label>
+                                    <input type="date" name="violation_date" id="violation_date" class="form-control @error('violation_date') is-invalid @enderror" value="{{ old('violation_date') ?? $logs['violation_date'] }}">
+
+                                    @error('violation_date')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="violation_description">Deskripsi Pelanggaran</label>
+                                    <textarea name="violation_description" id="violation_description" class="form-control @error('violation_description') is-invalid @enderror" rows="3">{{ old('violation_description') ?? $logs["violation_description"]}}</textarea>
+
+                                    @error('violation_description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-bottom">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#letter_validation" aria-expanded="false" aria-controls="letter_validation">
+                                <strong>
+                                    Pengesahan Surat
+                                </strong>
+                            </button>
+                        </h2>
+                        <div id="letter_validation" class="accordion-collapse collapse" data-bs-parent="#accordionParent">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label for="signed_place">Tempat</label>
+                                    <input type="text" name="signed_place" id="signed_place" class="form-control @error('signed_place') is-invalid @enderror" value="{{ old('signed_place') ?? $logs['signed_place'] }}">
+
+                                    @error('signed_place')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="signed_date">Tanggal</label>
+                                    <input type="date" name="signed_date" id="signed_date" class="form-control @error('signed_date') is-invalid @enderror" value="{{ old('signed_date') ?? $logs['signed_date'] }}">
+
+                                    @error('signed_date')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="signed_name">Nama yang bertanda tangan</label>
+                                    <input type="text" name="signed_name" id="signed_name" class="form-control @error('signed_name') is-invalid @enderror" value="{{ old('signed_name') ?? $logs['signed_name'] }}">
+
+                                    @error('signed_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="signed_position">jabatan Penanda tangan</label>
+                                    <input type="text" name="signed_position" id="signed_position" class="form-control @error('signed_position') is-invalid @enderror" value="{{ old('signed_position') ?? $logs['signed_position'] }}">
+
+                                    @error('signed_position')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <button type="submit" class="btn btn-primary mt-4">Simpan</button>
+            </form>
         </div>
-        <a href="" class="btn btn-primer mt-4">Simpan</a>
-    </div>
-    <div class="preview w-50 ">
-        <div class="m-5">
-            <div class="surat">
+
+        <div class="col-lg-6 preview p-5">
+            <div class="surat mx-5">
                 {{-- kop-surat --}}
-                <div class="kop_surat">
-                    <div class="gambar">
-                        <img src="/assets/img/metro.png" alt="">
-                    </div>
-                    <div class="text_kop_surat">
-                        <p style="font-size: .8em"> <strong>PT Metro Software Indonesia</strong></p>
-                        <p>Jl. Utama Residences, Kelurahan Seberang Padang, Kec. Padang Selatan, Kota
-                            Padang, Provinsi Sumatera Barat</p>
-                        <div class="kontak">
-                            <p>Telp : 0812345678910</p>
-                            <p>Email : metrosoftware@gmail.com</p>
-                            <p>Website : https://metrosoftware.id</p>
-                        </div>
-                    </div>
-                </div>
-                <hr style="">
+                @include("components.buat_surat.kop")
                 {{-- end-kop-surat --}}
+
                 {{-- isi-surat --}}
-                <div class="isi_surat">
-                    <div class="isi_surat_1">
-                        <div class="nomor_surat">
-                            <div class="isi_nomor_surat">
-                                <p style="width: 45px">Nomor </p>
-                                <p id="isi_nomor"> : 01 /SM-US/4/2024</p>
-                            </div>
-                            <div class="isi_nomor_surat">
-                                <p style="width: 45px">Perihal </p>
-                                <p id="isi_perihal"></p>
-                            </div>
-                            <div class="isi_nomor_surat">
-                                <p style="width: 45px">Lampiran </p>
-                                <p id="isi_lampiran"></p>
-                            </div>
+                <div class="mt-3">
+                    <div class="letter_header">
+                        <p>Perihal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="subject_data">{{ old("subject") ?? $logs["subject"] ?? "[Perihal]" }}</span></p>
 
-                        </div>
-                        <div class="tanggal_surat">
-                            <p>Senin, 8 April 2024</p>
+                        <div class="text-center mt-2">
+                            <h1 class="fw-bold text-dark text-8"><u>SURAT PERINGATAN</u></h1>
+                            <p class="mt-n7">No. {{ $commonLog->number_of_letter ?? "[Nomor surat]" }}</p>
                         </div>
                     </div>
-                    <div class="isi_surat_2">
-                        <p>Kepada Yth,</p>
-                        <p>Direktur PT Metro Indonesia Properti</p>
-                        <p>Ditempat</p>
+
+                    <div class="letter_body mt-4">
+                        <p>Surat peringatan ini ditujukan kepada:</p>
+                        <p>Nama &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="recipient_name_data">{{ old("recipient_name") ?? $logs["recipient_name"] ?? "[Nama penerima]" }}</span></p>
+                        <p>Jabatan &nbsp;&nbsp;: <span id="recipient_position_data">{{ old("recipient_position") ?? $logs["recipient_position"] ?? "[Jabatan penerima]" }}</span></p>
+
+                        <p>&emsp;&emsp;&emsp;Dengan ini kami sampaikan bahwa pada tanggal <span id="violation_date_data">{{ old("violation_date") ?? $logs["violation_date"] ?? "[tanggal pelanggaran]" }}</span>, Saudara telah melanggar kebijakan perusahaan terkait <span id="violation_description_data">{{ old("violation_description") ?? $logs["violation_description"] ?? "[deskripsi pelanggaran]" }}</span>. Pelanggaran tersebut kami identifikasi sebagai tindakan yang tidak sesuai dengan norma-norma yang telah ditetapkan oleh perusahaan.</p>
+                        <p>&emsp;&emsp;&emsp;Dengan diterbitkannya surat peringatan ini, kami ingin mengingatkan Saudara bahwa melanggar kebijakan perusahaan memiliki konsekuensi serius dan dapat merusak citra dan reputasi perusahaan. Sebagai langkah pertama, surat peringatan ini kami berikan sebagai upaya untuk memberi kesempatan kepada Saudara untuk memperbaiki perilaku Saudara.</p>
+                        <p>&emsp;&emsp;&emsp;Surat peringatan ini terhitung sejak tanggal dikeluarkannya surat peringatan ini dan apabila yang bersangkutan melakukan kesalahan yang sama atau lebih berat, maka akan diberian peringatan selanjutnya. Demikian surat peringatan ini dibuat untuk dapat diperhatikan dan dilaksanakan sebaik mungkin kepada yang bersangkutan.</p>
                     </div>
-                    <div class="isi_surat_3">
-                        <p>Dengan Hormat,</p>
-                        <p>Sehubung Akan Dilaksanakannya Acara Pengesahan Cabang baru PT Metro Indonesia
-                            Software,
-                            kami bermaksud mengundang Bapak/Ibu untuk dapat menghadiri acara yang akan
-                            dilaksanakan pada:
+
+                    <div class="letter_footer text-end mt-5">
+                        <p class="mb-5">
+                            <span id="signed_place_data">{{ old("signed_place") ?? $logs["signed_place"] ?? "[Tempat" }}</span>,
+                            <span id="signed_date_data">
+                                @if(old("signed_date"))
+                                    {{ date("d", strtotime(old("signed_date"))) }}
+                                    {{ config(sprintf("central.months.%s", date("F", strtotime(old("signed_date"))))) }}
+                                    {{ date("Y", strtotime(old("signed_date"))) }}
+                                @elseif ($logs["signed_date"])
+                                    {{ date("d", strtotime($logs["signed_date"])) }}
+                                    {{ config(sprintf("central.months.%s", date("F", strtotime($logs["signed_date"])))) }}
+                                    {{ date("Y", strtotime($logs["signed_date"])) }}
+                                @else
+                                    tanggal, bulan, tahun]
+                                @endif
+                            </span>
                         </p>
-                        <div class="jadwal">
-                            <div class="isi_jadwal">
-                                <p style="width: 10%">Hari</p>
-                                <p>: Selasa, 9 April 2024</p>
-                            </div>
-                            <div class="isi_jadwal">
-                                <p style="width: 10%">Waktu</p>
-                                <p>: 09.00 - selesai</p>
-                            </div>
-                            <div class="isi_jadwal">
-                                <p style="width: 12%">Tempat</p>
-                                <p>: Jl. Utama Residences, Kelurahan Seberang Padang, Kec. Padang Selatan, Kota
-                                    Padang, Provinsi Sumatera Barat</p>
-                            </div>
-                            <div class="isi_jadwal">
-                                <p style="width: 10%">Acara</p>
-                                <p>: Pengesahan Cabang baru PT Metro Indonesia
-                                    Software</p>
-                            </div>
-                        </div>
-                        <p>Dengan surat undangan ini kami sampaikan, atas perhatian dan kehadiran Bapak/Ibu kami
-                            ucapkan terima kasih.</p>
+                        <p class="fw-bold"><u id="signed_name_data">{{ old("signed_name") ?? $logs["signed_name"] ?? "[Nama yang bertanda tangan]" }}</u></p>
+                        <p id="signed_position_data">{{ old("signed_position") ?? $logs["signed_position"] ?? "[Jabatan yang bertanda tangan]" }}</p>
                     </div>
-                    <div class="isi_surat_4">
-                        <p style="margin-bottom: 50px">Direktur PT Metro Indonesia Software</p>
-                        <p><Strong>Daffa Riza Mulya</Strong></p>
-                    </div>
-
                 </div>
                 {{-- end-isi-surat --}}
+
+                <div class="page-break"></div>
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('assets/js/date.js') }}"></script>
+    <script src="{{ asset('assets/js/page_break.js') }}"></script>
+    <script src="{{ asset('assets/js/buat_surat/warning.js') }}"></script>
 @endsection

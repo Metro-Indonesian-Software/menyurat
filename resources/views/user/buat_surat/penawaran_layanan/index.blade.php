@@ -210,7 +210,7 @@
                 <div class="mt-3">
                     <div class="letter_header">
                         <div class="d-flex gap-2 justify-content-between">
-                            <p>Nomor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: [Nomor surat]</p>
+                            <p>Nomor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $commonLog->number_of_letter ?? "[Nomor surat]" }}</p>
                             <p id="signed_date_data">{{ old("signed_date") ?? $logs["signed_date"] ?? "[Tanggal]" }}</p>
                         </div>
                         <p>Lampiran &nbsp;&nbsp;&nbsp;: <span id="attachment_data">{{ old("attachment") ?? $logs["attachment"] ?? "[Lampiran]" }}</span></p>
