@@ -2,7 +2,7 @@
 
 @section('letter_content')
     <div class="row vh-100">
-        <div class="col-lg-6 create p-5 ">
+        <div class="col-lg-6 create p-5">
             <form action="{{ route('letter.log.store', ['commonLetterLog' => $commonLog->id]) }}" method="post" id="input-letter-form">
                 @csrf
                 <div class="accordion" id="accordionParent">
@@ -218,7 +218,8 @@
 
                         <p class="mt-3">Kepada Yth,</p>
                         <p class="fw-bold" id="recipient_name_data">{{ old("recipient_name") ?? $logs["recipient_name"] ?? "[Tujuan surat]" }}</p>
-                        <p id="recipient_address_data">{{ old("recipient_address") ?? $logs["recipient_address"] ?? "Di tempat" }}</p>
+                        <p id="recipient_address_data">{{ old("recipient_address") ?? $logs["recipient_address"] }}</p>
+                        <p>Di tempat</p>
                     </div>
 
                     <div class="letter-body mt-4">
@@ -246,7 +247,8 @@
                     </div>
 
                     <div class="letter_footer text-end mt-5">
-                        <p class="mb-5">Hormat kami,</p>
+                        <p>Hormat kami,</p>
+                        <p class="mb-5">{{ $user->name }}</p>
                         <p class="fw-bold"><u id="signed_name_data">{{ old("signed_name") ?? $logs["signed_name"] ?? "[Nama yang bertanda tangan]" }}</u></p>
                         <p id="signed_position_data">{{ old("signed_position") ?? $logs["signed_position"] ?? "[Jabatan yang bertanda tangan]" }}</p>
                     </div>

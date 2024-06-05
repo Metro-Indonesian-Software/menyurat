@@ -199,6 +199,7 @@
                                                         <textarea name="considerings[]" id="{{ sprintf('considerings_%s', $index) }}" class="form-control" rows="3" required oninput="onInputConsiderings('{{ $index }}', this)">{{ $item }}</textarea>
                                                     </div>
                                                 @endforeach
+
                                             @else
                                                 @foreach ($logs["considerings"] as $index => $item)
                                                     <div class="mb-3">
@@ -229,6 +230,7 @@
                                                         <textarea name="rememberings[]" id="{{ sprintf('rememberings_%s', $index) }}" class="form-control" rows="3" required oninput="onInputRememberings('{{ $index }}', this)">{{ $item }}</textarea>
                                                     </div>
                                                 @endforeach
+
                                             @else
                                                 @foreach ($logs["rememberings"] as $index => $item)
                                                     <div class="mb-3">
@@ -503,7 +505,7 @@
                     </div>
 
                     <div class="letter_footer text-end mt-5">
-                        <p class="mb-5">
+                        <p>
                             <span id="signed_place_data">{{ old("signed_place") ?? $logs["signed_place"] ?? "[Tempat" }}</span>,
                             <span id="signed_date_data">
                                 @if(old("signed_date"))
@@ -521,6 +523,7 @@
                                 @endif
                             </span>
                         </p>
+                        <p class="mb-5">{{ $user->name }}</p>
 
                         <p class="fw-bold"><u id="signed_name_data">{{ old("signed_name") ?? $logs["signed_name"] ?? "[Nama yang bertanda tangan]" }}</u></p>
                         <p id="signed_position_data">{{ old("signed_position") ?? $logs["signed_position"] ?? "[Jabatan yang bertanda tangan]" }}</p>
