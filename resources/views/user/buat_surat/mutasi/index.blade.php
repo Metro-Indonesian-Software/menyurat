@@ -162,7 +162,7 @@
                             <span id="signed_position_data">{{ old("signed_position") ?? $logs["signed_position"] ?? "[Jabatan yang bertanda tangan]" }}</span>
                         </p>
 
-                        <p class="mt-2">&emsp;&emsp;&emsp;Memutuskan untuk melakukan mutasi terhadap karyawan {{ $user->name }} yang tersebut di bawah ini:</p>
+                        <p class="mt-2">Memutuskan untuk melakukan mutasi terhadap karyawan {{ $user->name }} yang tersebut di bawah ini:</p>
                         <p>
                             <span>Nama</span>
                             <span style="margin-left: 18px">: </span>

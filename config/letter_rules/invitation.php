@@ -75,7 +75,7 @@ return [
          * atribut name di html : event_time
          */
         "event_time" => [
-            "validate" => "nullable|date_format:H:i:s",
+            "validate" => "nullable|date_format:H:i",
             "cast" => "time",
         ],
 
@@ -130,7 +130,6 @@ return [
         "signed_date" => "Tanggal tanda tangan surat",
         "recipient_name" => "Nama penerima surat",
         "recipient_address" => "Alamat penerima surat",
-        "purpose_of_invitation" => "Maksud surat undangan",
         "event_date" => "Tanggal acara",
         "event_time" => "Waktu acara",
         "event_place" => "Tempat acara",
