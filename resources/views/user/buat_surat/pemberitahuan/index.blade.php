@@ -86,7 +86,7 @@
 
                                 <div class="row mb-3">
                                     <div class="col-md-3">
-                                        <label><strong>Detail pemberitahuan</strong></label>
+                                        <label><strong>Detail Pemberitahuan</strong></label>
                                     </div>
                                     <div class="col-md-9">
                                         <div id="contents_second_list">
