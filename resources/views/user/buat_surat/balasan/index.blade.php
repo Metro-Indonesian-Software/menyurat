@@ -6,29 +6,6 @@
             <form action="{{ route('letter.log.store', ['commonLetterLog' => $commonLog->id]) }}" method="post" id="input-letter-form">
                 @csrf
                 <div class="accordion" id="accordionParent">
-                    {{-- <div class="accordion-item border-bottom">
-                        <h2 class="accordion-header  ">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tempat_tanggal"
-                                aria-expanded="true" aria-controls="tempat_tanggal"><strong>
-                                    Tempat dan Tanggal Surat
-                                </strong>
-                            </button>
-                        </h2>
-                        <div id="tempat_tanggal" class="accordion-collapse collapse show">
-                            <div class="accordion-body row g-1 ">
-                                <div class="d-flex justify-content-between gap-3">
-                                    <div class="col ">
-                                        <label for="" class="ps-0">Tempat</label>
-                                        <input name="" id="" class="form-control mb-3 w-100" type="text">
-                                    </div>
-                                    <div class="col">
-                                        <label for="" class="ps-0">Tanggal</label>
-                                        <input name="" id="" class="form-control w-100" type="date">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="accordion-item border-bottom">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#subject_of_letter" aria-expanded="true" aria-controls="subject_of_letter">
@@ -182,7 +159,7 @@
             </form>
         </div>
 
-        <div class="col-lg-6 preview p-5">
+        <div class="col-lg-6 preview p-5 d-md-none d-lg-block">
             <div class="surat mx-5">
                 {{-- kop-surat --}}
                 @include("components.buat_surat.kop")
