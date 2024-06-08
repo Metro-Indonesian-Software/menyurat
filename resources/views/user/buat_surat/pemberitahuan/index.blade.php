@@ -224,6 +224,9 @@
         </div>
     </div>
 
+@endsection
+
+@section("javascript")
     <script src="{{ asset('assets/js/date.js') }}"></script>
     <script src="{{ asset('assets/js/page_break.js') }}"></script>
     <script src="{{ asset('assets/js/buat_surat/announcement.js') }}"></script>

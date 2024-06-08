@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/navbar.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/buat_surat_create.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/surat.css') }}">
+        @yield("css")
 
         <script src="https://kit.fontawesome.com/82ebf8392e.js" crossorigin="anonymous"></script>
     </head>
@@ -56,5 +57,6 @@
         @include("layouts.alert")
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/js/input_letter.js') }}"></script>
+        @yield("javascript")
     </body>
 </html>
