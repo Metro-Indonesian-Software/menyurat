@@ -108,9 +108,9 @@
                                             @endif
                                         </div>
 
-                                        <div class="d-flex">
+                                        <div class="d-flex gap-2">
                                             <button type="button" class="btn btn-white-2 w-100" id="button_add_contents_second_data" onclick="addDetailAnnouncement()">Tambah</button>
-                                            <button type="button" class="btn btn-danger ms-2 @if((old('contents.second') && count(old('contents.second')) === 0) || count($logs['contents']['second']) === 0) d-none @endif" id="button_remove_contents_second_data" onclick="removeDetailAnnouncement()">Hapus</button>
+                                            <button type="button" class="btn btn-danger @if((old('contents.second') && count(old('contents.second')) === 0) || count($logs['contents']['second']) === 0) d-none @endif" id="button_remove_contents_second_data" onclick="removeDetailAnnouncement()">Hapus</button>
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +179,7 @@
             </form>
         </div>
 
-        <div class="col-lg-6 preview p-5 d-md-none d-lg-block">
+        <div class="col-lg-6 preview p-5 d-none d-lg-block">
             <div class="surat mx-5">
                 {{-- kop-surat --}}
                 @include("components.buat_surat.kop")

@@ -73,7 +73,8 @@ h6 {
 
 p,
 ol,
-ul {
+ul,
+table {
     font-size: 0.6em;
     color: black;
 }

@@ -49,7 +49,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="mb-3 d-flex justify-content-between">
+                                <div class="mb-3 d-flex gap-2 justify-content-between">
                                     <label class="align-self-center">Data tambahan (semula)</label>
                                     <button type="button" class="btn btn-primary" id="button_add_optional_data" onclick="addOptionalData()"><i class="fa-solid fa-plus"></i></button>
                                 </div>
@@ -122,7 +122,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="mb-3 d-flex justify-content-between">
+                                <div class="mb-3 d-flex gap-2 justify-content-between">
                                     <label class="align-self-center">Data tambahan (menjadi)</label>
                                     <button type="button" class="btn btn-primary" id="button_add_new_optional_data" onclick="addNewOptionalData()"><i class="fa-solid fa-plus"></i></button>
                                 </div>
@@ -210,9 +210,9 @@
                                             @endif
                                         </div>
 
-                                        <div class="d-flex">
+                                        <div class="d-flex gap-2">
                                             <button type="button" class="btn btn-white-2 w-100" id="button_add_considerings_data" onclick="addConsiderings()">Tambah</button>
-                                            <button type="button" class="btn btn-danger ms-2 @if((old('considerings') && count(old('considerings')) <= 1) || count($logs['considerings']) <= 1) d-none @endif" id="button_remove_considerings_data" onclick="removeConsiderings()">Hapus</button>
+                                            <button type="button" class="btn btn-danger @if((old('considerings') && count(old('considerings')) <= 1) || count($logs['considerings']) <= 1) d-none @endif" id="button_remove_considerings_data" onclick="removeConsiderings()">Hapus</button>
                                         </div>
                                     </div>
                                 </div>
@@ -242,9 +242,9 @@
                                             @endif
                                         </div>
 
-                                        <div class="d-flex">
+                                        <div class="d-flex gap-2">
                                             <button type="button" class="btn btn-white-2 w-100" id="button_add_rememberings_data" onclick="addRememberings()">Tambah</button>
-                                            <button type="button" class="btn btn-danger ms-2 @if((old('rememberings') && count(old('rememberings')) <= 1) || count($logs['rememberings']) <= 1) d-none @endif" id="button_remove_rememberings_data" onclick="removeRememberings()">Hapus</button>
+                                            <button type="button" class="btn btn-danger @if((old('rememberings') && count(old('rememberings')) <= 1) || count($logs['rememberings']) <= 1) d-none @endif" id="button_remove_rememberings_data" onclick="removeRememberings()">Hapus</button>
                                         </div>
                                     </div>
                                 </div>
@@ -343,7 +343,7 @@
             </form>
         </div>
 
-        <div class="col-lg-6 preview p-5 d-md-none d-lg-block">
+        <div class="col-lg-6 preview p-5 d-none d-lg-block">
             <div class="surat mx-5">
                 {{-- kop-surat --}}
                 @include("components.buat_surat.kop")

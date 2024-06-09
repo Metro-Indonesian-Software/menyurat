@@ -20,6 +20,7 @@ return [
   "letter_types" => [
     "Surat Mutasi Karyawan" => [
         // ? clear
+        // ? completed
         "rule" => "employee_mutation",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.mutasi.index",
@@ -27,6 +28,7 @@ return [
     ],
     "Surat Promosi Karyawan" => [
         // ? clear
+        // ? completed
         "rule" => "employee_promotion",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.promosi_karyawan.index",
@@ -34,6 +36,7 @@ return [
     ],
     "Surat Demosi Karyawan" => [
         // ? clear
+        // ? completed
         "rule" => "employee_demotion",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.demosi.index",
@@ -43,7 +46,7 @@ return [
         // ? clear
         "rule" => "pkwt_agreement",
         "image" => "assets/img/surat.jpg",
-        "view" => "user.buat_surat.surat_lamaran",
+        "view" => "user.buat_surat.pkwt.index",
         "pdf" => "",
     ],
     "Surat Perjanjian PKWTT" => [
@@ -55,6 +58,7 @@ return [
     ],
     "Surat Penawaran Layanan" => [
         // ? clear
+        // ? completed
         "rule" => "service_offering",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.penawaran_layanan.index",
@@ -62,6 +66,7 @@ return [
     ],
     "Surat Peringatan" => [
         // ? clear
+        // ? completed
         "rule" => "warning",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.peringatan.index",
@@ -76,6 +81,7 @@ return [
     ],
     "Surat Pemberitahuan" => [
         // ? clear
+        // ? completed
         "rule" => "announcement",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.pemberitahuan.index",
@@ -83,6 +89,7 @@ return [
     ],
     "Surat Balasan"=> [
         // ?clear
+        // ? completed
         "rule" => "response",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.balasan.index",
@@ -90,20 +97,23 @@ return [
     ],
     "Surat Penawaran Harga" => [
         // ? clear
+        // ? completed
         "rule" => "quotation",
         "image" => "assets/img/surat.jpg",
-        "view" => "user.buat_surat.surat_lamaran",
+        "view" => "user.buat_surat.penawaran_harga.index",
         "pdf" => "",
     ],
     "Surat Konfirmasi Pesanan" => [
         // ? clear
+        // ? completed
         "rule" => "order_confirmation",
         "image" => "assets/img/surat.jpg",
-        "view" => "user.buat_surat.surat_lamaran",
+        "view" => "user.buat_surat.konfirmasi_pesanan.index",
         "pdf" => "",
     ],
     "Surat Undangan" => [
         // ? clear
+        // ? completed
         "rule" => "invitation",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.undangan.index",
@@ -111,6 +121,7 @@ return [
     ],
     "Surat Permohonan" => [
         // ? clear
+        // ? completed
         "rule" => "application",
         "image" => "assets/img/surat.jpg",
         "view" => "user.buat_surat.permohonan.index",

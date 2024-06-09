@@ -170,7 +170,7 @@
             </form>
         </div>
 
-        <div class="col-lg-6 preview p-5 d-md-none d-lg-block">
+        <div class="col-lg-6 preview p-5 d-none d-lg-block">
             <div class="surat mx-5">
                 {{-- kop-surat --}}
                 @include("components.buat_surat.kop")

@@ -84,7 +84,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="mb-3 d-flex justify-content-between">
+                                <div class="mb-3 d-flex gap-2 justify-content-between">
                                     <label class="align-self-center">Deskripsi Penawaran</label>
                                     <button type="button" class="btn btn-primary" id="button_add_service_description_data" onclick="addDescriptionOffering()"><i class="fa-solid fa-plus"></i></button>
                                 </div>
@@ -210,7 +210,7 @@
             </form>
         </div>
 
-        <div class="col-lg-6 preview p-5 d-md-none d-lg-block">
+        <div class="col-lg-6 preview p-5 d-none d-lg-block">
             <div class="surat mx-5">
                 {{-- kop-surat --}}
                 @include("components.buat_surat.kop")
