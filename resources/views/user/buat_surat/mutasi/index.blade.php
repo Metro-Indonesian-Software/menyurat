@@ -193,7 +193,7 @@
                                 {{ config(sprintf("central.months.%s", date("F", strtotime(old("effective_date"))))) }}
                                 {{ date("Y", strtotime(old("effective_date"))) }}
                             @elseif ($logs["effective_date"])
-                                {{ config(sprintf("central.months.%s", date("l", strtotime($logs["effective_date"])))) }},
+                                {{ config(sprintf("central.days.%s", date("l", strtotime($logs["effective_date"])))) }},
                                 {{ date("d", strtotime($logs["effective_date"])) }}
                                 {{ config(sprintf("central.months.%s", date("F", strtotime($logs["effective_date"])))) }}
                                 {{ date("Y", strtotime($logs["effective_date"])) }}

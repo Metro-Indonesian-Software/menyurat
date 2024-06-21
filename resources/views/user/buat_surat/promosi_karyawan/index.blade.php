@@ -60,7 +60,7 @@
                                             <div class="mb-3" id="{{ sprintf('optionals_%s', $index) }}">
                                                 <div class="d-flex gap-2 mb-3">
                                                     <div class="w-100">
-                                                        <input type="text" name="{{ sprintf('optionals[%s][key]', $index) }}" id="{{ sprintf('optionals_%s_key', $index) }}" class="form-control fw-bold @error(sprintf("optionals.%s.key", $index)) is-invalid @enderror" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputOptionals('{{ $index }}', this, 'key')">
+                                                        <input type="text" name="{{ sprintf('optionals[%s][key]', $index) }}" id="{{ sprintf('optionals_%s_key', $index) }}" class="form-control fw-bold @error(sprintf('optionals.%s.key', $index)) is-invalid @enderror" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputOptionals('{{ $index }}', this, 'key')">
 
                                                         @error(sprintf("optionals.%s.key", $index))
                                                             <span class="invalid-feedback" role="alert">
@@ -133,7 +133,7 @@
                                             <div class="mb-3" id="{{ sprintf('new_optionals_%s', $index) }}">
                                                 <div class="d-flex gap-2 mb-3">
                                                     <div class="w-100">
-                                                        <input type="text" name="{{ sprintf('new_optionals[%s][key]', $index) }}" id="{{ sprintf('new_optionals_%s_key', $index) }}" class="form-control fw-bold @error(sprintf("new_optionals.%s.key", $index)) is-invalid @enderror" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputNewOptionals('{{ $index }}', this, 'key')">
+                                                        <input type="text" name="{{ sprintf('new_optionals[%s][key]', $index) }}" id="{{ sprintf('new_optionals_%s_key', $index) }}" class="form-control fw-bold @error(sprintf('new_optionals.%s.key', $index)) is-invalid @enderror" value="{{ $item['key'] }}" placeholder="Masukkan kata kunci..." required oninput="onInputNewOptionals('{{ $index }}', this, 'key')">
 
                                                         @error(sprintf("new_optionals.%s.key", $index))
                                                             <span class="invalid-feedback" role="alert">
