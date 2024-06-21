@@ -53,7 +53,7 @@ return [
         // ? clear
         "rule" => "pkwtt_agreement",
         "image" => "assets/img/surat.jpg",
-        "view" => "user.buat_surat.surat_lamaran",
+        "view" => "user.buat_surat.pkwtt.index",
         "pdf" => "",
     ],
     "Surat Penawaran Layanan" => [
@@ -76,7 +76,7 @@ return [
         // ? clear
         "rule" => "invoice",
         "image" => "assets/img/surat.jpg",
-        "view" => "user.buat_surat.surat_lamaran",
+        "view" => "user.buat_surat.invoice.index",
         "pdf" => "",
     ],
     "Surat Pemberitahuan" => [
